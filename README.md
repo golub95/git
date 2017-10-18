@@ -1,2 +1,2 @@
-# test
-Ucenje
+# mmt
+Multimedijska tehnika
