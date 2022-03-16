@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EventsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OddsTable">
+          <Key>
+            <PropertyRef Name="KladaID" />
+          </Key>
+          <Property Name="KladaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Home" Type="varchar" MaxLength="50" />
+          <Property Name="Away" Type="varchar" MaxLength="50" />
+          <Property Name="EventTime" Type="varchar" MaxLength="10" />
+          <Property Name="EventLink" Type="varchar(max)" />
+          <Property Name="Odd1" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OddX" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Odd2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Odd1X" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OddX2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Odd12" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OddF2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="InPlay" Type="bit" />
+          <Property Name="KladaName" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="EventsModelStoreContainer">
+          <EntitySet Name="OddsTable" EntityType="Self.OddsTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EventsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OddsTable">
+          <Key>
+            <PropertyRef Name="KladaID" />
+          </Key>
+          <Property Name="KladaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Home" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Away" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EventTime" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EventLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Odd1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OddX" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Odd2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Odd1X" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OddX2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Odd12" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OddF2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="InPlay" Type="Boolean" />
+          <Property Name="KladaName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="HRKladeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OddsTable" EntityType="Self.OddsTable" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EventsModelStoreContainer" CdmEntityContainer="HRKladeEntities">
+          <EntitySetMapping Name="OddsTable">
+            <EntityTypeMapping TypeName="EventsModel.OddsTable">
+              <MappingFragment StoreEntitySet="OddsTable">
+                <ScalarProperty Name="KladaName" ColumnName="KladaName" />
+                <ScalarProperty Name="KladaID" ColumnName="KladaID" />
+                <ScalarProperty Name="Home" ColumnName="Home" />
+                <ScalarProperty Name="Away" ColumnName="Away" />
+                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="EventLink" ColumnName="EventLink" />
+                <ScalarProperty Name="Odd1" ColumnName="Odd1" />
+                <ScalarProperty Name="OddX" ColumnName="OddX" />
+                <ScalarProperty Name="Odd2" ColumnName="Odd2" />
+                <ScalarProperty Name="Odd1X" ColumnName="Odd1X" />
+                <ScalarProperty Name="OddX2" ColumnName="OddX2" />
+                <ScalarProperty Name="Odd12" ColumnName="Odd12" />
+                <ScalarProperty Name="OddF2" ColumnName="OddF2" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="InPlay" ColumnName="InPlay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EventsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OddsTable">
+    <Key>
+      <PropertyRef Name="KladaID" />
+    </Key>
+    <Property Name="KladaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Home" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Away" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EventTime" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="EventLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Odd1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OddX" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Odd2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Odd1X" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OddX2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Odd12" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OddF2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Created" Type="DateTime" Precision="3" />
+    <Property Name="InPlay" Type="Boolean" />
+    <Property Name="KladaName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="HRKladeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OddsTable" EntityType="Self.OddsTable" />
+  </EntityContainer>
+</Schema>

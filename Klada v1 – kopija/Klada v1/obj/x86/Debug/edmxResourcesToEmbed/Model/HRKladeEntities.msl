@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HRKladeModelStoreContainer" CdmEntityContainer="HRKladeEntities">
+    <EntitySetMapping Name="CalcOddsTable">
+      <EntityTypeMapping TypeName="HRKladeModel.CalcOddsTable">
+        <MappingFragment StoreEntitySet="CalcOddsTable">
+          <ScalarProperty Name="SportTypeID" ColumnName="SportTypeID" />
+          <ScalarProperty Name="SportType" ColumnName="SportType" />
+          <ScalarProperty Name="CalcOdd" ColumnName="CalcOdd" />
+          <ScalarProperty Name="Klada12" ColumnName="Klada12" />
+          <ScalarProperty Name="Odd12" ColumnName="Odd12" />
+          <ScalarProperty Name="KladaX2" ColumnName="KladaX2" />
+          <ScalarProperty Name="OddX2" ColumnName="OddX2" />
+          <ScalarProperty Name="Klada1X" ColumnName="Klada1X" />
+          <ScalarProperty Name="Odd1X" ColumnName="Odd1X" />
+          <ScalarProperty Name="Klada2" ColumnName="Klada2" />
+          <ScalarProperty Name="Odd2" ColumnName="Odd2" />
+          <ScalarProperty Name="KladaX" ColumnName="KladaX" />
+          <ScalarProperty Name="OddX" ColumnName="OddX" />
+          <ScalarProperty Name="Klada1" ColumnName="Klada1" />
+          <ScalarProperty Name="Odd1" ColumnName="Odd1" />
+          <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+          <ScalarProperty Name="Away" ColumnName="Away" />
+          <ScalarProperty Name="Home" ColumnName="Home" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OddsTable">
+      <EntityTypeMapping TypeName="HRKladeModel.OddsTable">
+        <MappingFragment StoreEntitySet="OddsTable">
+          <ScalarProperty Name="SportTypeID" ColumnName="SportTypeID" />
+          <ScalarProperty Name="SportType" ColumnName="SportType" />
+          <ScalarProperty Name="KladaName" ColumnName="KladaName" />
+          <ScalarProperty Name="InPlay" ColumnName="InPlay" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="OddF2" ColumnName="OddF2" />
+          <ScalarProperty Name="Odd12" ColumnName="Odd12" />
+          <ScalarProperty Name="OddX2" ColumnName="OddX2" />
+          <ScalarProperty Name="Odd1X" ColumnName="Odd1X" />
+          <ScalarProperty Name="Odd2" ColumnName="Odd2" />
+          <ScalarProperty Name="OddX" ColumnName="OddX" />
+          <ScalarProperty Name="Odd1" ColumnName="Odd1" />
+          <ScalarProperty Name="EventLink" ColumnName="EventLink" />
+          <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+          <ScalarProperty Name="Away" ColumnName="Away" />
+          <ScalarProperty Name="Home" ColumnName="Home" />
+          <ScalarProperty Name="KladaID" ColumnName="KladaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

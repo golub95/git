@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRKladeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CalcOddsTable">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="int" Nullable="false" />
+    <Property Name="Home" Type="varchar" MaxLength="50" />
+    <Property Name="Away" Type="varchar" MaxLength="50" />
+    <Property Name="EventTime" Type="varchar" MaxLength="20" />
+    <Property Name="Odd1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Klada1" Type="varchar" MaxLength="10" />
+    <Property Name="OddX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="KladaX" Type="varchar" MaxLength="10" />
+    <Property Name="Odd2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Klada2" Type="varchar" MaxLength="10" />
+    <Property Name="Odd1X" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Klada1X" Type="varchar" MaxLength="10" />
+    <Property Name="OddX2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="KladaX2" Type="varchar" MaxLength="10" />
+    <Property Name="Odd12" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Klada12" Type="varchar" MaxLength="10" />
+    <Property Name="CalcOdd" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="SportType" Type="varchar" MaxLength="100" />
+    <Property Name="SportTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="OddsTable">
+    <Key>
+      <PropertyRef Name="KladaID" />
+    </Key>
+    <Property Name="KladaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Home" Type="varchar" MaxLength="50" />
+    <Property Name="Away" Type="varchar" MaxLength="50" />
+    <Property Name="EventTime" Type="varchar" MaxLength="20" />
+    <Property Name="EventLink" Type="varchar(max)" />
+    <Property Name="Odd1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OddX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Odd2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Odd1X" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OddX2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Odd12" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OddF2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Created" Type="datetime" />
+    <Property Name="InPlay" Type="bit" />
+    <Property Name="KladaName" Type="varchar" MaxLength="10" />
+    <Property Name="SportType" Type="varchar" MaxLength="100" />
+    <Property Name="SportTypeID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="HRKladeModelStoreContainer">
+    <EntitySet Name="CalcOddsTable" EntityType="Self.CalcOddsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OddsTable" EntityType="Self.OddsTable" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

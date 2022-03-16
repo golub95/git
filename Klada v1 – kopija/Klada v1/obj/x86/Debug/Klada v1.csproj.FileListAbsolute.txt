@@ -1,0 +1,311 @@
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\cef.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\cef_100_percent.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\cef_200_percent.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\cef_extensions.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\chrome_elf.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\devtools_resources.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\icudtl.dat
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\libcef.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\en-US.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\natives_blob.bin
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\v8_context_snapshot.bin
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.BrowserSubprocess.Core.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.BrowserSubprocess.exe
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\d3dcompiler_47.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\libEGL.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\libGLESv2.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\am.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\ar.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\bg.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\bn.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\ca.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\cs.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\da.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\de.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\el.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\en-GB.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\es-419.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\es.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\et.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\fa.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\fi.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\fil.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\fr.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\gu.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\he.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\hi.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\hr.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\hu.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\id.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\it.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\ja.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\kn.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\ko.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\lt.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\lv.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\ml.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\mr.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\ms.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\nb.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\nl.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\pl.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\pt-BR.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\pt-PT.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\ro.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\ru.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\sk.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\sl.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\sr.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\sv.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\sw.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\ta.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\te.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\th.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\tr.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\uk.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\vi.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\zh-CN.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\locales\zh-TW.pak
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\snapshot_blob.bin
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\swiftshader\libEGL.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\swiftshader\libGLESv2.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.BrowserSubprocess.Core.pdb
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.BrowserSubprocess.pdb
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.Core.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.Core.pdb
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.Core.xml
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.pdb
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.XML
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.WinForms.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.WinForms.pdb
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\CefSharp.WinForms.XML
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\Klada v1.exe.config
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\Klada v1.exe
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\Klada v1.pdb
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\EntityFramework.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\EntityFramework.SqlServer.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\HtmlAgilityPack.dll
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\EntityFramework.xml
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\EntityFramework.SqlServer.xml
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\HtmlAgilityPack.pdb
+D:\Repository\kladahr\Klada v1\Klada v1\bin\x86\Debug\HtmlAgilityPack.xml
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada_v1.FormPSK.resources
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada_v1.FormGermania.resources
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada_v1.FormHL.resources
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada_v1.FormStanleybet.resources
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada_v1.FormSuperSport.resources
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada_v1.Home.resources
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada_v1.Properties.Resources.resources
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada v1.csproj.GenerateResource.cache
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada v1.csproj.CoreCompileInputs.cache
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada v1.csproj.CopyComplete
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada v1.exe
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada v1.pdb
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada_v1.FormHLCopy.resources
+D:\Repository\kladahr\Klada v1\Klada v1\obj\x86\Debug\Klada v1.csprojAssemblyReference.cache
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\cef.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\cef_100_percent.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\cef_200_percent.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\cef_extensions.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\chrome_elf.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\d3dcompiler_47.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\devtools_resources.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\icudtl.dat
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\libcef.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\libEGL.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\libGLESv2.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\am.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\ar.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\bg.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\bn.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\ca.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\cs.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\da.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\de.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\el.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\en-GB.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\en-US.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\es-419.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\es.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\et.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\fa.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\fi.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\fil.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\fr.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\gu.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\he.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\hi.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\hr.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\hu.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\id.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\it.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\ja.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\kn.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\ko.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\lt.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\lv.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\ml.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\mr.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\ms.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\nb.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\nl.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\pl.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\pt-BR.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\pt-PT.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\ro.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\ru.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\sk.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\sl.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\sr.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\sv.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\sw.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\ta.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\te.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\th.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\tr.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\uk.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\vi.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\zh-CN.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\locales\zh-TW.pak
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\natives_blob.bin
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\snapshot_blob.bin
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\swiftshader\libEGL.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\swiftshader\libGLESv2.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\v8_context_snapshot.bin
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.BrowserSubprocess.Core.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.BrowserSubprocess.Core.pdb
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.BrowserSubprocess.exe
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.BrowserSubprocess.pdb
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.Core.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.Core.pdb
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.Core.xml
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.pdb
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.XML
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.WinForms.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.WinForms.pdb
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\CefSharp.WinForms.XML
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\Klada v1.exe.config
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\Klada v1.exe
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\Klada v1.pdb
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\EntityFramework.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\EntityFramework.SqlServer.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\HtmlAgilityPack.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\EntityFramework.xml
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\EntityFramework.SqlServer.xml
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\HtmlAgilityPack.pdb
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\HtmlAgilityPack.xml
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v1.FormPSKCopy.resources
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v1.FormPSK.resources
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v1.FormGermania.resources
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v1.FormHLCopy.resources
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v1.FormHL.resources
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v1.FormStanleybet.resources
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v1.FormSuperSport.resources
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v1.Home.resources
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v1.Properties.Resources.resources
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v1.csproj.GenerateResource.cache
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v1.csproj.CoreCompileInputs.cache
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v1.csproj.CopyComplete
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v1.exe
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v1.pdb
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\Microsoft.Win32.Primitives.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\netstandard.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.AppContext.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Collections.Concurrent.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Collections.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Collections.NonGeneric.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Collections.Specialized.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.ComponentModel.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.ComponentModel.EventBasedAsync.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.ComponentModel.Primitives.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.ComponentModel.TypeConverter.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Console.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Data.Common.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Diagnostics.Contracts.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Diagnostics.Debug.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Diagnostics.FileVersionInfo.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Diagnostics.Process.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Diagnostics.StackTrace.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Diagnostics.TextWriterTraceListener.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Diagnostics.Tools.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Diagnostics.TraceSource.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Diagnostics.Tracing.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Drawing.Primitives.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Dynamic.Runtime.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Globalization.Calendars.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Globalization.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Globalization.Extensions.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.Compression.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.Compression.ZipFile.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.FileSystem.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.FileSystem.DriveInfo.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.FileSystem.Primitives.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.FileSystem.Watcher.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.IsolatedStorage.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.MemoryMappedFiles.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.Pipes.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.IO.UnmanagedMemoryStream.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Linq.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Linq.Expressions.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Linq.Parallel.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Linq.Queryable.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.Http.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.NameResolution.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.NetworkInformation.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.Ping.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.Primitives.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.Requests.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.Security.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.Sockets.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.WebHeaderCollection.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.WebSockets.Client.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Net.WebSockets.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.ObjectModel.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Reflection.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Reflection.Extensions.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Reflection.Primitives.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Resources.Reader.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Resources.ResourceManager.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Resources.Writer.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.CompilerServices.VisualC.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.Extensions.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.Handles.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.InteropServices.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.Numerics.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.Serialization.Formatters.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.Serialization.Json.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.Serialization.Primitives.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Runtime.Serialization.Xml.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Security.Claims.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Security.Cryptography.Algorithms.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Security.Cryptography.Csp.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Security.Cryptography.Encoding.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Security.Cryptography.Primitives.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Security.Cryptography.X509Certificates.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Security.Principal.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Security.SecureString.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Text.Encoding.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Text.Encoding.Extensions.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Text.RegularExpressions.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Threading.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Threading.Overlapped.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Threading.Tasks.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Threading.Tasks.Parallel.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Threading.Thread.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Threading.ThreadPool.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Threading.Timer.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.ValueTuple.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Xml.ReaderWriter.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Xml.XDocument.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Xml.XmlDocument.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Xml.XmlSerializer.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Xml.XPath.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\System.Xml.XPath.XDocument.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\bin\x86\Debug\HtmlAgilityPack.CssSelectors.NetCore.dll
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v1.exe.config
+D:\Repository\kladahr\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v1.csprojAssemblyReference.cache
