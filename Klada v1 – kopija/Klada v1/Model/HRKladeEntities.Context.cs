@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Klada_v1.Model
+namespace Klada_v3.Model
 {
     using System;
     using System.Data.Entity;

@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CefSharp;
-using Klada_v1.Model;
+using Klada_v3.Model;
 using System.Configuration;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
 using System.Net.Mail;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
-namespace Klada_v1
+namespace Klada_v3
 {
     public partial class Home : Form
     {
@@ -56,7 +57,7 @@ namespace Klada_v1
                 FormPSK formPSK = new FormPSK();
                 formPSK.ShowDialog(this);
                 formPSK.Dispose();
-                
+
                 //FormPSKCopy formPSKCopy = new FormPSKCopy();
                 //formPSKCopy.ShowDialog(this);
                 //formPSKCopy.Dispose();
@@ -118,15 +119,14 @@ namespace Klada_v1
                 client.EnableSsl = true;
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
+                client.UseDefaultCredentials = true;
 
                 client.Credentials = new System.Net.NetworkCredential(SendingMail, Password);
 
                 MailMessage mm = new MailMessage(SendingMail, ReceivingMail, Subject, message);
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-
-                client.Send(mm);
+                //TODO:client.Send(mm);
             }
 
         }
@@ -432,6 +432,179 @@ namespace Klada_v1
             int stepsToSame = ComputeLevenshteinDistance(source, target);
             return (1.0 - ((double)stepsToSame / (double)Math.Max(source.Length, target.Length)));
         }
+
+        public static DateTime GetDatetimeFromString(string dayofWeek)
+        {
+            string date = string.Empty;
+            string dayofWeekLetter = new String(dayofWeek.Where(Char.IsLetter).ToArray()); // get only chars from string
+            int currentDayOfWeekInt = (int)DateTime.Today.DayOfWeek; // get today
+
+            if (dayofWeekLetter == string.Empty && new string(dayofWeek.Where(Char.IsNumber).ToArray()) != string.Empty) // Case of "06.09." there is no letters
+                date = dayofWeek;
+            else if (dayofWeek != string.Empty)
+            { 
+                #region Case of "21.11 pon 20:00"
+                string dateString = dayofWeek.Substring(0, dayofWeek.IndexOf(' ')); // get values from dayofWeek before first whitespace
+                date = new string(dateString.Where(Char.IsNumber).ToArray()); // if date exist before first whitespace save date to string date
+
+                #endregion case of "21.11 pon 20:00"
+            }
+            if (dayofWeek != string.Empty && dayofWeekLetter != string.Empty && date == string.Empty) // if exist dayofWeekLetter && date value is unknown
+            { 
+                #region Map day of week to INT
+
+                int dayOfWeekInt = 0;
+                switch (dayofWeekLetter.ToLower())
+                {
+                    case "pon":
+                        dayOfWeekInt = 1;
+                        break;
+                    case "uto":
+                        dayOfWeekInt = 2;
+                        break;
+                    case "sri":
+                        dayOfWeekInt = 3;
+                        break;
+                    case "čet":
+                        dayOfWeekInt = 4;
+                        break;
+                    case "pet":
+                        dayOfWeekInt = 5;
+                        break;
+                    case "sub":
+                        dayOfWeekInt = 6;
+                        break;
+                    case "ned":
+                        dayOfWeekInt = 0;
+                        break;
+                }
+                #endregion map day of week to INT
+
+                #region Create date
+
+                DateTime today = DateTime.Today;
+                var dates = Enumerable.Range(0, 7).Select(days => today.AddDays(days)).ToList();
+                DateTime result = new DateTime();
+
+                if (dayOfWeekInt == (int)today.DayOfWeek) // if is today
+                {
+                    result = today;
+                    date = today.Date.ToString();
+                }
+                if (date == string.Empty)
+                { 
+                    foreach (var day in dates)
+                    {
+                        if ((int)day.DayOfWeek == dayOfWeekInt)
+                        {
+                            result = day.Date;
+                            break;
+                        }
+                    }
+                }   
+                #endregion create date
+
+                #region Calculate dateTime
+
+                //if (currentDayOfWeekInt == dayOfWeekInt)
+                //    dayOfWeekInt = currentDayOfWeekInt;
+                //else if (currentDayOfWeekInt > dayOfWeekInt)
+                //    dayOfWeekInt = 7 -(currentDayOfWeekInt - dayOfWeekInt); // if dayOfWeekInt = 2 and dayOfWeekInt = 2 next monday currentDay + 6  => 7-(2-1)
+
+                //DateTime result = DateTime.Today.AddDays(dayOfWeekInt - currentDayOfWeekInt); // Replace string with date
+               
+                #endregion calculate dateTime
+
+                // Add time from string
+                int indexOfSecondWhitespace = dayofWeek.LastIndexOf(' '); // time is after second whitespace
+
+                string timeString = dayofWeek.Substring(indexOfSecondWhitespace + 1); // create time string
+
+                DateTime time = DateTime.ParseExact(timeString, "HH:mm",CultureInfo.InvariantCulture); // create time
+                result = result.AddTicks(time.TimeOfDay.Ticks); // connect date and time
+
+                return result;
+            }
+            else if (dayofWeek != string.Empty)// add year before first empty space
+            {
+                //Find first empty space
+                string dateTimeString = string.Empty;
+                DateTime dateResult;
+
+                int currentyear = DateTime.Now.Year;
+
+                if (dayofWeek.IndexOf(" ") > 0)
+                    dateTimeString = dayofWeek.Insert(dayofWeek.IndexOf(" "), currentyear.ToString()); // insert year before time
+                else 
+                    dateTimeString = dayofWeek;
+
+                if (!DateTime.TryParse(dateTimeString, CultureInfo.GetCultureInfo("hr-HR"), DateTimeStyles.None, out dateResult)) //create datetime | if false parsed maybe next year needed
+                {
+                    currentyear = DateTime.Now.AddYears(1).Year; // addd year to currentyear
+                    dateTimeString = dayofWeek.Insert(dayofWeek.IndexOf(" "), currentyear.ToString()); // insert year before whitespace
+                    dateResult = DateTime.Parse(dateTimeString, CultureInfo.GetCultureInfo("hr-HR")); // create datetime
+                }
+              
+                return dateResult;
+            }
+            return DateTime.Now;
+         }
+
+        public static DateTime ParseString2DateTime(string dateTimeString)
+        {
+            //string date = "12/28/2019";
+
+            DateTime dateTime;
+            string[] validformats = new[] { "MM/dd/yyyy", "dd-MM-yyyy HH:mm:ss, fff", "yyyy/MM/dd", "MM/dd/yyyy HH:mm:ss",
+                                        "MM/dd/yyyy hh:mm tt", "yyyy-MM-dd HH:mm:ss, fff","dd-MM-yyyy HH:mm" };
+
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            if (DateTime.TryParseExact(dateTimeString, validformats, provider,
+                                        DateTimeStyles.None, out dateTime))
+            {
+                Console.WriteLine("The specified date is valid: " + dateTime);
+            }
+            else
+            {
+                Console.WriteLine("Unable to parse the specified date");
+            }
+            /*
+                Output: The specified date is valid: 28-12-2019 12.00.00 AM
+            */
+            return dateTime;
+        }
     }
+
+    #region Common to all forms
+    public static class ControlExtensions
+    {
+        /// <summary>
+        /// Executes the Action asynchronously on the UI thread, does not block execution on the calling thread.
+        /// </summary>
+        /// <param name="control">the control for which the update is required</param>
+        /// <param name="action">action to be performed on the control</param>
+        public static void InvokeOnUiThreadIfRequired(this Control control, Action action)
+        {
+            //If you are planning on using a similar function in your own code then please be sure to
+            //have a quick read over https://stackoverflow.com/questions/1874728/avoid-calling-invoke-when-the-control-is-disposed
+            //No action
+            if (control.Disposing || control.IsDisposed || !control.IsHandleCreated)
+            {
+                return;
+            }
+
+            if (control.InvokeRequired)
+            {
+                control.BeginInvoke(action);
+            }
+            else
+            {
+                action.Invoke();
+            }
+        }
+    }
+    #endregion common to all forms
+
 }
 

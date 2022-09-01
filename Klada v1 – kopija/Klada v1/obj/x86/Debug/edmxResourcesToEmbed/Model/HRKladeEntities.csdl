@@ -49,5 +49,6 @@
     <Property Name="KladaName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="SportTypeID" Type="Int32" />
+    <Property Name="EventDateTime" Type="DateTime" Precision="3" />
   </EntityType>
 </Schema>

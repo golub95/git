@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Repository\kladahr\Klada v1\Klada v1\Model\HRKladeEntities.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Repository\kladahr\Klada v3\Klada v1\Model\HRKladeEntities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

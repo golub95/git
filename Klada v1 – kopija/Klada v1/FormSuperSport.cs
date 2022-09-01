@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -8,14 +9,16 @@ using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
 using HtmlAgilityPack;
-using Klada_v1.Model;
+using Klada_v3.Model;
 using Application = System.Windows.Forms.Application;
 
-namespace Klada_v1
+namespace Klada_v3
 {
     public partial class FormSuperSport : Form
     {
         public ChromiumWebBrowser chromeBrowser;
+        JavascriptResponse oldScrollPosition = new JavascriptResponse();
+        string pageUrl = "https://www.supersport.hr/sport/dan/sve";
 
         public FormSuperSport()
         {
@@ -26,17 +29,141 @@ namespace Klada_v1
 
         public void InitializeChromium()
         {
-            CefSettings settings = new CefSettings();
-            // Initialize cef with the provided settings
-            //Cef.Initialize(settings); KOM
+            Console.WriteLine("Create a browser component");
             // Create a browser component
-            chromeBrowser = new ChromiumWebBrowser("https://www.supersport.hr/sport/dan/sve");
+            chromeBrowser = new ChromiumWebBrowser(pageUrl);
             // Add it to the form and fill it to the form window.
             this.Controls.Add(chromeBrowser);
             chromeBrowser.Dock = DockStyle.Fill;
 
+            //Wait for the page to finish loading (all resources will have been loaded, rendering is likely still happening)
+            chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+
+            chromeBrowser.LoadingStateChanged += (sender, args) =>
+            {
+                IFrame frame = null;
+                frame = chromeBrowser.GetFocusedFrame();
+
+                //var scroll = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync("scrollTo(0, document.body.scrollHeight)"));
+                //Wait for the Page to finish loading
+                Console.WriteLine("Loading State Changed GoBack {0} GoForward {1} CanReload {2} IsLoading {3}", args.CanGoBack, args.CanGoForward, args.CanReload, args.IsLoading);
+                chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+
+                if (args.CanReload && !args.IsLoading)
+                {
+                    //chromeBrowser.ExecuteScriptAsyncWhenPageLoaded("alert('All Resources Have Loaded');");
+
+                    //EvaluateScriptAsPromiseAsync calls Promise.resolve internally so even if your code doesn't
+                    //return a Promise it will still execute successfully.
+                    //var script = @"return (function() { return 1 + 1; })();";
+                    //JavascriptResponse response = await frame.EvaluateScriptAsPromiseAsync(script);
+                    //JavascriptResponse response = await frame.EvaluateScriptAsync(script);
+
+                    //var task = Task.Run(async () => { await Scroll(); });
+                    //task.Wait();
+                    //TestCorrect();
+                    //await Task.WhenAll(Scroll(), TestCorrect());
+
+                    //Task<JavascriptResponse> t = Task.Run(() => chromeBrowser.EvaluateScriptAsync("document.getElementById(\"sport-events-list-ajax-load-more\").scrollIntoView()"));
+                    //await t.ContinueWith(async (t1) =>
+                    // {
+                    //     Console.WriteLine(t1.Result);
+                    //     await GetDocSource();
+                    // });
+                    //if (!t.Status.Equals(TaskStatus.Running))
+                    //{
+                    //    Console.WriteLine("task t je zavrašen");
+                    //}
+                    //chromeBrowser.Reload();
+                    //SetHeightFromDocument(chromeBrowser);
+                    chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+                    //chromeBrowser.ViewSource();
+                }
+            };
+
+            chromeBrowser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
+
+
+            //Wait for the MainFrame to finish loading
+            chromeBrowser.FrameLoadEnd += async (sender, args) =>
+            {
+                chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+                //Wait for the MainFrame to finish loading
+                if (args.Frame.IsMain)
+                {
+                    //args.Frame.ExecuteJavaScriptAsync("alert('MainFrame finished loading');");
+                    //chromeBrowser.EvaluateScriptAsync("document.getElementById(\"sport-events-list-ajax-load-more\").scrollIntoView()");
+                    chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+                    Console.WriteLine("MainFrame finished loading Status code {0}", args.HttpStatusCode);
+                    if (args.HttpStatusCode == 200)
+                    {
+                        //finished, OK, streaming end
+                        //string finished = await Scroll();
+                        //finished += finished;
+                        //var task = Task.Run(async () => await Scroll());
+                        //var result = task.Result;
+                        //task.Start();
+                        //AsyncCallerAsync();
+                        //chromeBrowser.Reload();
+                        //var scrollCompleated = chromeBrowser.EvaluateScriptAsync("scrollTo(0, document.body.scrollHeight)").ContinueWith(task=>
+
+                        await ScrollAsync();
+
+
+                        //await Task.Factory.StartNew(async () =>
+                        // {
+                        //     //chromeBrowser.EvaluateScriptAsync(scrollAndGetAttributeScript).ConfigureAwait(true);
+                        //     await EvaluateJavaScriptSync(scrollAndGetAttributeScript);
+                        // },
+                        //TaskCreationOptions.LongRunning);
+                        //await Task.Delay(60000);
+
+                        //if (Scroll.IsCompleted)
+                        //{
+                        //    MessageBox.Show("Error");
+                        //    MessageBox.Show($"{((dynamic)Scroll.IsCompleted)}");
+                        //}
+                        //MessageBox.Show($"{((dynamic)result.Result).Count}");
+
+                        //Console.WriteLine("SCROLLLLINNNNGG STATUS" + " " + Scroll.Status);
+
+                        chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+
+                    }
+                    if (args.HttpStatusCode == -101)
+                    {
+                        Console.WriteLine("finished, OK, streaming shut down");
+                        //finished, OK, streaming shut down
+                        chromeBrowser.Reload();
+                    }
+                    if (args.HttpStatusCode == 0)
+                    {
+                        Console.WriteLine("The client request wasn't successful");
+                        //The client request wasn't successful.
+                        chromeBrowser.Reload();
+                    }
+                    Console.WriteLine("ALL FINISHED");
+                }
+
+                Console.WriteLine("IsMain");
+            };
+            Console.WriteLine("Not InitializeChromium");
         }
 
+        private void OnBrowserFrameLoadEnd(object sender, FrameLoadEndEventArgs frameLoadEndEventArgs)
+        {
+            if (frameLoadEndEventArgs.Frame.IsMain && frameLoadEndEventArgs.Url == pageUrl)
+            {
+                Console.WriteLine("OnBrowserFrameLoadEnd");
+            }
+            Console.WriteLine("Not OnBrowserFrameLoadEnd");
+        }
+        private void OnIsBrowserInitializedChanged(object sender, EventArgs e)
+        {
+            var b = ((ChromiumWebBrowser)sender);
+
+            this.InvokeOnUiThreadIfRequired(() => b.Focus());
+        }
         public void WebBrowserFrameLoadEnded(object sender, FrameLoadEndEventArgs e)
         {
             // Kada se učita cijeli html napravi htmlDoc iz taskHtml rezultata
@@ -94,6 +221,71 @@ namespace Klada_v1
             }
         }
 
+        private async Task ScrollAsync()
+        {
+            #region variables
+            var scroll = @"
+                            (function () {
+                                scrollTo(0, document.body.scrollHeight)
+                            })();";
+
+            var currentScrollPositionScript = @"
+                                (function() {
+                                    var result = document.body.scrollHeight;
+                                    return result;
+                                })(); ";
+
+            #endregion variables
+
+            await Task.Delay(500);
+            oldScrollPosition.Result = chromeBrowser.EvaluateScriptAsync(currentScrollPositionScript).Result.Result; // Scroll Position Before Scroll
+
+            Task Scroll = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync(scroll).ContinueWith(waitScroll =>
+            {
+                int sleepTime = 10000; // in mills 
+                Task GetAttribute = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync(currentScrollPositionScript)).ContinueWith(async waitAttribute =>
+                {
+                    // DOCUMENTATION:
+                    // oldScrollPosition = scrollpositionbefore scroll and new position after scroll
+                    // EvaluateScriptAsync(currentScrollPositionScript) is current scroll position.
+                    // When oldScrollPosition result = EvaluateScriptAsync(currentScrollPositionScript) scrol position Result - this is last scroll
+                    //while (Convert.ToInt32(oldScrollPosition.Result) != Convert.ToInt32(chromeBrowser.EvaluateScriptAsync(currentScrollPositionScript).Result.Result)) // compare position from old var and current scroll position /evaluate script
+                    while (waitScroll.Result.Success)
+                    {
+                        await Task.Delay(500);
+                        oldScrollPosition.Result = chromeBrowser.EvaluateScriptAsync(currentScrollPositionScript).Result.Result; // Execute script Scroll Position and set value to old position var.
+                        await Task.Delay(sleepTime);
+                    }
+                    // When scroll was finished get source
+
+                    #region Get Source
+                    chromeBrowser.ViewSource();
+                    var html = string.Empty;
+                    await chromeBrowser.GetSourceAsync().ContinueWith(taskHtml =>
+                    {
+                        html = taskHtml.Result;
+
+                        HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument();
+                        htmlDoc.LoadHtml(html);
+                        //string path = "C:\\Temp/download.html";
+                        //File.WriteAllText(path, html);
+
+                        GetSSDocument(htmlDoc);
+                    });
+
+                    #endregion Get Source
+                    chromeBrowser.BrowserCore.CloseBrowser(true);//e.Browser.CloseBrowser(true);
+                    Cef.ClearSchemeHandlerFactories();
+                    this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
+                    //Shutdown before your application exists or it will hang.
+                    Cef.Shutdown();
+
+                    return (JavascriptResponse)this.oldScrollPosition;
+                });
+
+            }));
+        }
+
         public Task<HtmlAgilityPack.HtmlDocument> GetSSDocument(HtmlAgilityPack.HtmlDocument htmlDoc)
         {
             #region Nodes Collections
@@ -115,7 +307,7 @@ namespace Klada_v1
                 "or contains(@class, 'sportska-liga ultimate-fight') " +
                 "or contains(@class, 'sportska-liga vaterpolo') " +
                 "or contains(@class, 'sportska-liga hokej-na-travi') " +
-                "or contains(@class, 'sportska-liga mali-nogomet') ] //div[contains(@class, 'header')] | " +
+                "or contains(@class, 'sportska-liga mali-nogomet') ] //div[contains(@class, 'panel-content')] | " +
                 "//div[contains(@class, 'sportska-liga nogomet')" +
                 "or contains(@class,'sportska-liga kosarka') " +
                 "or contains(@class, 'sportska-liga tenis') " +
@@ -178,8 +370,8 @@ namespace Klada_v1
 
             foreach (var node in EventAllNodes)
             {
-                if (node.Name == "div" && node.HasAttributes && node.Attributes[0].Value == "header")
-                    eventType = node.InnerText.Trim();
+                if (node.Name == "div" && node.HasAttributes && node.Attributes[0].Value == "panel-content")
+                    eventType = node.InnerText.Trim().Substring(0, node.InnerText.Trim().IndexOf("-"));
                 if (node.HasChildNodes && eventType.ToLower().Contains("duel") == false)
                 {
                     foreach (var childItem in node.ChildNodes)
@@ -188,7 +380,7 @@ namespace Klada_v1
                         if (childItem.InnerHtml.Length > 0)
                         {
                             #region Odd Types 1,X,2,1X,X2,12,F2
-                            if (childItem.Attributes[0].Value == "tip td-shrink") // provjeri koji tipovi postoje
+                            if (childItem.HasAttributes && childItem.Attributes[0].Value == "tip td-shrink") // provjeri koji tipovi postoje
                             {
                                 #region Reset params
                                 if (oddTypeCounter == 0)
@@ -231,7 +423,7 @@ namespace Klada_v1
 
                             #region Odds
 
-                            if (childItem.InnerText.Length > 0 && (childItem.Attributes[0].Value == "sportska-tecaj td-shrink simple tecaj clickable" || childItem.Attributes[0].Value == "sportska-tecaj td-shrink simple tecaj"))
+                            if (childItem.HasAttributes && childItem.InnerText.Length > 0 && (childItem.Attributes[0].Value == "sportska-tecaj td-shrink simple tecaj clickable" || childItem.Attributes[0].Value == "sportska-tecaj td-shrink simple tecaj"))
                             {
                                 #region Reset params
                                 if (oddsCounter == 0)
@@ -254,7 +446,8 @@ namespace Klada_v1
                                         match.Odd1 = 0;
                                     else
                                     {
-                                        match.Odd1 = Convert.ToDecimal(childItem.InnerText);
+                                        match.Odd1 = decimal.Parse(childItem.InnerText, new NumberFormatInfo() { NumberDecimalSeparator = "," });
+
                                     }
                                     match.Odd1 = match.Odd1;
                                 }
@@ -265,7 +458,7 @@ namespace Klada_v1
                                         match.OddX = 0;
                                     else
                                     {
-                                        match.OddX = Convert.ToDecimal(childItem.InnerText);
+                                        match.OddX = decimal.Parse(childItem.InnerText, new NumberFormatInfo() { NumberDecimalSeparator = "," });
                                     }
                                     match.OddX = match.OddX;
                                 }
@@ -276,7 +469,7 @@ namespace Klada_v1
                                         match.Odd2 = 0;
                                     else
                                     {
-                                        match.Odd2 = Convert.ToDecimal(childItem.InnerText);
+                                        match.Odd2 = decimal.Parse(childItem.InnerText, new NumberFormatInfo() { NumberDecimalSeparator = "," });
                                     }
                                     match.Odd2 = match.Odd2;
                                 }
@@ -287,7 +480,7 @@ namespace Klada_v1
                                         match.Odd1X = 0;
                                     else
                                     {
-                                        match.Odd1X = Convert.ToDecimal(childItem.InnerText);
+                                        match.Odd1X = decimal.Parse(childItem.InnerText, new NumberFormatInfo() { NumberDecimalSeparator = "," });
                                     }
                                     match.Odd1X = match.Odd1X;
                                 }
@@ -298,7 +491,7 @@ namespace Klada_v1
                                         match.OddX2 = 0;
                                     else
                                     {
-                                        match.OddX2 = Convert.ToDecimal(childItem.InnerText);
+                                        match.OddX2 = decimal.Parse(childItem.InnerText, new NumberFormatInfo() { NumberDecimalSeparator = "," });
                                     }
                                     match.OddX2 = match.OddX2;
                                 }
@@ -309,7 +502,7 @@ namespace Klada_v1
                                         match.Odd12 = 0;
                                     else
                                     {
-                                        match.Odd12 = Convert.ToDecimal(childItem.InnerText);
+                                        match.Odd12 = decimal.Parse(childItem.InnerText, new NumberFormatInfo() { NumberDecimalSeparator = "," });
                                     }
                                     match.Odd12 = match.Odd12;
                                 }
@@ -320,7 +513,7 @@ namespace Klada_v1
                                         match.OddF2 = 0;
                                     else
                                     {
-                                        match.OddF2 = Convert.ToDecimal(childItem.InnerText);
+                                        match.OddF2 = decimal.Parse(childItem.InnerText, new NumberFormatInfo() { NumberDecimalSeparator = "," });
                                     }
                                     match.OddF2 = match.OddF2;
                                 }
@@ -328,7 +521,7 @@ namespace Klada_v1
                             #endregion
 
                             // Events and Times
-                            if ((childItem.Attributes[0].Value == "ponuda-info clickable" || childItem.Attributes[0].Value == "ponuda-info") && childItem.InnerText.Length > 0)  //Home, Away and Time nodes
+                            if (childItem.HasAttributes && (childItem.Attributes[0].Value == "ponuda-info clickable" || childItem.Attributes[0].Value == "ponuda-info") && childItem.InnerText.Length > 0)  //Home, Away and Time nodes
                             {
                                 #region Home and Away
                                 string homeAndaway = childItem.LastChild.FirstChild.InnerText;
@@ -354,6 +547,8 @@ namespace Klada_v1
                                     time = time.Remove(time.LastIndexOf('&'));
 
                                 match.EventTime = time;
+                                match.EventDateTime = Home.GetDatetimeFromString(time);
+
                                 #endregion
                             }
                         }
@@ -364,6 +559,7 @@ namespace Klada_v1
                         match.KladaName = "Supersport";
                         match.InPlay = false;
                         match.SportType = eventType;
+
                         db.SaveChanges();
                         match = new OddsTable();
                     }
@@ -389,7 +585,6 @@ namespace Klada_v1
             //Cef.Shutdown();
             #endregion
         }
-
     }
 }
 

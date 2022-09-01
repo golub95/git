@@ -1,4 +1,4 @@
-﻿namespace Klada_v1
+﻿namespace Klada_v3
 {
     partial class FormStanleybet
     {
@@ -35,7 +35,7 @@
             this.Name = "FormStanleybet";
             this.Text = "FormStanleybet";
             this.ResumeLayout(false);
-
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
     }
 }

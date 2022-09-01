@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Klada_v1.Model
+namespace Klada_v3.Model
 {
     using System;
     using System.Collections.Generic;
@@ -31,5 +31,6 @@ namespace Klada_v1.Model
         public string KladaName { get; set; }
         public string SportType { get; set; }
         public Nullable<int> SportTypeID { get; set; }
+        public Nullable<System.DateTime> EventDateTime { get; set; }
     }
 }

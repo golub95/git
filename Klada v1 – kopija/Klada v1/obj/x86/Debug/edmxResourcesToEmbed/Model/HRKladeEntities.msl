@@ -29,6 +29,7 @@
     <EntitySetMapping Name="OddsTable">
       <EntityTypeMapping TypeName="HRKladeModel.OddsTable">
         <MappingFragment StoreEntitySet="OddsTable">
+          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
           <ScalarProperty Name="SportTypeID" ColumnName="SportTypeID" />
           <ScalarProperty Name="SportType" ColumnName="SportType" />
           <ScalarProperty Name="KladaName" ColumnName="KladaName" />

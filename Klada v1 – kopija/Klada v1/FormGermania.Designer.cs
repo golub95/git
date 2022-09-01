@@ -1,4 +1,4 @@
-﻿namespace Klada_v1
+﻿namespace Klada_v3
 {
     partial class FormGermania
     {
@@ -35,7 +35,7 @@
             this.Name = "FormGermania";
             this.Text = "FormGermania";
             this.ResumeLayout(false);
-
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
     }
 }

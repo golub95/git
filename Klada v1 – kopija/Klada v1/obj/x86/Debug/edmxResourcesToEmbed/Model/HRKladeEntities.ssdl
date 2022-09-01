@@ -32,6 +32,7 @@
     <Property Name="Home" Type="varchar" MaxLength="50" />
     <Property Name="Away" Type="varchar" MaxLength="50" />
     <Property Name="EventTime" Type="varchar" MaxLength="20" />
+    <Property Name="EventDateTime" Type="datetime" />
     <Property Name="EventLink" Type="varchar(max)" />
     <Property Name="Odd1" Type="decimal" Precision="18" Scale="2" />
     <Property Name="OddX" Type="decimal" Precision="18" Scale="2" />

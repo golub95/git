@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -8,367 +10,718 @@ using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
 using HtmlAgilityPack;
-using Klada_v1.Model;
+using HtmlAgilityPack.CssSelectors.NetCore;
+using Klada_v3.Model;
 using Application = System.Windows.Forms.Application;
 
-namespace Klada_v1
+namespace Klada_v3
 {
     public partial class FormStanleybet : Form
     {
         public ChromiumWebBrowser chromeBrowser;
+        static string pageUrl;
+        static List<string> LinkList;
+        JavascriptResponse clickLoadMore = new JavascriptResponse();
+        JavascriptResponse isScrollFinished = new JavascriptResponse();
+
+        #region Odd Parameters
+
+        bool hasOdd1 = false;
+        bool hasOddX = false;
+        bool hasOdd2 = false;
+        bool hasOdd1X = false;
+        bool hasOddX2 = false;
+        bool hasOdd12 = false;
+        string dateTime = string.Empty;
+        bool oddTableInitialization = false;
+        bool oddTableSetCompleated = false;
+        bool nextRecord = false;
+        int totalrows = 0;
+        string eventInfoNumber = string.Empty;
+        string sportType = string.Empty;
+        int RowCounter = 0;
+
+        #endregion Odd Parameters
 
         public FormStanleybet()
         {
             InitializeComponent();
-            InitializeChromium();
-            #region First time open browser
-            ////First time open browser
-            //chromeBrowser.LoadingStateChanged += (s, args) =>
-            //{
-            //    //Wait for the Page to finish loading
-            //    if (!args.IsLoading)
-            //    {
-            //        // Ovdje se otvori stranica ali učitano je samo prvih nekoliko tablica sa događajima
-            //        // klikni nešto ili skorolaj dolje
+            InsertLinksToList();
 
-            //        //chromeBrowser.ViewSource();
-            //    }
-            //};
-            #endregion
-            chromeBrowser.FrameLoadEnd += WebBrowserFrameLoadEndeds;
+            foreach (string link in LinkList)
+            {
+                pageUrl = link;
+                InitializeChromium();
+            }
+        }
+
+        private void InsertLinksToList()
+        {
+            LinkList = new List<string>();
+            LinkList.Add("https://www.admiral.hr/app/sport?sport=NOGOMET"); //
+            //LinkList.Add("https://germaniasport.hr/hr#/date/all?sid=69");
         }
 
         public void InitializeChromium()
         {
-            CefSettings settings = new CefSettings();
-            // Initialize cef with the provided settings
-            //Cef.Initialize(settings); KOM
+            Console.WriteLine("Create a browser component");
             // Create a browser component
-            chromeBrowser = new ChromiumWebBrowser("http://www.stanleybet.hr/?p=o&d=88");
+            chromeBrowser = new ChromiumWebBrowser(pageUrl);
             // Add it to the form and fill it to the form window.
             this.Controls.Add(chromeBrowser);
             chromeBrowser.Dock = DockStyle.Fill;
 
-        }
+            //Wait for the page to finish loading (all resources will have been loaded, rendering is likely still happening)
+            chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
 
-        public void WebBrowserFrameLoadEndeds(object sender, FrameLoadEndEventArgs e)
-        {
-            // Kada se učita cijeli html napravi htmlDoc iz taskHtml rezultata
-            if (e.Frame.IsMain)
+            chromeBrowser.LoadingStateChanged += (sender, args) =>
             {
-                chromeBrowser.LoadingStateChanged += async (s, args) =>
+                IFrame frame = null;
+                frame = chromeBrowser.GetFocusedFrame();
+
+                //var scroll = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync("scrollTo(0, document.body.scrollHeight)"));
+                //Wait for the Page to finish loading
+                Console.WriteLine("Loading State Changed GoBack {0} GoForward {1} CanReload {2} IsLoading {3}", args.CanGoBack, args.CanGoForward, args.CanReload, args.IsLoading);
+                chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+
+                if (args.CanReload && !args.IsLoading)
                 {
-                    //Wait for the Page to finish loading
-                    if (!args.IsLoading)
+                    //chromeBrowser.ExecuteScriptAsyncWhenPageLoaded("alert('All Resources Have Loaded');");
+
+                    //EvaluateScriptAsPromiseAsync calls Promise.resolve internally so even if your code doesn't
+                    //return a Promise it will still execute successfully.
+                    //var script = @"return (function() { return 1 + 1; })();";
+                    //JavascriptResponse response = await frame.EvaluateScriptAsPromiseAsync(script);
+                    //JavascriptResponse response = await frame.EvaluateScriptAsync(script);
+
+                    //var task = Task.Run(async () => { await Scroll(); });
+                    //task.Wait();
+                    //TestCorrect();
+                    //await Task.WhenAll(Scroll(), TestCorrect());
+
+                    //Task<JavascriptResponse> t = Task.Run(() => chromeBrowser.EvaluateScriptAsync("document.getElementById(\"sport-events-list-ajax-load-more\").scrollIntoView()"));
+                    //await t.ContinueWith(async (t1) =>
+                    // {
+                    //     Console.WriteLine(t1.Result);
+                    //     await GetDocSource();
+                    // });
+                    //if (!t.Status.Equals(TaskStatus.Running))
+                    //{
+                    //    Console.WriteLine("task t je zavrašen");
+                    //}
+                    //chromeBrowser.Reload();
+                    //SetHeightFromDocument(chromeBrowser);
+                    chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+                    //chromeBrowser.ViewSource();
+                }
+            };
+
+            chromeBrowser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
+
+
+            //Wait for the MainFrame to finish loading
+            chromeBrowser.FrameLoadEnd += async (sender, args) =>
+            {
+                chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+                //Wait for the MainFrame to finish loading
+                if (args.Frame.IsMain)
+                {
+                    //args.Frame.ExecuteJavaScriptAsync("alert('MainFrame finished loading');");
+                    //chromeBrowser.EvaluateScriptAsync("document.getElementById(\"sport-events-list-ajax-load-more\").scrollIntoView()");
+                    chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
+                    Console.WriteLine("MainFrame finished loading Status code {0}", args.HttpStatusCode);
+                    if (args.HttpStatusCode == 200)
                     {
-                        //Klikni "Učitaj narednih" događaja [3]
+                        //finished, OK, streaming end
+                        //string finished = await Scroll();
+                        //finished += finished;
+                        //var task = Task.Run(async () => await Scroll());
+                        //var result = task.Result;
+                        //task.Start();
+                        //AsyncCallerAsync();
+                        //chromeBrowser.Reload();
+                        //var scrollCompleated = chromeBrowser.EvaluateScriptAsync("scrollTo(0, document.body.scrollHeight)").ContinueWith(task=>
+
                         //JavascriptResponse afterClick = await chromeBrowser.EvaluateScriptAsync("document.getElementsByClassName(\"buttonLoad\")[3].click()");
 
-                        // Vremenska odgoda za učitavanje html-a
-                        DateTime startTime = DateTime.UtcNow;
-                        DateTime? endDate = null;
-                        while (endDate == null)
-                        {
-                            #region Scroll
+                        chromeBrowser.ViewSource();
 
-                            if (DateTime.UtcNow.Subtract(startTime).TotalMilliseconds > 1500)
-                            {
+                        await ScrollAsync();
 
-                                //JavascriptResponse scroll1 = await chromeBrowser.EvaluateScriptAsync("scrollTo(0,document.documentElement.scrollHeight)"); // scroll-a do dna kad se učita dokument
-                                //JavascriptResponse scroll2 = await chromeBrowser.EvaluateScriptAsync("scrollTo(0,document.body.scrollHeight)"); // scroll-a do dna (ali nekada i dok nije učitana stranica)
-                                //JavascriptResponse scroll1i2 = await chromeBrowser.EvaluateScriptAsync("scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight)");
 
-                                for (int i = 1000; i < 100000; i += 150)
-                                {
-                                    string script = string.Format("scrollTo(0," + i + ")");
-                                    JavascriptResponse scroll3 = await chromeBrowser.EvaluateScriptAsync(script);
-                                }
+                        //await Task.Factory.StartNew(async () =>
+                        // {
+                        //     //chromeBrowser.EvaluateScriptAsync(scrollAndGetAttributeScript).ConfigureAwait(true);
+                        //     await EvaluateJavaScriptSync(scrollAndGetAttributeScript);
+                        // },
+                        //TaskCreationOptions.LongRunning);
+                        //await Task.Delay(60000);
 
-                            }
-                            #endregion
+                        //if (Scroll.IsCompleted)
+                        //{
+                        //    MessageBox.Show("Error");
+                        //    MessageBox.Show($"{((dynamic)Scroll.IsCompleted)}");
+                        //}
+                        //MessageBox.Show($"{((dynamic)result.Result).Count}");
 
-                            // Uđi u metodu WebBrowserFrameLoadEnded nakon određenog vremena
-                            if (DateTime.UtcNow.Subtract(startTime).TotalMilliseconds > 5000)
-                            {
-                                var taskHtml = chromeBrowser.GetBrowser().MainFrame.GetSourceAsync();
+                        //Console.WriteLine("SCROLLLLINNNNGG STATUS" + " " + Scroll.Status);
 
-                                string html = taskHtml.Result;
-                                HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument();
-                                htmlDoc.LoadHtml(html);
+                        chromeBrowser.FrameLoadEnd += OnBrowserFrameLoadEnd;
 
-                                GetSteanlyDocument(htmlDoc);
-                                endDate = DateTime.UtcNow;
-                            }
-                        }
                     }
-                    e.Browser.CloseBrowser(true);
+                    if (args.HttpStatusCode == -101)
+                    {
+                        Console.WriteLine("finished, OK, streaming shut down");
+                        //finished, OK, streaming shut down
+                        chromeBrowser.Reload();
+                    }
+                    if (args.HttpStatusCode == 0)
+                    {
+                        Console.WriteLine("The client request wasn't successful");
+                        //The client request wasn't successful.
+                        chromeBrowser.Reload();
+                    }
+                    Console.WriteLine("ALL FINISHED");
+                }
+
+                Console.WriteLine("IsMain");
+            };
+            Console.WriteLine("Not InitializeChromium");
+        }
+        public async Task<string> EvaluateJavaScriptSync(string jsScript)
+        {
+            string jsonFromJS = null;
+            if (chromeBrowser.CanExecuteJavascriptInMainFrame && jsScript != null)
+            {
+                var response = await chromeBrowser.EvaluateScriptAsync(jsScript);
+                if (response.Success && response.Result != null)
+                {
+                    jsonFromJS = response.Result.ToString();
+                }
+            }
+            return jsonFromJS;
+        }
+        private void OnBrowserFrameLoadEnd(object sender, FrameLoadEndEventArgs frameLoadEndEventArgs)
+        {
+            if (frameLoadEndEventArgs.Frame.IsMain && frameLoadEndEventArgs.Url == pageUrl)
+            {
+                Console.WriteLine("OnBrowserFrameLoadEnd");
+            }
+            Console.WriteLine("Not OnBrowserFrameLoadEnd");
+        }
+        private async Task ScrollAsync()
+        {
+            //JavascriptResponse afterClick = await chromeBrowser.EvaluateScriptAsync("document.getElementsByClassName('buttonLoad').scrollIntoView()");
+
+            #region variables
+            //document.querySelector('.page-item:last-child').click() WORKING
+            //document.querySelector('li.page-item:first-child').textContent WORKING
+            //document.querySelector('li.page-item:nth-child(4)').textContent WORKING 
+            //document.querySelector('li.page-item.disabled:nth-child(5)').textContent WORKING 
+            //document.getElementsByClassName('.page-item disabled:last-child')
+            //document.getElementsByClassName("item-option")[9].click() SVE
+
+            var clickAndScrollScript = @"
+                                (function () {
+                                    var result = document.body.scrollHeight;
+                                    
+                                    scrollTo(0, document.body.scrollHeight);
+                                    if (document.readyState === 'complete' || document.readyState === 'loaded') 
+                                    {
+                                        document.getElementsByClassName('item - option')[9].click()
+                                        document.querySelector('.page-item:last-child').click();
+                                    }
+                                    
+                                    return true;
+                                })();";
+
+            var isScrollFinishedScript = @"
+                                (function() {
+                                    var nodes = document.querySelectorAll('li.page-item').length.valueOf() - 2;
+                                    
+                                    var beforelast = document.querySelectorAll('li.page-item')[nodes].textContent;
+                                  
+                                    return true;
+                                })(); ";
+
+            #endregion variables
+
+            await Task.Delay(5000);
+
+            Task Scroll = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).ContinueWith(waitScroll =>
+            {
+                int sleepTime = 1500; // in mills 
+                Task GetAttribute = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync(isScrollFinishedScript)).ContinueWith(async waitAttribute =>
+                {
+                    //DOCUMENTATION:
+                    // clickAndScrollScript -> function click to button load and scroll down
+                    // isScrollFinishedScript -> check if exist remaining odds - if no exist then download document
+                    await Task.Delay(1500);
+                    isScrollFinished.Result = waitAttribute.Result.Result;
+                    while (isScrollFinished.Success) // compare position from old var and current scroll position /evaluate script
+                    {
+                        clickLoadMore.Result = chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).Result.Result; // Execute script Scroll Position and set value to old position var.
+
+                        await Task.Delay(sleepTime);
+
+                        isScrollFinished.Result = chromeBrowser.EvaluateScriptAsync(isScrollFinishedScript).Result.Result;
+                    }
+                    // When scroll was finished get source
+
+                    #region Get Source
+                    var html = string.Empty;
+                    await chromeBrowser.GetSourceAsync().ContinueWith(taskHtml =>
+                    {
+                        html = taskHtml.Result;
+
+                        HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument();
+                        htmlDoc.LoadHtml(html);
+                        string path = "C:\\Temp/download.html";
+                        File.WriteAllText(path, html);
+
+                        GetAdmiralDocument(htmlDoc);
+                    });
+
+                    #endregion Get Source
+                    chromeBrowser.BrowserCore.CloseBrowser(true);//e.Browser.CloseBrowser(true);
                     Cef.ClearSchemeHandlerFactories();
                     this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
-                };
-            }
+                    //Shutdown before your application exists or it will hang.
+                    Cef.Shutdown();
+
+                    return (JavascriptResponse)clickLoadMore;
+                });
+
+            }));
         }
-
-        public Task<HtmlAgilityPack.HtmlDocument> GetSteanlyDocument(HtmlAgilityPack.HtmlDocument htmlDoc)
+        private void ChromeBrowser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
         {
-            #region Nodes Collections
+            Console.WriteLine("end");
+        }
+        private void OnLoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
+        {
+            Console.WriteLine("OnLoadingStateChanged");
+        }
+        private void OnIsBrowserInitializedChanged(object sender, EventArgs e)
+        {
+            var b = ((ChromiumWebBrowser)sender);
 
-            var eventAllNodes = "//h2 | //a[contains(@class, 'switch')] | //div[contains(@class, 'result  razrada-01')] //tr";
+            this.InvokeOnUiThreadIfRequired(() => b.Focus());
+        }
+        public Task<HtmlAgilityPack.HtmlDocument> GetAdmiralDocument(HtmlAgilityPack.HtmlDocument htmlDoc)
+        {
+            #region Linq Example
+            //HtmlNode node = nodes[0].QuerySelector("td:eq(1)");
+            //IList<HtmlNode> nodes = htmlDoc.QuerySelectorAll("td.col-odds > a");
+            //IList<HtmlNode> matches = htmlDoc.QuerySelectorAll("div.event-name > span.market-name");
+            //HtmlNode node = nodes[0].QuerySelector("td:eq(1)");
 
-            HtmlNodeCollection EventAllNodes = htmlDoc.DocumentNode.SelectNodes(eventAllNodes);
+            // Using LINQ to parse HTML table smartly 
+            //var HTMLTableTRList = from table in htmlDoc.DocumentNode.SelectNodes("//div[contains(@class, 'sportsoffer')]").Cast<HtmlNode>()
+            //                      from row in table.SelectNodes("//div[contains(@class, 'partvar-min subgameheader')]").Cast<HtmlNode>() 
+            //                      from cell in table.SelectNodes("//div[contains(@class, 'match botFlex')]").Cast<HtmlNode>()
+            //                      select new { Cell_Text = table.InnerText };
 
-            #endregion
+            // Using LINQ to parse HTML table smartly 
+            //var HTMLTableTRList = from table in htmlDoc.DocumentNode.SelectNodes("//html/body/div").Cast<HtmlNode>()
+            //                      from row in table.SelectNodes("//tr").Cast<HtmlNode>()
+            //                      from cell in row.SelectNodes("th|td").Cast<HtmlNode>()
+            //                      select new { Cell_Text = cell.InnerText };
 
-            #region Save stufs on new document
+            //string xpathSportType = "//div[contains(@class, 'sportInfo')]"; // from link
+            //string xpathTime = "//span[contains(@class, 'time')]";
+            //string xpathOddTypesPart = "//span[contains(@class, 'ng-star-inserted')]";
+            //string xpathPairsPart1 = "//span[contains(@class, 'home')]";
+            //string xpathPairsPart2 = "//span[contains(@class, 'away')]";
+            //string xpathOddsPart = "//span/@data-market";//"//div[contains(@class, 'partvar odds')]";
+            //var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathTime + "|" + xpathOddTypesPart + "|" + xpathPairsPart1 + "|" + xpathPairsPart2 + "|" + xpathOddsPart).Cast<HtmlNode>();
+            #endregion linq Example
 
-            #region Params
-            bool hasFirstOdd = false;
-            bool hasSecOdd = false;
-            bool hasThirdOdd = false;
-            bool hasFourthOdd = false;
-            bool hasFifthOdd = false;
-            bool hasSixthOdd = false;
-            bool hasSeventhOdd = false;
-            bool onlyTwoOddTypes = false;
-            int oddsCounter = 0;
-            int oddTypeCounter = 0;
-            #endregion
+            //string xpathSportType = "//div[contains(@class, 'sportInfo')]"; // from link
+            string xpathTime = "//span[contains(@_ngcontent-dhj-c95 class, 'time')]";
+            string xpathOddTypesPart = "//div[contains(@_ngcontent-dhj-c96 class, 'bet-type-col')]/span";
+            string xpathPairsPart1 = "//div[contains(@_ngcontent-dhj-c95 class, 'home')]/span";
+            string xpathPairsPart2 = "//div[contains(@_ngcontent-dhj-c95 class, 'away')]/span";
+            string xpathOddsPart = "//span/@data-market";//"//div[contains(@class, 'partvar odds')]";
+            //var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathTime + "|" + xpathOddTypesPart + "|" + xpathPairsPart1 + "|" + xpathPairsPart2 + "|" + xpathOddsPart).Cast<HtmlNode>();
+
+            var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathTime).Cast<HtmlNode>();
+            #region Save list to txt Test ONLY 
+            // For Testing
+            var HTMLTableTRListHumanReadable = from table in HTMLTableTRList select new { Cell_Text = table.InnerText };
+            string combinedString = string.Join(",", HTMLTableTRListHumanReadable);
+            string path = "C:\\Temp/download.txt";
+            File.WriteAllText(path, combinedString);
+
+            #endregion Save list to txt Test ONLY
 
             HRKladeEntities db = new HRKladeEntities();
             OddsTable match = new OddsTable();
 
-            var eventDay = "";
-
-            string eventType = "";
-
-            foreach (var node in EventAllNodes)
+            foreach (var node in HTMLTableTRList)
             {
-                if (node.Name == "a" && node.HasAttributes && node.Attributes[0].Value == "switch") // EventType
-                    eventType = node.InnerText.Trim();
-                if (node.Name == "h2")// EventTime custom logic
-                {
-                    eventDay = node.InnerText.Substring(0, 3); //get first 3 char from string
-                    var date = Regex.Replace(node.InnerText, "[A-ZČa-zč ]", ""); // remove chars from string
+                //clear string
+                string currentItem = node.InnerText.Replace("&nbsp;", " ").Replace("\n", "").Replace("\r", "").Trim();
 
-                    DateTime enteredDate = DateTime.Parse(date); // parse string to datetime
-                    if (DateTime.Now.AddDays(4) < enteredDate) 
-                    {
-                        eventDay = eventDay + " " + date.Substring(0, 5);
-                    }
-                }
+            //    if (node.HasAttributes && node.Attributes.First().Value.Contains("sportInfo")) // if New Sport Type
+            //    {
+            //        #region filter Sport types
+            //        if (currentItem.Contains("fantasy"))
+            //        {
+            //            RowCounter = 0;
+            //            continue;
+            //        }
 
-                if (node.HasChildNodes && eventType.ToLower().Contains("duel")== false)
-                {
-                    foreach (var childItem in node.ChildNodes)
-                    {
+            //        #endregion filter Sport types
 
-                        if (childItem.InnerText.Length > 0)
-                        {
-                            #region Odd Types 1,X,2,1X,X2,12,F2
-                            if (childItem.HasAttributes && (childItem.Attributes[0].Value == "coef" || childItem.Attributes[0].Value == "coef last")) // provjeri koji tipovi postoje
-                            {
-                                #region Reset params
-                                if (oddTypeCounter == 0)
-                                {
-                                    hasFirstOdd = false;
-                                    hasSecOdd = false;
-                                    hasThirdOdd = false;
-                                    hasFourthOdd = false;
-                                    hasFifthOdd = false;
-                                    hasSixthOdd = false;
-                                    hasSeventhOdd = false;
-                                    onlyTwoOddTypes = false;
-                                }
-                                oddTypeCounter++;
-                                #endregion
+            //        sportType = Regex.Replace(currentItem, @"\s+", ""); ;
+            //        oddTableInitialization = true;
+            //        oddTableSetCompleated = false;
+            //        continue;
+            //    }
 
-                                #region Set params if exist on site
+            //    if (node.HasAttributes && node.Attributes.First().Value.Contains("time")) // This is new record save old record to DB
+            //    {
+            //        // Check if all string property in match class is null
+            //        bool isNullmatch = match.GetType().GetProperties()
+            //                        .Where(pi => pi.GetValue(match) is string)
+            //                        .All(p => p.GetValue(match) == null);
 
-                                if (childItem.InnerText == "1")
-                                    hasFirstOdd = true;
-                                if (childItem.InnerText == "X")
-                                    hasSecOdd = true;
-                                if (childItem.InnerText == "2")
-                                    hasThirdOdd = true;
-                                if (childItem.InnerText == "1X")
-                                    hasFourthOdd = true;
-                                if (childItem.InnerText == "X2")
-                                    hasFifthOdd = true;
-                                if (childItem.InnerText == "12")
-                                    hasSixthOdd = true;
-                                if (childItem.InnerText == "H1-1")
-                                    hasSeventhOdd = true;
+            //        if (!isNullmatch) // If object is not null Save previus record to DB
+            //        {
+            //            match.EventTime = dateTime;
+            //            match.Created = DateTime.UtcNow;
+            //            match.KladaName = "Germania";
+            //            match.SportType = sportType;
+            //            match.InPlay = false;
+            //            match.EventDateTime = Home.GetDatetimeFromString(dateTime);
 
-                                if (childItem.Attributes[0].Value == "coef last" && childItem.InnerText == "2")
-                                    onlyTwoOddTypes = true;
+            //            db.OddsTable.Add(match);
+            //            db.SaveChanges();
+            //            match = new OddsTable();
+            //            RowCounter = 0;
+            //        }
 
-                                #endregion
+            //        dateTime = currentItem;
+            //        nextRecord = true;
+            //        continue;
+            //    }
 
-                            }
-                            #endregion
+            //    #region Reset params
+            //    if (!oddTableSetCompleated & oddTableInitialization) // -> Only first time
+            //    {
+            //        //This is new table
+            //        hasOdd1 = false;
+            //        hasOddX = false;
+            //        hasOdd2 = false;
+            //        hasOdd1X = false;
+            //        hasOddX2 = false;
+            //        hasOdd12 = false;
+            //        dateTime = string.Empty;
+            //        oddTableInitialization = false;
+            //        oddTableSetCompleated = false;
+            //        totalrows = 0;
+            //        RowCounter = 0;
+            //    }
 
-                            #region Odds
+            //    #endregion Reset params
 
-                            if (childItem.InnerText.Length > 0 && childItem.HasAttributes && (childItem.Attributes[0].Value.Contains("ticket_action(this)") == true))
-                            {
-                                #region Reset params
-                                if (oddsCounter == 0)
-                                {
-                                    oddTypeCounter = 0;
-                                    match.Odd1 = 0;
-                                    match.OddX = 0;
-                                    match.Odd2 = 0;
-                                    match.Odd1X = 0;
-                                    match.OddX2 = 0;
-                                    match.Odd12 = 0;
-                                    match.OddF2 = 0;
-                                }
-                                #endregion
+            //    #region Set Odd Table
+            //    if (!oddTableSetCompleated)
+            //    {
+            //        switch (currentItem)
+            //        {
+            //            case "1":
+            //                if (hasOdd1)
+            //                    continue;
+            //                hasOdd1 = true;
+            //                RowCounter++;
+            //                continue;
+            //            case "X":
+            //                if (hasOddX)
+            //                    continue;
+            //                hasOddX = true;
+            //                RowCounter++;
+            //                continue;
+            //            case "2":
+            //                if (hasOdd2)
+            //                    continue;
+            //                hasOdd2 = true;
+            //                RowCounter++;
+            //                continue;
+            //            case "1X":
+            //                if (hasOdd1X)
+            //                    continue;
+            //                hasOdd1X = true;
+            //                RowCounter++;
+            //                continue;
+            //            case "X2":
+            //                if (hasOddX2)
+            //                    continue;
+            //                hasOddX2 = true;
+            //                RowCounter++;
+            //                continue;
+            //            case "12":
+            //                if (hasOdd12)
+            //                    continue;
+            //                hasOdd12 = true;
+            //                RowCounter++;
+            //                continue;
+            //        }
 
-                                oddsCounter++;
-                                if (hasFirstOdd && oddsCounter == 1) // 1
-                                {
-                                    if (childItem.InnerText.Contains("-") == true)
-                                        match.Odd1 = 0;
-                                    else
-                                    {
-                                        match.Odd1 = Convert.ToDecimal(childItem.InnerText);
-                                    }
-                                    match.Odd1 = match.Odd1;
-                                }
+            //        totalrows = RowCounter;
+            //        if (totalrows > 0)
+            //            oddTableSetCompleated = true;
+            //        // In this moment we know that is Odd table completed
+            //        RowCounter = 0; // Reset row counter - prepare it for Odd values.
+            //    }
 
-                                if (hasSecOdd && oddsCounter == 2 && !onlyTwoOddTypes) // X
-                                {
-                                    if (childItem.InnerText.Contains("-") == true)
-                                        match.OddX = 0;
-                                    else
-                                    {
-                                        match.OddX = Convert.ToDecimal(childItem.InnerText);
-                                    }
-                                    match.OddX = match.OddX;
-                                }
+            //    #region RowCounterFIX for sports
+            //    if (sportType == "Baseball")
+            //        totalrows = 2;
 
-                                if ((hasThirdOdd && oddsCounter == 3) || hasThirdOdd && onlyTwoOddTypes)// 2
-                                {
-                                    if (childItem.InnerText.Contains("-") == true)
-                                        match.Odd2 = 0;
-                                    else
-                                    {
-                                        match.Odd2 = Convert.ToDecimal(childItem.InnerText);
-                                    }
-                                    match.Odd2 = match.Odd2;
-                                }
+            //    #endregion RowCounterFIX for sports
 
-                                if (hasFourthOdd && oddsCounter == 4) // 1X
-                                {
-                                    if (childItem.InnerText.Contains("-") == true)
-                                        match.Odd1X = 0;
-                                    else
-                                    {
-                                        match.Odd1X = Convert.ToDecimal(childItem.InnerText);
-                                    }
-                                    match.Odd1X = match.Odd1X;
-                                }
+            //    #endregion Set Odd Table
 
-                                if (hasFifthOdd && oddsCounter == 5) // X2
-                                {
-                                    if (childItem.InnerText.Contains("-") == true)
-                                        match.OddX2 = 0;
-                                    else
-                                    {
-                                        match.OddX2 = Convert.ToDecimal(childItem.InnerText);
-                                    }
-                                    match.OddX2 = match.OddX2;
-                                }
+            //    #region Save to Class
+            //    if (oddTableSetCompleated && nextRecord) // Save table values to database
+            //    {
+            //        if (totalrows == 2) // there are only 1 X 2 Odds
+            //        {
+            //            if (RowCounter == 0 && currentItem != string.Empty && match.Home == null)
+            //            {
+            //                match.Home = currentItem;
 
-                                if (hasSixthOdd && oddsCounter == 6) // 12
-                                {
-                                    if (childItem.InnerText.Contains("-") == true)
-                                        match.Odd12 = 0;
-                                    else
-                                    {
-                                        match.Odd12 = Convert.ToDecimal(childItem.InnerText);
-                                    }
-                                    match.Odd12 = match.Odd12;
-                                }
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 1;
+            //                continue;
+            //            }
+            //            if (RowCounter == 1 && currentItem != string.Empty && match.Away == null)
+            //            {
+            //                match.Away = currentItem;
 
-                                if (hasSeventhOdd && oddsCounter == 7) // F2
-                                {
-                                    if (childItem.InnerText.Contains("-") == true)
-                                        match.OddF2 = 0;
-                                    else
-                                    {
-                                        match.OddF2 = Convert.ToDecimal(childItem.InnerText);
-                                    }
-                                    match.OddF2 = match.OddF2;
-                                }
-                            }
-                            #endregion
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 2;
+            //                continue;
+            //            }
+            //            if (RowCounter == 2 && hasOdd1 && match.Odd1 == null)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    RowCounter = 3;
+            //                    continue;
+            //                }
+            //                match.Odd1 = parsedValue;
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 3;
+            //                continue;
+            //            }
+            //            if (RowCounter == 3 && hasOdd2 && match.Odd2 == null)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    parsedValue = 0;
+            //                }
+            //                match.Odd2 = parsedValue;
+            //                db.OddsTable.Add(match);
 
-                            // Events and Times
-                            if (childItem.HasAttributes && childItem.Attributes[0].Value == "name" && childItem.InnerText.Length > 0)  //Home, Away and Time nodes
-                            {
-                                #region Home and Away
-                                string homeAndaway = childItem.InnerText;
-                                var output = Regex.Replace(homeAndaway, @" ?\(.*?\)", string.Empty); // delete chars in brackets
+            //                continue;
+            //            }
+            //        }
+            //        else if (totalrows == 3) // there are only 1 X 2 Odds
+            //        {
+            //            if (RowCounter == 0 && currentItem != string.Empty)
+            //            {
+            //                match.Home = currentItem;
 
-                                string[] tokens = output.Split('-');
-                                string home = tokens[0];
-                                string away = tokens[1];
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 1;
+            //                continue;
+            //            }
+            //            if (RowCounter == 1 && currentItem != string.Empty)
+            //            {
+            //                match.Away = currentItem;
 
-                                if (home.Contains("Chicago Sky") == true)
-                                    homeAndaway = "bla";
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 2;
+            //                continue;
+            //            }
+            //            if (RowCounter == 2 && hasOdd1)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    RowCounter = 3;
+            //                    continue;
+            //                }
+            //                match.Odd1 = parsedValue;
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 3;
+            //                continue;
+            //            }
+            //            if (RowCounter == 3 && hasOddX)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    RowCounter = 4;
+            //                    continue;
+            //                }
+            //                match.OddX = parsedValue;
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 4;
+            //                continue;
+            //            }
+            //            if (RowCounter == 4 && hasOdd2)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    parsedValue = 0;
+            //                }
+            //                match.Odd2 = parsedValue;
+            //                db.OddsTable.Add(match);
 
-                                match.Home = Regex.Replace(home, @"[!#$%&/()=?*]", string.Empty);
-                                match.Away = Regex.Replace(away, @"[!#$%&/()=?*]", string.Empty);
-                                db.OddsTable.Add(match);
-                                #endregion
+            //                continue;
+            //            }
+            //        }
+            //        else if (totalrows >= 5)
+            //        {
+            //            if (RowCounter == 0 && currentItem != string.Empty)
+            //            {
+            //                match.Home = currentItem;
 
-                            }
-                            if (childItem.HasAttributes && (childItem.Attributes[0].Value == "date-zone" || childItem.Attributes[0].Value == "time") && childItem.InnerText.Length > 0)  //Home, Away and Time nodes
-                            {
-                                #region Time
-                                var time = childItem.InnerText;
-                                if (time.Contains("&") == true)
-                                    time = time.Remove(time.LastIndexOf('&'));
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 1;
+            //                continue;
+            //            }
+            //            if (RowCounter == 1 && currentItem != string.Empty)
+            //            {
+            //                match.Away = currentItem;
 
-                                //ako sadrži dan uzmi taj dan, a ne onaj iz naslova
-                                if (time.Contains("pon") == true || time.Contains("uto") == true || time.Contains("sri") == true || time.Contains("cet") == true || time.Contains("pet") == true || time.Contains("sub") == true || time.Contains("ned") == true)
-                                {
-                                    match.EventTime = time;
-                                }
-                                else
-                                {
-                                    string onlyTime = Regex.Replace(time, "[A-Za-z ]", ""); // remove all char
-                                    match.EventTime = eventDay + " " + onlyTime;
-                                }
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 2;
+            //                continue;
+            //            }
+            //            if (RowCounter == 2 && hasOdd1)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    RowCounter = 3;
+            //                    continue;
+            //                }
+            //                match.Odd1 = parsedValue;
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 3;
+            //                continue;
+            //            }
+            //            if (RowCounter == 3 && hasOddX)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    RowCounter = 4;
+            //                    continue;
+            //                }
+            //                match.OddX = parsedValue;
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 4;
+            //                continue;
+            //            }
+            //            if (RowCounter == 4 && hasOdd2)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    RowCounter = 5;
+            //                    continue;
+            //                }
+            //                match.Odd2 = parsedValue;
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 5;
+            //                continue;
+            //            }
+            //            if (RowCounter == 5 && hasOdd1X)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    RowCounter = 6;
+            //                    continue;
+            //                }
+            //                match.Odd1X = parsedValue;
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 6;
+            //                continue;
+            //            }
+            //            if (RowCounter == 6 && hasOdd12)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    RowCounter = 7;
+            //                    continue;
+            //                }
+            //                match.Odd12 = parsedValue;
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 7;
+            //                continue;
+            //            }
+            //            else if (RowCounter == 6 && hasOddX2)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    RowCounter = 7;
+            //                    continue;
+            //                }
+            //                match.OddX2 = parsedValue;
+            //                db.OddsTable.Add(match);
+            //                RowCounter = 7;
+            //                continue;
+            //            }
+            //            if (RowCounter == 7 && hasOddX2)
+            //            {
+            //                decimal parsedValue;
+            //                if (!Decimal.TryParse(currentItem, out parsedValue)) // Number returns true, 
+            //                {
+            //                    parsedValue = 0;  // even if there is no last off - The record must be saved
+            //                }
+            //                match.OddX2 = parsedValue;
+            //                db.OddsTable.Add(match);
 
-                                
-                                #endregion
+            //                continue;
+            //            }
+            //        }
+            //    }
+            //    #endregion Save to Class
 
-                            }
-                        }
-                    }
-                    if (match.Odd1 > 0 && (match.Odd2 > 0 || match.OddX > 0)) // ako nisu prazni koeficijenti spremi u bazu
-                    {
-                        match.Created = DateTime.UtcNow;
-                        match.KladaName = "Stanleybet";
-                        match.InPlay = false;
-                        match.SportType = eventType;
-                        db.SaveChanges();
-                    }
+            //}
+            ////Save last match
 
-                    #region Reset params
+            //// Check if all string property in match class is null
+            //if (!match.GetType().GetProperties()
+            //                .Where(pi => pi.GetValue(match) is string)
+            //                .All(p => p.GetValue(match) == null)) // If object is not null Save previus record
+            //{
+            //    match.EventTime = dateTime;
+            //    match.Created = DateTime.UtcNow;
+            //    match.KladaName = "Germania";
+            //    match.SportType = sportType;
+            //    match.InPlay = false;
+            //    match.EventDateTime = Home.GetDatetimeFromString(dateTime);
 
-                    oddsCounter = 0;
-
-                    #endregion
-                }
+            //    db.OddsTable.Add(match);
+            //    db.SaveChanges();
+            //    match = new OddsTable();
+            //    RowCounter = 0;
             }
-            #endregion
-
             return null;
         }
-
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             #region This is closing Forms and Browser

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Klada_v1.Model
+namespace Klada_v3.Model
 {
     using System;
     using System.Collections.Generic;
@@ -33,9 +33,28 @@ namespace Klada_v1.Model
             Odd12 = odd12;
             Klada12 = klada12;
         }
-        public CalcOddsTable()
-        {
 
+        public CalcOddsTable(int eventID, string home, string away, string eventTime, decimal? odd1, string klada1, decimal? oddX, string kladaX, decimal? odd2, string klada2, decimal? odd1X, string klada1X, decimal? oddX2, string kladaX2, decimal? odd12, string klada12, decimal? calcOdd, string sportType, int? sportTypeID)
+        {
+            EventID = eventID;
+            Home = home;
+            Away = away;
+            EventTime = eventTime;
+            Odd1 = odd1;
+            Klada1 = klada1;
+            OddX = oddX;
+            KladaX = kladaX;
+            Odd2 = odd2;
+            Klada2 = klada2;
+            Odd1X = odd1X;
+            Klada1X = klada1X;
+            OddX2 = oddX2;
+            KladaX2 = kladaX2;
+            Odd12 = odd12;
+            Klada12 = klada12;
+            CalcOdd = calcOdd;
+            SportType = sportType;
+            SportTypeID = sportTypeID;
         }
 
         public int EventID { get; set; }
