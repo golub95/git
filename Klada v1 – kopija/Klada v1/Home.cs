@@ -77,7 +77,9 @@ namespace Klada_v3
             }
             if (cb_Calc.Checked)
             {
-                FindSimilar();
+                //FindSimilar();
+                MatchSystemIDs();
+                FindIdenticalMatchFromOddsTable();
             }
             //Cef.Shutdown();
             Cef.ClearSchemeHandlerFactories();
@@ -128,7 +130,7 @@ namespace Klada_v3
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
-                client.Send(mm);
+                client.Send(mm); 
 
                 //using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 //{
@@ -144,157 +146,78 @@ namespace Klada_v3
 
         }
 
-        private void FindSimilar()
+        private void FindIdenticalMatchFromOddsTable()
         {
-            //double tolerance = 0.5, toleranceSum = 1.3;
+            //Foreach Event from OddsTable
+            //Filter OddsTable Events by Current MatchSystemID And Get Largest Odds
+            //Insert this Event to CalcOddTable
+            List<OddsTable> AllEvents = new List<OddsTable>();
             List<CalcOddsTable> Hits = new List<CalcOddsTable>();
 
-            MatchSystemIDs();
-
-            bool hitFlag = false;
-
-            Events = db.OddsTable.ToList();
-
-            int numberOfEvents = Events.Count();
-
-            double test1, test2;
-
-            int EventID = 0;
-            string Home = "";
-            string Away = "";
-            string AllHome = "";
-            string AllAway = "";
-            string EventTime = "";
-            Nullable<decimal> Odd1 = (decimal) 0.0;
-            string Klada1 = "";
-            Nullable<decimal> OddX = (decimal)0.0;
-            string KladaX = "";
-            Nullable<decimal> Odd2 = (decimal)0.0;
-            string Klada2 = "";
-            Nullable<decimal> Odd1X = (decimal)0.0;
-            string Klada1X = "";
-            Nullable<decimal> OddX2 = (decimal)0.0;
-            string KladaX2 = "";
-            Nullable<decimal> Odd12 = (decimal)0.0;
-            string Klada12 = "";
-
-            for (int FirstEvent = 0; FirstEvent < numberOfEvents; FirstEvent++)
+            AllEvents = db.OddsTable.ToList();
+            foreach (var currentEvent in AllEvents) // find identical Event
             {
-                for (int SecondEvent = FirstEvent + 1; SecondEvent < numberOfEvents; SecondEvent++)
-                {
-                    //string firstEventDay = Events[FirstEvent].EventTime.Substring(0, 3);
-                    //string secEventDay = Events[SecondEvent].EventTime.Substring(0, 3);
+                if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID == Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID == Guid.Empty)
+                    continue;
 
-                    string firstEventDay = Events[FirstEvent].EventDateTime.Value.Day.ToString();
-                    string secEventDay = Events[SecondEvent].EventDateTime.Value.Day.ToString();
+                CalcOddsTable Hit = new CalcOddsTable();
 
-                    if (Events[FirstEvent].EventDateTime != Events[SecondEvent].EventDateTime || Events[FirstEvent].SportTypeID != Events[SecondEvent].SportTypeID || (Events[FirstEvent].KladaName == Events[SecondEvent].KladaName))
-                    {
-                        continue;
-                    }
-                    if (!hitFlag)
-                    {
-                        test1 = CalculateSimilarity(Events[FirstEvent].Home, Events[SecondEvent].Home);
-                        test2 = CalculateSimilarity(Events[FirstEvent].Away, Events[SecondEvent].Away);
-                        if ((test1 > tolerance && test2 > tolerance) && (test1 + test2 >= toleranceSum))
-                        {
-                            Events[SecondEvent].InPlay = true;
-                            hitFlag = true;
-                            AllHome = Events[FirstEvent].Home + ';' + Events[SecondEvent].Home;
-                            AllAway = Events[FirstEvent].Away + ';' + Events[SecondEvent].Away;
+                Hit.Home = currentEvent.Home;
+                Hit.Away = currentEvent.Away;
+                Hit.SportType = currentEvent.SportType;
+                Hit.SportTypeID = currentEvent.SportTypeID;
+                Hit.EventTime = currentEvent.EventTime;
+                Hit.EventDateTime = currentEvent.EventDateTime;
 
-                            EventID = Events[FirstEvent].KladaID;
-                            Home = Events[FirstEvent].Home;
-                            Away = Events[FirstEvent].Away;
-                            EventTime = Events[FirstEvent].EventTime;
-                            Odd1 = (Events[FirstEvent].Odd1 > Events[SecondEvent].Odd1) ? (Events[FirstEvent].Odd1) : (Events[SecondEvent].Odd1);
-                            Klada1 = (Events[FirstEvent].Odd1 > Events[SecondEvent].Odd1) ? (Events[FirstEvent].KladaName) : (Events[SecondEvent].KladaName);
-                            OddX = (Events[FirstEvent].OddX > Events[SecondEvent].OddX) ? (Events[FirstEvent].OddX) : (Events[SecondEvent].OddX);
-                            KladaX = (Events[FirstEvent].OddX > Events[SecondEvent].OddX) ? (Events[FirstEvent].KladaName) : (Events[SecondEvent].KladaName);
-                            Odd2 = (Events[FirstEvent].Odd2 > Events[SecondEvent].Odd2) ? (Events[FirstEvent].Odd2) : (Events[SecondEvent].Odd2);
-                            Klada2 = (Events[FirstEvent].Odd2 > Events[SecondEvent].Odd2) ? (Events[FirstEvent].KladaName) : (Events[SecondEvent].KladaName);
-                            Odd1X = (Events[FirstEvent].Odd1X > Events[SecondEvent].Odd1X) ? (Events[FirstEvent].Odd1X) : (Events[SecondEvent].Odd1X);
-                            Klada1X = (Events[FirstEvent].Odd1X > Events[SecondEvent].Odd1X) ? (Events[FirstEvent].KladaName) : (Events[SecondEvent].KladaName);
-                            OddX2 = (Events[FirstEvent].OddX2 > Events[SecondEvent].OddX2) ? (Events[FirstEvent].OddX2) : (Events[SecondEvent].OddX2);
-                            KladaX2 = (Events[FirstEvent].OddX2 > Events[SecondEvent].OddX2) ? (Events[FirstEvent].KladaName) : (Events[SecondEvent].KladaName);
-                            Odd12 = (Events[FirstEvent].Odd12 > Events[SecondEvent].Odd12) ? (Events[FirstEvent].Odd12) : (Events[SecondEvent].Odd12);
-                            Klada12 = (Events[FirstEvent].Odd12 > Events[SecondEvent].Odd12) ? (Events[FirstEvent].KladaName) : (Events[SecondEvent].KladaName);
+                OddsTable LargestOdd = new OddsTable();
 
-                            
-                        }
-                    }
-                    else
-                    {
-                        string[] HomeGroup = AllHome.Split(';');
-                        string[] AwayGroup = AllAway.Split(';');
-                        var groupLenght = HomeGroup.Length;
-                        if (AwayGroup.Length < HomeGroup.Length)
-                        {
-                            groupLenght = AwayGroup.Length;
-                        }
-                        for (int i = 0; i < groupLenght; i++)
-                        {
-
-                            test1 = CalculateSimilarity(HomeGroup[i], Events[SecondEvent].Home);
-                            test2 = CalculateSimilarity(AwayGroup[i], Events[SecondEvent].Away);
-                            if ((test1 > tolerance && test2 > tolerance) && (test1+test2>= toleranceSum))
-                            {
-                                AllHome += ';' + Events[SecondEvent].Home;
-                                AllAway += ';' + Events[SecondEvent].Away;
-
-                                Odd1 = (Odd1 > Events[SecondEvent].Odd1) ? (Odd1) : (Events[SecondEvent].Odd1);
-                                Klada1 = (Odd1 > Events[SecondEvent].Odd1) ? (Klada1) : (Events[SecondEvent].KladaName);
-                                OddX = (OddX > Events[SecondEvent].OddX) ? (OddX) : (Events[SecondEvent].OddX);
-                                KladaX = (OddX > Events[SecondEvent].OddX) ? (KladaX) : (Events[SecondEvent].KladaName);
-                                Odd2 = (Odd2 > Events[SecondEvent].Odd2) ? (Odd2) : (Events[SecondEvent].Odd2);
-                                Klada2 = (Odd2 > Events[SecondEvent].Odd2) ? (Klada2) : (Events[SecondEvent].KladaName);
-                                Odd1X = (Odd1X > Events[SecondEvent].Odd1X) ? (Odd1X) : (Events[SecondEvent].Odd1X);
-                                Klada1X = (Odd1X > Events[SecondEvent].Odd1X) ? (Klada1X) : (Events[SecondEvent].KladaName);
-                                OddX2 = (OddX2 > Events[SecondEvent].OddX2) ? (OddX2) : (Events[SecondEvent].OddX2);
-                                KladaX2 = (OddX2 > Events[SecondEvent].OddX2) ? (KladaX2) : (Events[SecondEvent].KladaName);
-                                Odd12 = (Odd12 > Events[SecondEvent].Odd12) ? (Odd12) : (Events[SecondEvent].Odd12);
-                                Klada12 = (Odd12 > Events[SecondEvent].Odd12) ? (Klada12) : (Events[SecondEvent].KladaName);
-                                break;
-                            }
-                        }
-
-                    }
-
+                LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd1).FirstOrDefault();
+                if (LargestOdd.Odd1 != null)
+                { 
+                    Hit.Odd1 = LargestOdd.Odd1.Value;
+                    Hit.Klada1 = LargestOdd.KladaName;
                 }
-                if (hitFlag)
+                LargestOdd = new OddsTable();
+                LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.OddX).FirstOrDefault();
+                if (LargestOdd.OddX != null)
                 {
-                    hitFlag = false;
-
-                    CalcOddsTable Hit = new CalcOddsTable(EventID, Home, Away, EventTime, Odd1, Klada1, OddX, KladaX, Odd2, Klada2, Odd1X, Klada1X, OddX2, KladaX2, Odd12, Klada12);
-                    Hit.CalcOdd = (decimal)CalculateOdds(Hit);
-                    Hits.Add(Hit);
+                    Hit.OddX = LargestOdd.OddX.Value;
+                    Hit.KladaX = LargestOdd.KladaName;
                 }
-            }
-
-            List<CalcOddsTable> SimilarEvents = new List<CalcOddsTable>();
-            SimilarEvents = db.CalcOddsTable.ToList();
-            if (SimilarEvents.Count > 0)
-            {
-                foreach (var SEvent in SimilarEvents)
+                LargestOdd = new OddsTable();
+                LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd2).FirstOrDefault();
+                if (LargestOdd.Odd2 != null)
                 {
-                    db.CalcOddsTable.Remove(SEvent);
+                    Hit.Odd2 = LargestOdd.Odd2.Value;
+                    Hit.Klada2 = LargestOdd.KladaName;
                 }
+                LargestOdd = new OddsTable();
+                LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd1X).FirstOrDefault();
+                if (LargestOdd.Odd1X != null)
+                {
+                    Hit.Odd1X = LargestOdd.Odd1X.Value;
+                    Hit.Klada1X = LargestOdd.KladaName;
+                }
+
+                LargestOdd = new OddsTable();
+                LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.OddX2).FirstOrDefault();
+                if (LargestOdd.OddX2 != null)
+                {
+                    Hit.OddX2 = LargestOdd.OddX2.Value;
+                    Hit.KladaX2 = LargestOdd.KladaName;
+                }
+                LargestOdd = new OddsTable();
+                LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd12).FirstOrDefault();
+                if (LargestOdd.Odd12 != null)
+                {
+                    Hit.Odd12 = LargestOdd.OddX2.Value;
+                    Hit.Klada12 = LargestOdd.KladaName;
+                }
+                Hit.CalcOdd = (decimal)CalculateOdds(Hit);
+
+                Hit.EventID = currentEvent.KladaID;
+                db.CalcOddsTable.Add(Hit);
                 db.SaveChanges();
-            }
-
-            foreach (var hit in Hits)
-            {
-                try
-                {
-                    db.CalcOddsTable.Add(hit);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-
-                    throw;
-                }
-                
             }
         }
 
@@ -492,6 +415,7 @@ namespace Klada_v3
             }
             return DateTime.Now;
         }
+        
         #region Find Similar
         #region  DOCUMENTATION
         /* 
@@ -524,29 +448,22 @@ namespace Klada_v3
 	        - ako se slaže (pod određenim postotkom)ubaci ga u temp listu - kreiranu na početku prvog foreacha	
         */
         #endregion
-        public Guid FindOrInsertToMatchSystemIDsTable(DateTime EventDateTime,string Home, string Away,int SportTypeID,string KladaName)
+        public Guid FindOrInsertToMatchSystemIDsTable(DateTime EventDateTime,string EventName,int SportTypeID,string KladaName)
         {
-            OddsTable match = new OddsTable();
-            match = db.OddsTable.Where(m => m.Home == Home || m.Away == Away).First();
-
-            if (match.MatchSystemID != null && match.MatchSystemID != Guid.Empty)
-                return match.MatchSystemID.Value;
+            MatchSystemIDs matchFound = new MatchSystemIDs();
+            if (EventName != string.Empty && (matchFound = db.MatchSystemIDs.Where(m => m.EventName == EventName).FirstOrDefault()) != null && matchFound.EventSystemID != null && matchFound.EventSystemID != Guid.Empty)
+                return matchFound.EventSystemID;
             else // insert record to MatchSystemIDs table
             {
                 MatchSystemIDs newMatch = new MatchSystemIDs();
                 newMatch.EventDateTime = EventDateTime;
-                newMatch.EventName = Regex.Replace(Home, @"\s+", ""); ;
+                newMatch.EventName = EventName.Trim();
                 newMatch.EventSportTypeID = SportTypeID;
                 newMatch.KladaName = KladaName;
                 newMatch.EventSystemID = Guid.Empty;
 
                 db.MatchSystemIDs.Add(newMatch);
                 db.SaveChanges();
-
-                newMatch.EventName = Regex.Replace(Away, @"\s+", ""); ; ; // add all same values for Away (2 record for one event)
-                db.MatchSystemIDs.Add(newMatch);
-
-                db.SaveChanges(); 
             }
             return Guid.Empty;
         }

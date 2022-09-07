@@ -18745,3 +18745,409 @@ LoggingService: Messaging: This browser doesn't support the API's required to us
 [0905/222252.070:INFO:CONSOLE(1)] "[22:22:52 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
 [0905/222252.072:INFO:CONSOLE(1)] "[22:22:52 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
 [0905/222252.073:INFO:CONSOLE(1)] "[22:22:52 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/102813.864:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/102815.138:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/102815.209:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/102818.565:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/102818.566:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/102818.566:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/102904.706:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/103407.987:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 21474836485 [5,5] will be ignored
+[0907/103413.747:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0907/103413.815:INFO:CONSOLE(147)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/duyHVVR9Brf6N2GewjkPRfsA/recaptcha__hr.js (147)
+[0907/103415.373:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/103415.422:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/103415.422:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/103415.422:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/103415.422:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/103416.799:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/103416.855:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/103416.855:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/103416.855:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/103416.855:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/103434.113:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3823/all_spa.js (1)
+[0907/103441.171:INFO:CONSOLE(0)] "Access to XMLHttpRequest at 'https://api.livechatinc.com/v3.3/customer/action/get_localization?license_id=9263725&version=7d81e6f58641f01128603414cce0510f_779b47bc50d7c18df6f56cab0dacb798&language=hr&group_id=0' from origin 'https://germaniasport.hr' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://www.germaniasport.hr' that is not equal to the supplied origin.", source: https://germaniasport.hr/hr#/date/all (0)
+[0907/103647.589:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 25769803784 [6,8] will be ignored
+[0907/103647.590:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 25769803786 [6,10] will be ignored
+[0907/103649.311:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0907/103649.453:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-ea8ca1ba7432cbc53ff3.js?ea8ca1ba7432cbc53ff3 (1)
+[0907/103649.580:INFO:CONSOLE(1)] "[10:36:49 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103649.581:INFO:CONSOLE(1)] "[10:36:49 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103649.581:INFO:CONSOLE(1)] "[10:36:49 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103649.657:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/103649.657:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 42949672964 [10,4] will be ignored
+[0907/103649.657:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/103649.736:INFO:CONSOLE(1)] "[10:36:49 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=9J%2BRwpFn2Wee50vkdFM%2BGnkMdZNUcfDhnZ2y%2FEIk%2B%2BuAiT9ELl5g3iYCOnMMsDNW%2BNnQJafBfg2EfetfI4%2FuDBypOAe3wKBNlSH080WX%2BO0BHMoiV6HdNpEHIlb3yIY8&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=5'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103649.961:INFO:CONSOLE(1)] "[10:36:49 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103649.961:INFO:CONSOLE(1)] "[10:36:49 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103652.102:INFO:CONSOLE(1)] "[10:36:52 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103652.102:INFO:CONSOLE(1)] "[10:36:52 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103727.708:INFO:CONSOLE(1)] "[10:37:27 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103802.273:INFO:CONSOLE(1)] "[10:38:02 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103847.691:INFO:CONSOLE(1)] "[10:38:47 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103847.691:INFO:CONSOLE(1)] "[10:38:47 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103847.692:INFO:CONSOLE(1)] "[10:38:47 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103847.723:INFO:CONSOLE(1)] "[10:38:47 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103847.723:INFO:CONSOLE(1)] "[10:38:47 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/103847.738:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672965 [10,5] will be ignored
+[0907/104542.156:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/104542.868:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/104542.938:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/104546.920:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/104546.920:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/104546.921:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/104701.530:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/105127.671:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0907/105127.845:INFO:CONSOLE(147)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/duyHVVR9Brf6N2GewjkPRfsA/recaptcha__hr.js (147)
+[0907/105128.019:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/105128.019:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/105128.020:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/105128.020:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/105128.133:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/105130.742:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/105130.742:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/105130.742:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/105130.742:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/105130.802:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/105131.086:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3823/all_spa.js (1)
+[0907/105358.580:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 25769803786 [6,10] will be ignored
+[0907/105359.949:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0907/105400.236:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/105400.236:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 42949672964 [10,4] will be ignored
+[0907/105400.236:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/105400.287:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-ea8ca1ba7432cbc53ff3.js?ea8ca1ba7432cbc53ff3 (1)
+[0907/105400.418:INFO:CONSOLE(1)] "[10:54:00 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105400.419:INFO:CONSOLE(1)] "[10:54:00 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105400.419:INFO:CONSOLE(1)] "[10:54:00 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105400.498:INFO:CONSOLE(1)] "[10:54:00 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=KmPXbcEW6ryoHky2AMXu6ZiHcQu7Hr174s%2F2vf0ilCdKhb4gupBVAjYyyNG4LJicEGEWShq1Spy%2F%2BcNYmO4130Z5dB8IDqK5JisMkcrDAM5RXsXUwcS5RQY1otMi17et&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=8'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105400.626:INFO:CONSOLE(1)] "[10:54:00 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105400.626:INFO:CONSOLE(1)] "[10:54:00 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105400.714:INFO:CONSOLE(1)] "[10:54:00 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105400.714:INFO:CONSOLE(1)] "[10:54:00 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105419.920:INFO:CONSOLE(1)] "[10:54:19 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105541.757:INFO:CONSOLE(1)] "[10:55:41 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105615.213:INFO:CONSOLE(1)] "[10:56:15 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105615.213:INFO:CONSOLE(1)] "[10:56:15 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105615.215:INFO:CONSOLE(1)] "[10:56:15 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105615.217:INFO:CONSOLE(1)] "[10:56:15 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105615.218:INFO:CONSOLE(1)] "[10:56:15 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/105615.226:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672965 [10,5] will be ignored
+[0907/111355.414:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/111837.628:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/113531.222:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/113531.921:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/113531.994:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/113535.969:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/113535.969:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/113535.969:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/113543.391:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/113545.029:INFO:CONSOLE(0)] "Access to XMLHttpRequest at 'https://api.trafficguard.ai/tg-g-006902-005/api/v4/client-side/validate/event' from origin 'https://www.psk.hr' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.", source: https://www.psk.hr/?rateFrom=1.1&rateTo=1000# (0)
+[0907/114110.635:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 21474836485 [5,5] will be ignored
+[0907/114111.169:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0907/114111.323:INFO:CONSOLE(147)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/duyHVVR9Brf6N2GewjkPRfsA/recaptcha__hr.js (147)
+[0907/114111.435:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/114111.491:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/114111.492:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/114111.492:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/114111.492:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/114114.454:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3823/all_spa.js (1)
+[0907/114114.476:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/114114.536:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/114114.536:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/114114.536:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/114114.536:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/114507.542:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0907/114508.494:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/114508.495:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 42949672964 [10,4] will be ignored
+[0907/114508.495:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/114508.560:INFO:CONSOLE(1)] "[11:45:08 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114508.561:INFO:CONSOLE(1)] "[11:45:08 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114508.561:INFO:CONSOLE(1)] "[11:45:08 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114508.563:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-ea8ca1ba7432cbc53ff3.js?ea8ca1ba7432cbc53ff3 (1)
+[0907/114508.702:INFO:CONSOLE(1)] "[11:45:08 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=PxpFXYBxN8eBROPgoZ0vCPqCmXjEXCHMesD6b%2BpZyOIlP1JZKabZlQJRUgIPwzoxi70JeJP7cbgyaWb4KnCC%2BGzfWMClEgadzCzKMf%2B2N60L8Qtp%2BeBbXlMMUnHk8mtE&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=5'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114508.929:INFO:CONSOLE(1)] "[11:45:08 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114508.930:INFO:CONSOLE(1)] "[11:45:08 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114509.030:INFO:CONSOLE(1)] "[11:45:09 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114509.030:INFO:CONSOLE(1)] "[11:45:09 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114516.104:INFO:CONSOLE(1)] "[11:45:16 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114556.743:INFO:CONSOLE(1)] "[11:45:56 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114642.472:INFO:CONSOLE(1)] "[11:46:42 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114710.527:INFO:CONSOLE(1)] "[11:47:10 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114710.528:INFO:CONSOLE(1)] "[11:47:10 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114710.528:INFO:CONSOLE(1)] "[11:47:10 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114710.530:INFO:CONSOLE(1)] "[11:47:10 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114710.530:INFO:CONSOLE(1)] "[11:47:10 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/114710.537:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672965 [10,5] will be ignored
+[0907/115445.375:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/115446.265:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/115446.338:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/115450.304:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/115450.304:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/115450.304:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/120031.655:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0907/120031.852:INFO:CONSOLE(147)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/duyHVVR9Brf6N2GewjkPRfsA/recaptcha__hr.js (147)
+[0907/120031.906:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/120031.953:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/120031.953:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/120031.954:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/120031.954:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/120032.302:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509448 [15,8]
+[0907/120032.338:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509448 [15,8]
+[0907/120032.339:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509448 [15,8]
+[0907/120032.339:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509448 [15,8]
+[0907/120032.339:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509448 [15,8]
+[0907/120035.140:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3823/all_spa.js (1)
+[0907/120236.504:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 55834574858 [13,10] will be ignored
+[0907/120237.556:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0907/120237.671:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476740 [16,4] will be ignored
+[0907/120237.671:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 68719476740 [16,4] will be ignored
+[0907/120237.671:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476740 [16,4] will be ignored
+[0907/120237.710:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-ea8ca1ba7432cbc53ff3.js?ea8ca1ba7432cbc53ff3 (1)
+[0907/120238.084:INFO:CONSOLE(1)] "[12:02:38 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120238.085:INFO:CONSOLE(1)] "[12:02:38 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120238.085:INFO:CONSOLE(1)] "[12:02:38 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120238.341:INFO:CONSOLE(1)] "[12:02:38 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=nBpsrXqA3eP3ZtS%2F3EVZuxHK0NY8lvKCBxtEJ1mb78C%2FlWYoTHjKPCeTHP5IVLlKBIJPhjeNi1anwksEZYTy6me3CrwywZngJShZLEUt54xQx5DqSxADuZbNeK1pbAYi&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=5'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120240.647:INFO:CONSOLE(1)] "[12:02:40 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120240.842:INFO:CONSOLE(1)] "[12:02:40 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120241.039:INFO:CONSOLE(1)] "[12:02:41 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120241.039:INFO:CONSOLE(1)] "[12:02:41 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120248.806:INFO:CONSOLE(1)] "[12:02:48 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120427.386:INFO:CONSOLE(1)] "[12:04:27 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120427.386:INFO:CONSOLE(1)] "[12:04:27 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120427.387:INFO:CONSOLE(1)] "[12:04:27 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120427.388:INFO:CONSOLE(1)] "[12:04:27 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120427.389:INFO:CONSOLE(1)] "[12:04:27 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/120427.417:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476741 [16,5] will be ignored
+[0907/125529.697:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/125531.349:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/125531.451:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/125534.264:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/125534.264:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/125534.265:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/125612.254:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/130108.550:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0907/130108.637:INFO:CONSOLE(147)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/duyHVVR9Brf6N2GewjkPRfsA/recaptcha__hr.js (147)
+[0907/130108.827:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/130108.905:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/130108.906:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/130108.906:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/130108.906:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/130108.912:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/130109.047:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/130109.048:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/130109.048:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/130109.048:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/130115.704:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3823/all_spa.js (1)
+[0907/130321.313:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0907/130321.795:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-ea8ca1ba7432cbc53ff3.js?ea8ca1ba7432cbc53ff3 (1)
+[0907/130321.965:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/130321.965:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 42949672964 [10,4] will be ignored
+[0907/130321.965:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/130321.990:INFO:CONSOLE(1)] "[13:03:21 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130321.990:INFO:CONSOLE(1)] "[13:03:21 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130321.991:INFO:CONSOLE(1)] "[13:03:21 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130322.075:INFO:CONSOLE(1)] "[13:03:22 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=e3JpygH6iMOtxY1%2FSqXqbAmUBLac5yYgvkLfj63ZXelfPSSrlXitkhS63gX02duhzDWMQVHVsMOcjNVY2a8AiFQkdqw2Jz6J3LiaSDJDIDmFvVYW3MqSCYoRfGSBJ2KE&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=4'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130322.251:INFO:CONSOLE(1)] "[13:03:22 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130322.251:INFO:CONSOLE(1)] "[13:03:22 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130322.332:INFO:CONSOLE(1)] "[13:03:22 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130322.332:INFO:CONSOLE(1)] "[13:03:22 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130354.397:INFO:CONSOLE(1)] "[13:03:54 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130436.020:INFO:CONSOLE(1)] "[13:04:36 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130515.491:INFO:CONSOLE(1)] "[13:05:15 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130515.491:INFO:CONSOLE(1)] "[13:05:15 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130515.492:INFO:CONSOLE(1)] "[13:05:15 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130515.851:INFO:CONSOLE(1)] "[13:05:15 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130515.851:INFO:CONSOLE(1)] "[13:05:15 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/130515.956:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672965 [10,5] will be ignored
+[0907/152407.048:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 17179869185 [4,1] will be ignored
+[0907/152412.873:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/152414.387:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/152414.484:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/152417.438:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/152417.438:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/152417.438:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/152532.534:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/153149.519:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/153256.851:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/153257.593:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/153257.665:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/153301.520:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/153301.521:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/153301.521:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/153836.279:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0907/153836.576:INFO:CONSOLE(147)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/duyHVVR9Brf6N2GewjkPRfsA/recaptcha__hr.js (147)
+[0907/153836.745:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/153836.793:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/153836.794:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/153836.794:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/153836.794:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/153841.475:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/153841.553:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3823/all_spa.js (1)
+[0907/153841.568:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/153841.569:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/153841.569:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/153841.569:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/154052.341:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 30064771082 [7,10] will be ignored
+[0907/154054.596:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0907/154054.947:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/154054.948:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 42949672964 [10,4] will be ignored
+[0907/154054.948:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/154057.300:INFO:CONSOLE(1)] "[15:40:57 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154057.301:INFO:CONSOLE(1)] "[15:40:57 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154057.301:INFO:CONSOLE(1)] "[15:40:57 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154057.303:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-ea8ca1ba7432cbc53ff3.js?ea8ca1ba7432cbc53ff3 (1)
+[0907/154057.735:INFO:CONSOLE(1)] "[15:40:57 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=SExgCWK5nvM4YbQheNSRe0F2UBX6Z3Q7xA0p0N3kJu5faKVPgufcUZaXrj4Bm8FrXkee%2FtaGd0gWzL%2Fb4N0gH%2BjV%2Fc6SRKcZoYh0wwBjgp1Ajtg5R4grmbwa7zvFpC7u&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=7'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154058.055:INFO:CONSOLE(1)] "[15:40:58 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154058.074:INFO:CONSOLE(1)] "[15:40:58 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154058.235:INFO:CONSOLE(1)] "[15:40:58 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154058.235:INFO:CONSOLE(1)] "[15:40:58 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154137.281:INFO:CONSOLE(1)] "[15:41:37 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154216.068:INFO:CONSOLE(1)] "[15:42:16 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154243.516:INFO:CONSOLE(1)] "[15:42:43 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154243.517:INFO:CONSOLE(1)] "[15:42:43 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154243.517:INFO:CONSOLE(1)] "[15:42:43 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154243.756:INFO:CONSOLE(1)] "[15:42:43 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/154243.757:INFO:CONSOLE(1)] "[15:42:43 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/155141.096:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/155141.811:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/155141.885:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/155145.819:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/155145.819:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/155145.819:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/160242.550:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/160243.481:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/160243.551:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/160247.215:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/160247.215:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/160247.215:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/160255.845:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/160827.572:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0907/160827.792:INFO:CONSOLE(147)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/duyHVVR9Brf6N2GewjkPRfsA/recaptcha__hr.js (147)
+[0907/160827.970:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/160828.064:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/160828.065:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/160828.065:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/160828.065:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/160828.712:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/160828.747:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/160828.747:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/160828.747:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/160828.748:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0907/160832.889:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3823/all_spa.js (1)
+[0907/161043.683:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 25769803786 [6,10] will be ignored
+[0907/161045.384:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0907/161045.808:INFO:CONSOLE(1)] "[16:10:45 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161045.808:INFO:CONSOLE(1)] "[16:10:45 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161045.809:INFO:CONSOLE(1)] "[16:10:45 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161045.810:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-ea8ca1ba7432cbc53ff3.js?ea8ca1ba7432cbc53ff3 (1)
+[0907/161045.946:INFO:CONSOLE(1)] "[16:10:45 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=d40doy9KlynsE5e5iNhyNJtwsOngO9Ei06FvjFy5K058Nw3b78JyRZYCxCSLf%2BbW69z120q13yyRZTdn8bwJuXX1z1EHm7Z6ypGi79VFqcQwIEJpl4qN0bBBsVmBG5mb&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=4'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161045.992:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/161045.992:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 42949672964 [10,4] will be ignored
+[0907/161045.992:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/161046.543:INFO:CONSOLE(1)] "[16:10:46 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161046.543:INFO:CONSOLE(1)] "[16:10:46 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161050.134:INFO:CONSOLE(1)] "[16:10:50 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161050.135:INFO:CONSOLE(1)] "[16:10:50 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161050.400:INFO:CONSOLE(1)] "[16:10:50 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161210.848:INFO:CONSOLE(1)] "[16:12:10 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161229.425:INFO:CONSOLE(1)] "[16:12:29 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161229.427:INFO:CONSOLE(1)] "[16:12:29 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161229.428:INFO:CONSOLE(1)] "[16:12:29 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161229.459:INFO:CONSOLE(1)] "[16:12:29 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161229.459:INFO:CONSOLE(1)] "[16:12:29 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/161229.474:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672965 [10,5] will be ignored
+[0907/170346.468:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/170347.803:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/170347.873:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/170351.343:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/170351.343:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/170351.343:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/170356.910:INFO:CONSOLE(0)] "Access to XMLHttpRequest at 'https://api.trafficguard.ai/tg-g-006902-005/api/v4/client-side/validate/event' from origin 'https://www.psk.hr' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.", source: https://www.psk.hr/?rateFrom=1.1&rateTo=1000# (0)
+[0907/170908.291:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 51539607557 [12,5] will be ignored
+[0907/170908.595:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0907/170908.619:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 51539607553 [12,1] will be ignored
+[0907/170911.814:INFO:CONSOLE(147)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/duyHVVR9Brf6N2GewjkPRfsA/recaptcha__hr.js (147)
+[0907/170913.904:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/170913.905:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/170913.905:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/170913.905:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/170913.966:WARNING:browser_info.cc(301)] Returning a speculative frame for 60129542149 [14,5]
+[0907/170914.127:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509446 [15,6]
+[0907/170914.205:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509446 [15,6]
+[0907/170914.205:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509446 [15,6]
+[0907/170914.206:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509446 [15,6]
+[0907/170914.206:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509446 [15,6]
+[0907/170930.645:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3823/all_spa.js (1)
+[0907/171134.519:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 55834574856 [13,8] will be ignored
+[0907/171134.519:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 55834574858 [13,10] will be ignored
+[0907/171135.662:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0907/171136.226:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476740 [16,4] will be ignored
+[0907/171136.227:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 68719476740 [16,4] will be ignored
+[0907/171136.227:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476740 [16,4] will be ignored
+[0907/171136.330:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-ea8ca1ba7432cbc53ff3.js?ea8ca1ba7432cbc53ff3 (1)
+[0907/171136.454:INFO:CONSOLE(1)] "[17:11:36 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171136.455:INFO:CONSOLE(1)] "[17:11:36 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171136.455:INFO:CONSOLE(1)] "[17:11:36 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171136.569:INFO:CONSOLE(1)] "[17:11:36 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=BrbXATAa6hTiaMnVxGc6VgOQhDHEVUitUEx%2B6EYL%2B%2FwUSh5D%2BPJa7WCns0F1JvcISXoe9j2i0fpHG1rnZ%2BTQKlBeE7hsibhDKieHJCMNFyQ5uoOuRhUovzadWqedAs3I&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=2'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171136.754:INFO:CONSOLE(1)] "[17:11:36 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171136.755:INFO:CONSOLE(1)] "[17:11:36 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171136.858:INFO:CONSOLE(1)] "[17:11:36 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171136.858:INFO:CONSOLE(1)] "[17:11:36 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171205.885:INFO:CONSOLE(1)] "[17:12:05 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171244.523:INFO:CONSOLE(1)] "[17:12:44 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171311.080:INFO:CONSOLE(1)] "[17:13:11 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171311.080:INFO:CONSOLE(1)] "[17:13:11 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171311.081:INFO:CONSOLE(1)] "[17:13:11 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171311.448:INFO:CONSOLE(1)] "[17:13:11 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/171311.449:INFO:CONSOLE(1)] "[17:13:11 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/213240.442:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/213241.763:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/213241.930:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/213244.443:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/213244.443:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/213244.443:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/213432.069:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/213757.115:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 17179869185 [4,1] will be ignored
+[0907/213802.368:INFO:CONSOLE(265)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (265)
+[0907/213802.986:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/213803.060:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2aac2594f2187ff5e9a65d1bfe095e53.js (259)
+[0907/213807.190:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0907/213807.190:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0907/213807.190:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0907/213852.086:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0907/214553.062:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 21474836485 [5,5] will be ignored
+[0907/214553.573:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0907/214553.914:INFO:CONSOLE(147)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/duyHVVR9Brf6N2GewjkPRfsA/recaptcha__hr.js (147)
+[0907/214554.042:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/214554.113:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/214554.113:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/214554.114:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/214554.114:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0907/214558.130:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/214558.169:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/214558.189:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/214558.190:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/214558.190:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0907/214558.191:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3823/all_spa.js (1)
+[0907/214757.386:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 25769803786 [6,10] will be ignored
+[0907/214759.360:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0907/214800.011:INFO:CONSOLE(1)] "[21:48:00 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214800.011:INFO:CONSOLE(1)] "[21:48:00 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214800.011:INFO:CONSOLE(1)] "[21:48:00 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214800.014:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-ea8ca1ba7432cbc53ff3.js?ea8ca1ba7432cbc53ff3 (1)
+[0907/214800.187:INFO:CONSOLE(1)] "[21:48:00 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=0QuzYYLA7OgktS%2BOZfFELdC3kq9tHfYZYyjxpyZRF%2BvY5ZEUpdgscU77%2Fp3KybNjyexv%2F5XNtK7yEE2TSN%2BWcrx9QQ86e4mA6VMBJbkhfbjH5sf5kOambtPh5%2FDaFH6Q&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=0'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214800.242:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/214800.242:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 42949672964 [10,4] will be ignored
+[0907/214800.242:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672964 [10,4] will be ignored
+[0907/214800.321:INFO:CONSOLE(1)] "[21:48:00 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214800.321:INFO:CONSOLE(1)] "[21:48:00 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214800.406:INFO:CONSOLE(1)] "[21:48:00 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214800.407:INFO:CONSOLE(1)] "[21:48:00 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214813.564:INFO:CONSOLE(1)] "[21:48:13 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214859.548:INFO:CONSOLE(1)] "[21:48:59 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214928.452:INFO:CONSOLE(1)] "[21:49:28 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214928.453:INFO:CONSOLE(1)] "[21:49:28 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214928.454:INFO:CONSOLE(1)] "[21:49:28 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214928.486:INFO:CONSOLE(1)] "[21:49:28 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214928.486:INFO:CONSOLE(1)] "[21:49:28 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0907/214928.493:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 42949672965 [10,5] will be ignored

@@ -14,6 +14,10 @@ namespace Klada_v3.Model
     
     public partial class CalcOddsTable
     {
+        public CalcOddsTable()
+        {
+
+        }
         public CalcOddsTable(int eventID, string home, string away, string eventTime, decimal? odd1, string klada1, decimal? oddX, string kladaX, decimal? odd2, string klada2, decimal? odd1X, string klada1X, decimal? oddX2, string kladaX2, decimal? odd12, string klada12)
         {
             EventID = eventID;
@@ -54,6 +58,7 @@ namespace Klada_v3.Model
         public string SportType { get; set; }
         public Nullable<int> SportTypeID { get; set; }
         public Nullable<System.DateTime> EventDateTime { get; set; }
-        public System.Guid MatchSystemID { get; set; }
+        public System.Guid HomeSystemID { get; set; }
+        public System.Guid AwaySystemID { get; set; }
     }
 }

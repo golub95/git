@@ -29,7 +29,8 @@
           <Property Name="CalcOdd" Type="decimal" Precision="18" Scale="6" />
           <Property Name="SportType" Type="varchar" MaxLength="100" />
           <Property Name="SportTypeID" Type="int" />
-          <Property Name="MatchSystemID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HomeSystemID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AwaySystemID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="MatchSystemIDs">
           <Key>
@@ -64,7 +65,8 @@
           <Property Name="KladaName" Type="varchar" MaxLength="10" />
           <Property Name="SportType" Type="varchar" MaxLength="100" />
           <Property Name="SportTypeID" Type="int" />
-          <Property Name="MatchSystemID" Type="uniqueidentifier" />
+          <Property Name="HomeSystemID" Type="uniqueidentifier" />
+          <Property Name="AwaySystemID" Type="uniqueidentifier" />
         </EntityType>
         <EntityContainer Name="HRKladeModelStoreContainer">
           <EntitySet Name="CalcOddsTable" EntityType="Self.CalcOddsTable" Schema="dbo" store:Type="Tables" />
@@ -104,7 +106,8 @@
           <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SportTypeID" Type="Int32" />
           <Property Name="EventDateTime" Type="DateTime" Precision="3" />
-          <Property Name="MatchSystemID" Type="Guid" Nullable="false" />
+          <Property Name="HomeSystemID" Type="Guid" Nullable="false" />
+          <Property Name="AwaySystemID" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="OddsTable">
           <Key>
@@ -128,7 +131,8 @@
           <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SportTypeID" Type="Int32" />
           <Property Name="EventDateTime" Type="DateTime" Precision="3" />
-          <Property Name="MatchSystemID" Type="Guid" />
+          <Property Name="HomeSystemID" Type="Guid" />
+          <Property Name="AwaySystemID" Type="Guid" />
         </EntityType>
         <EntityType Name="MatchSystemIDs">
           <Key>
@@ -150,7 +154,8 @@
           <EntitySetMapping Name="CalcOddsTable">
             <EntityTypeMapping TypeName="HRKladeModel.CalcOddsTable">
               <MappingFragment StoreEntitySet="CalcOddsTable">
-                <ScalarProperty Name="MatchSystemID" ColumnName="MatchSystemID" />
+                <ScalarProperty Name="AwaySystemID" ColumnName="AwaySystemID" />
+                <ScalarProperty Name="HomeSystemID" ColumnName="HomeSystemID" />
                 <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
                 <ScalarProperty Name="SportTypeID" ColumnName="SportTypeID" />
                 <ScalarProperty Name="SportType" ColumnName="SportType" />
@@ -177,7 +182,8 @@
           <EntitySetMapping Name="OddsTable">
             <EntityTypeMapping TypeName="HRKladeModel.OddsTable">
               <MappingFragment StoreEntitySet="OddsTable">
-                <ScalarProperty Name="MatchSystemID" ColumnName="MatchSystemID" />
+                <ScalarProperty Name="AwaySystemID" ColumnName="AwaySystemID" />
+                <ScalarProperty Name="HomeSystemID" ColumnName="HomeSystemID" />
                 <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
                 <ScalarProperty Name="SportTypeID" ColumnName="SportTypeID" />
                 <ScalarProperty Name="SportType" ColumnName="SportType" />

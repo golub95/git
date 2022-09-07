@@ -389,10 +389,10 @@ namespace Klada_v3
                         db.OddsTable.Add(match);
                         if (!doNotSaveEvent || (match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
                         { 
-                         db.SaveChanges();
-
                             Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
-                            match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                            match.HomeSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.SportTypeID.Value, match.KladaName);
+                            match.AwaySystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Away, match.SportTypeID.Value, match.KladaName);
+                            db.SaveChanges();
                         }
                         match = new OddsTable();
                         dateTime = string.Empty;
@@ -518,8 +518,8 @@ namespace Klada_v3
                             {
                                 away = away.Substring(0, doubleEmptySpaces); // This will remove all text after two whitespace
                             }
-                            match.Home = home.TrimEnd();
-                            match.Away = away.TrimEnd();
+                            match.Home = home.Trim();
+                            match.Away = away.Trim();
                             db.OddsTable.Add(match);
                             RowCounter = 1;
                             continue;
@@ -532,7 +532,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.Odd1 = parsedValue;
+                            match.Odd1 = Math.Abs(parsedValue); 
                             db.OddsTable.Add(match);
                             RowCounter = 2;
                             continue;
@@ -545,7 +545,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.Odd2 = parsedValue;
+                            match.Odd2 = Math.Abs(parsedValue); 
                             db.OddsTable.Add(match);
                             RowCounter = 3;
                             continue;
@@ -575,8 +575,8 @@ namespace Klada_v3
                             {
                                 away = away.Substring(0, doubleEmptySpaces); // This will remove all text after two whitespace
                             }
-                            match.Home = home.TrimEnd();
-                            match.Away = away.TrimEnd();
+                            match.Home = home.Trim();
+                            match.Away = away.Trim();
                             db.OddsTable.Add(match);
                             RowCounter = 1;
                             continue;
@@ -589,7 +589,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.Odd1 = parsedValue;
+                            match.Odd1 = Math.Abs(parsedValue);
                             db.OddsTable.Add(match);
                             RowCounter = 2;
                             continue;
@@ -602,7 +602,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.OddX = parsedValue;
+                            match.OddX = Math.Abs(parsedValue);
                             db.OddsTable.Add(match);
                             RowCounter = 3;
                             continue;
@@ -615,7 +615,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.Odd2 = parsedValue;
+                            match.Odd2 = Math.Abs(parsedValue); 
                             db.OddsTable.Add(match);
                             RowCounter = 4;
                             continue;
@@ -641,8 +641,8 @@ namespace Klada_v3
                             {
                                 away = away.Substring(0, doubleEmptySpaces); // This will remove all text after two whitespace
                             }
-                            match.Home = home.TrimEnd();
-                            match.Away = away.TrimEnd();
+                            match.Home = home.Trim();
+                            match.Away = away.Trim();
                             db.OddsTable.Add(match);
                             RowCounter = 1;
                             continue;
@@ -655,7 +655,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.Odd1 = parsedValue;
+                            match.Odd1 = Math.Abs(parsedValue); ;
                             db.OddsTable.Add(match);
                             RowCounter = 2;
                             continue;
@@ -668,7 +668,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.OddX = parsedValue;
+                            match.OddX = Math.Abs(parsedValue); ;
                             db.OddsTable.Add(match);
                             RowCounter = 3;
                             continue;
@@ -681,7 +681,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.Odd2 = parsedValue;
+                            match.Odd2 = Math.Abs(parsedValue); ;
                             db.OddsTable.Add(match);
                             RowCounter = 4;
                             continue;
@@ -694,7 +694,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.Odd1X = parsedValue;
+                            match.Odd1X = Math.Abs(parsedValue); ;
                             db.OddsTable.Add(match);
                             RowCounter = 5;
                             continue;
@@ -707,7 +707,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.OddX2 = parsedValue;
+                            match.OddX2 = Math.Abs(parsedValue); ;
                             db.OddsTable.Add(match);
                             RowCounter = 6;
                             continue;
@@ -720,7 +720,7 @@ namespace Klada_v3
                                 RowCounter = 0;
                                 continue;
                             }
-                            match.Odd12 = parsedValue;
+                            match.Odd12 = Math.Abs(parsedValue); ;
                             db.OddsTable.Add(match);
                             RowCounter = 7;
                             continue;
@@ -753,10 +753,10 @@ namespace Klada_v3
                 db.OddsTable.Add(match);
                 if (!doNotSaveEvent || (match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
                 { 
+                    Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
+                    match.HomeSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.SportTypeID.Value, match.KladaName);
+                    match.AwaySystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Away, match.SportTypeID.Value, match.KladaName);
                     db.SaveChanges();
-
-                Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
-                match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
                 }
                 match = new OddsTable();
                 RowCounter = 0;

@@ -29,7 +29,8 @@
     <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="SportTypeID" Type="Int32" />
     <Property Name="EventDateTime" Type="DateTime" Precision="3" />
-    <Property Name="MatchSystemID" Type="Guid" Nullable="false" />
+    <Property Name="HomeSystemID" Type="Guid" Nullable="false" />
+    <Property Name="AwaySystemID" Type="Guid" Nullable="false" />
   </EntityType>
   <EntityType Name="OddsTable">
     <Key>
@@ -53,7 +54,8 @@
     <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="SportTypeID" Type="Int32" />
     <Property Name="EventDateTime" Type="DateTime" Precision="3" />
-    <Property Name="MatchSystemID" Type="Guid" />
+    <Property Name="HomeSystemID" Type="Guid" />
+    <Property Name="AwaySystemID" Type="Guid" />
   </EntityType>
   <EntityType Name="MatchSystemIDs">
     <Key>

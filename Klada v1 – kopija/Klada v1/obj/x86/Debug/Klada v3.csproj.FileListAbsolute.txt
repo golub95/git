@@ -419,3 +419,4 @@ D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v3.csproj.
 D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v3.csproj.CopyComplete
 D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v3.exe
 D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v3.pdb
+D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v3.csprojAssemblyReference.cache

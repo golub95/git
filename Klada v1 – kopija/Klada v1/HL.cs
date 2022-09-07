@@ -360,10 +360,10 @@ namespace Klada_v3
                         db.OddsTable.Add(match);
                         if ((match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
                         {
-                            db.SaveChanges();
-
                             Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
-                            match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                            match.HomeSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.SportTypeID.Value, match.KladaName);
+                            match.AwaySystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Away, match.SportTypeID.Value, match.KladaName);
+                            db.SaveChanges();
                         }
                         match = new OddsTable();
                         RowCounter = 0;
@@ -459,8 +459,8 @@ namespace Klada_v3
                     {
                         away = away.Substring(0, doubleEmptySpaces); // This will remove all text after two whitespace
                     }
-                    match.Home = home.TrimEnd();
-                    match.Away = away.TrimEnd();
+                    match.Home = home.Trim();
+                    match.Away = away.Trim();
                     db.OddsTable.Add(match);
                     continue;
                 }
@@ -553,10 +553,10 @@ namespace Klada_v3
 
                 if ((match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
                 { 
-                    db.SaveChanges();
-
                     Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
-                    match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                    match.HomeSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.SportTypeID.Value, match.KladaName);
+                    match.AwaySystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Away, match.SportTypeID.Value, match.KladaName);
+                    db.SaveChanges();
                 }
                 match = new OddsTable();
                 RowCounter = 0;

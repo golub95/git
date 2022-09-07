@@ -24,7 +24,8 @@
     <Property Name="CalcOdd" Type="decimal" Precision="18" Scale="6" />
     <Property Name="SportType" Type="varchar" MaxLength="100" />
     <Property Name="SportTypeID" Type="int" />
-    <Property Name="MatchSystemID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="HomeSystemID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AwaySystemID" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="MatchSystemIDs">
     <Key>
@@ -59,7 +60,8 @@
     <Property Name="KladaName" Type="varchar" MaxLength="10" />
     <Property Name="SportType" Type="varchar" MaxLength="100" />
     <Property Name="SportTypeID" Type="int" />
-    <Property Name="MatchSystemID" Type="uniqueidentifier" />
+    <Property Name="HomeSystemID" Type="uniqueidentifier" />
+    <Property Name="AwaySystemID" Type="uniqueidentifier" />
   </EntityType>
   <EntityContainer Name="HRKladeModelStoreContainer">
     <EntitySet Name="CalcOddsTable" EntityType="Self.CalcOddsTable" Schema="dbo" store:Type="Tables" />
