@@ -406,7 +406,6 @@ D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\bin\x86\Debug\EntityFramework.
 D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\bin\x86\Debug\EntityFramework.SqlServer.xml
 D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\bin\x86\Debug\HtmlAgilityPack.pdb
 D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\bin\x86\Debug\HtmlAgilityPack.xml
-D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v3.csprojAssemblyReference.cache
 D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada v3.exe.config
 D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v3.FormPSK.resources
 D:\Repository\Ucenje\Klada v1 – kopija\Klada v1\obj\x86\Debug\Klada_v3.FormGermania.resources
