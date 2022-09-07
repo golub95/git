@@ -3,6 +3,7 @@
   <EntityContainer Name="HRKladeEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CalcOddsTable" EntityType="HRKladeModel.CalcOddsTable" />
     <EntitySet Name="OddsTable" EntityType="HRKladeModel.OddsTable" />
+    <EntitySet Name="MatchSystemIDs" EntityType="HRKladeModel.MatchSystemIDs" />
   </EntityContainer>
   <EntityType Name="CalcOddsTable">
     <Key>
@@ -27,6 +28,8 @@
     <Property Name="CalcOdd" Type="Decimal" Precision="18" Scale="6" />
     <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="SportTypeID" Type="Int32" />
+    <Property Name="EventDateTime" Type="DateTime" Precision="3" />
+    <Property Name="MatchSystemID" Type="Guid" Nullable="false" />
   </EntityType>
   <EntityType Name="OddsTable">
     <Key>
@@ -50,5 +53,17 @@
     <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="SportTypeID" Type="Int32" />
     <Property Name="EventDateTime" Type="DateTime" Precision="3" />
+    <Property Name="MatchSystemID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="MatchSystemIDs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventSystemID" Type="Guid" Nullable="false" />
+    <Property Name="EventName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EventDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventSportTypeID" Type="Int32" Nullable="false" />
+    <Property Name="KladaName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

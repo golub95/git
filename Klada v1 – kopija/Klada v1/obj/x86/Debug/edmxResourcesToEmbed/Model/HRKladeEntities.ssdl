@@ -8,6 +8,7 @@
     <Property Name="Home" Type="varchar" MaxLength="50" />
     <Property Name="Away" Type="varchar" MaxLength="50" />
     <Property Name="EventTime" Type="varchar" MaxLength="20" />
+    <Property Name="EventDateTime" Type="datetime" />
     <Property Name="Odd1" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Klada1" Type="varchar" MaxLength="10" />
     <Property Name="OddX" Type="decimal" Precision="18" Scale="2" />
@@ -23,6 +24,18 @@
     <Property Name="CalcOdd" Type="decimal" Precision="18" Scale="6" />
     <Property Name="SportType" Type="varchar" MaxLength="100" />
     <Property Name="SportTypeID" Type="int" />
+    <Property Name="MatchSystemID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MatchSystemIDs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventSystemID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EventName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EventDateTime" Type="datetime" Nullable="false" />
+    <Property Name="EventSportTypeID" Type="int" Nullable="false" />
+    <Property Name="KladaName" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="OddsTable">
     <Key>
@@ -46,9 +59,11 @@
     <Property Name="KladaName" Type="varchar" MaxLength="10" />
     <Property Name="SportType" Type="varchar" MaxLength="100" />
     <Property Name="SportTypeID" Type="int" />
+    <Property Name="MatchSystemID" Type="uniqueidentifier" />
   </EntityType>
   <EntityContainer Name="HRKladeModelStoreContainer">
     <EntitySet Name="CalcOddsTable" EntityType="Self.CalcOddsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MatchSystemIDs" EntityType="Self.MatchSystemIDs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OddsTable" EntityType="Self.OddsTable" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

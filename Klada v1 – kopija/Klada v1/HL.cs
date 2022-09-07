@@ -355,10 +355,16 @@ namespace Klada_v3
                         match.SportType = previusSportType; // new sport type is generated for new Event (date) 
                         match.InPlay = false;
                         match.EventDateTime = Home.GetDatetimeFromString(dateTime);
+                        match.SportTypeID = Home.FindAndInsertSportTypeID(match.SportType);
 
                         db.OddsTable.Add(match);
-                        if (match.Home != string.Empty && match.Away != string.Empty)
+                        if ((match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
+                        {
                             db.SaveChanges();
+
+                            Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
+                            match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                        }
                         match = new OddsTable();
                         RowCounter = 0;
                     }
@@ -382,7 +388,7 @@ namespace Klada_v3
                 }
 
                 RowCounter++; // foreach new node increase row counter
-                previusSportType = sportType;
+                previusSportType = sportType; // set current sport type to previus sport type (last event in table sportType bugfix)
 
                 #region Set Odd Table
                 switch (currentItem)
@@ -542,12 +548,16 @@ namespace Klada_v3
                 match.SportType = sportType;
                 match.InPlay = false;
                 match.EventDateTime = Home.GetDatetimeFromString(dateTime);
-
+                match.SportTypeID = Home.FindAndInsertSportTypeID(match.SportType);
                 db.OddsTable.Add(match);
 
-                if (match.Home != string.Empty && match.Away != string.Empty)
+                if ((match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
+                { 
                     db.SaveChanges();
 
+                    Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
+                    match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                }
                 match = new OddsTable();
                 RowCounter = 0;
             }

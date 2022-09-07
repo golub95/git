@@ -27,5 +27,6 @@ namespace Klada_v3.Model
     
         public virtual DbSet<CalcOddsTable> CalcOddsTable { get; set; }
         public virtual DbSet<OddsTable> OddsTable { get; set; }
+        public virtual DbSet<MatchSystemIDs> MatchSystemIDs { get; set; }
     }
 }

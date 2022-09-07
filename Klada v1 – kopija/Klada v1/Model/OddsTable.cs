@@ -32,5 +32,6 @@ namespace Klada_v3.Model
         public string SportType { get; set; }
         public Nullable<int> SportTypeID { get; set; }
         public Nullable<System.DateTime> EventDateTime { get; set; }
+        public Nullable<System.Guid> MatchSystemID { get; set; }
     }
 }

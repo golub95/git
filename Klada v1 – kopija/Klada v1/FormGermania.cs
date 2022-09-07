@@ -58,7 +58,7 @@ namespace Klada_v3
         {
             LinkList = new List<string>();
             LinkList.Add("https://germaniasport.hr/hr#/date/all"); //
-            //LinkList.Add("https://germaniasport.hr/hr#/date/all?sid=69");
+            //LinkList.Add("https://www.germaniasport.hr/hr#/betting/?sid=7");
         }
 
         public void InitializeChromium()
@@ -213,7 +213,7 @@ namespace Klada_v3
 
             var clickAndScrollScript = @"
                             (function () {
-                                document.querySelector('.buttonLoad').click();
+                                document.querySelector('.buttonLoad:last-child').click();
                                 scrollTo(0, document.body.scrollHeight)
                                     var result = true;
 
@@ -306,20 +306,26 @@ namespace Klada_v3
             //                      select new { Cell_Text = table.InnerText };
 
             //var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes("//div[contains(@class, 'sportInfo')] | //div[@class = 'time'] | //div[contains(@class, 'subgameheader')]  | //a[contains(@class, 'pairs')]/div/span | //span[contains(@class, 'betting-regular-match')]").Cast<HtmlNode>();
-            string xpathSportType = "//div[contains(@class, 'sportInfo')]";
+
+            //div[contains(normalize-space(@class), 'xyz ng-binding ng-scope') and not(contains(@class, 'ng-hide'))]
+
+            string xpathSportType = "//div[not(contains(@class, 'specComp'))]/div[contains(@class, 'sportInfo')]";
             string xpathTime = "//div[@class = 'time']";
-            string xpathOddTypesPart = "//div[contains(@class, 'partvar-min subgameheader')]";
+            string xpathOddTypesPart1 = "//div[2]/div[contains(@class, 'partvar-min subgameheader')]";
+            string xpathOddTypesPart2 = "//div[3]/div[contains(@class, 'partvar-min subgameheader')]";
             string xpathPairsPart1 = "//div[contains(@class, 'match-id')]//a[contains(@class, 'pairs')]/div/span[1]";
-            string xpathPairsPart2 = "//div[contains(@class, 'match-id')]//a[contains(@class, 'pairs')]/div/span[2]"; 
-            string xpathOddsPart = "//span[contains(@class, 'betting-regular-match')]"; ;//"//div[contains(@class, 'partvar odds')]";
-            var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathSportType + "|" + xpathTime + "|" + xpathOddTypesPart /*+ "|" + xpathOddTypesPart2*/ + "|" + xpathPairsPart1 + "|" + xpathPairsPart2 + "|" + xpathOddsPart /*+ "|" + xpathOddsPart2*/).Cast<HtmlNode>();
+            string xpathPairsPart2 = "//div[contains(@class, 'match-id')]//a[contains(@class, 'pairs')]/div/span[2]";
+            //string xpathOddsPart = "//span[contains(@class, 'betting-regular-match')]"; ;//"//div[contains(@class, 'partvar odds')]";
+            string xpathOddsPart1 = "//div[1]/div[@class = 'partvar odds']";
+            string xpathOddsPart2 = "//div[2]/div[@class = 'partvar odds']";
+            var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathSportType + "|" + xpathTime + "|" + xpathOddTypesPart1 + "|" + xpathOddTypesPart2 + "|" + xpathPairsPart1 + "|" + xpathPairsPart2 + "|" + xpathOddsPart1 + "|" + xpathOddsPart2).Cast<HtmlNode>();
 
             #region Save list to txt Test ONLY 
             // For Testing
-            //var HTMLTableTRListHumanReadable = from table in HTMLTableTRList select new { Cell_Text = table.InnerText };
-            //string combinedString = string.Join(",", HTMLTableTRListHumanReadable);
-            //string path = "C:\\Temp/download.txt";
-            //File.WriteAllText(path, combinedString);
+            var HTMLTableTRListHumanReadable = from table in HTMLTableTRList select new { Cell_Text = table.InnerText };
+            string combinedString = string.Join(",", HTMLTableTRListHumanReadable);
+            string path = "C:\\Temp/download.txt";
+            File.WriteAllText(path, combinedString);
 
             #endregion Save list to txt Test ONLY
 
@@ -333,8 +339,39 @@ namespace Klada_v3
 
                 if (node.HasAttributes && node.Attributes.First().Value.Contains("sportInfo")) // if New Sport Type
                 {
+                    #region Save record from previus sport type to DB
+                    // Check if all string property in match class is null
+                    bool isNullmatch = match.GetType().GetProperties()
+                                    .Where(pi => pi.GetValue(match) is string)
+                                    .All(p => p.GetValue(match) == null);
+
+                    if (!isNullmatch) // If object is not null Save previus record to DB
+                    {
+                        match.EventTime = dateTime;
+                        match.Created = DateTime.UtcNow;
+                        match.KladaName = "Germania";
+                        match.SportType = sportType;
+                        match.InPlay = false;
+                        match.EventDateTime = Home.GetDatetimeFromString(dateTime);
+                        match.SportTypeID = Home.FindAndInsertSportTypeID(match.SportType);
+
+                        db.OddsTable.Add(match);
+
+                        if ((match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
+                        { 
+                            db.SaveChanges();
+
+                            Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
+                            match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                        }
+                        match = new OddsTable();
+                        RowCounter = 0;
+                        dateTime = string.Empty;
+                    }
+                    #endregion save record from previus sport type to DB
+
                     #region filter Sport types
-                    if (currentItem.Contains("fantasy"))
+                    if (currentItem.ToLower().Contains("golovi") || currentItem.Contains("igrači"))
                     {
                         RowCounter = 0;
                         continue;
@@ -363,13 +400,21 @@ namespace Klada_v3
                         match.SportType = sportType;
                         match.InPlay = false;
                         match.EventDateTime = Home.GetDatetimeFromString(dateTime);
+                        match.SportTypeID = Home.FindAndInsertSportTypeID(match.SportType);
 
                         db.OddsTable.Add(match);
-                        db.SaveChanges();
+
+                        if ((match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
+                        {
+                            db.SaveChanges();
+
+                            Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
+                            match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                        }
                         match = new OddsTable();
                         RowCounter = 0;
+                        dateTime = string.Empty;
                     }
-
                     dateTime = currentItem;
                     nextRecord = true;
                     continue;
@@ -385,16 +430,15 @@ namespace Klada_v3
                     hasOdd1X = false;
                     hasOddX2 = false;
                     hasOdd12 = false;
-                    dateTime = string.Empty;
                     oddTableInitialization = false;
                     oddTableSetCompleated = false;
                     totalrows = 0;
                     RowCounter = 0;
                 }
-
                 #endregion Reset params
 
                 #region Set Odd Table
+
                 if (!oddTableSetCompleated)
                 {
                     switch (currentItem)
@@ -447,12 +491,15 @@ namespace Klada_v3
                 #region RowCounterFIX for sports
                 if (sportType == "Baseball")
                     totalrows = 2;
-
                 #endregion RowCounterFIX for sports
 
                 #endregion Set Odd Table
 
                 #region Save to Class
+                //if (node.HasAttributes && node.Attributes.Count > 1 && node.Attributes[1].Value.Contains("partvar-min subgameheade"))
+                //    continue;
+                if (node.Attributes.Any(p => p.Value.Contains("partvar-min subgameheade"))) // If Any of Attributes contain class
+                    continue;
                 if (oddTableSetCompleated && nextRecord) // Save table values to database
                 {
                     if (totalrows == 2) // there are only 1 X 2 Odds
@@ -495,7 +542,7 @@ namespace Klada_v3
                             }
                             match.Odd2 = parsedValue;
                             db.OddsTable.Add(match);
-
+                            RowCounter = 4;
                             continue;
                         }
                     }
@@ -552,7 +599,7 @@ namespace Klada_v3
                             }
                             match.Odd2 = parsedValue;
                             db.OddsTable.Add(match);
-
+                            RowCounter = 5;
                             continue;
                         }
                     }
@@ -661,7 +708,7 @@ namespace Klada_v3
                             }
                             match.OddX2 = parsedValue;
                             db.OddsTable.Add(match);
-
+                            RowCounter = 8;
                             continue;
                         }
                     }
@@ -682,9 +729,16 @@ namespace Klada_v3
                 match.SportType = sportType;
                 match.InPlay = false;
                 match.EventDateTime = Home.GetDatetimeFromString(dateTime);
+                match.SportTypeID = Home.FindAndInsertSportTypeID(match.SportType);
 
                 db.OddsTable.Add(match);
-                db.SaveChanges();
+                if ((match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
+                { 
+                    db.SaveChanges();
+
+                    Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
+                    match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                }
                 match = new OddsTable();
                 RowCounter = 0;
             }

@@ -38,6 +38,7 @@ namespace Klada_v3
         bool hasVrijeme = false;
         bool oddTableInitialization = false;
         bool oddTableSetCompleated = false;
+        bool doNotSaveEvent = false;
         int totalrows = 0;
         string eventInfoNumber = string.Empty;
         string sportType = string.Empty;
@@ -356,12 +357,14 @@ namespace Klada_v3
                     RowCounter = 0;
                     continue;
                 }
-                #region Logic from Germania EDIT
                 if (node.HasAttributes && node.Attributes.First().Value.Contains("sport-name")) // if New Sport Type
                 {
                     sportType = Regex.Replace(currentItem, @"\s+", "");
                     oddTableInitialization = true;
                     oddTableSetCompleated = false;
+                    doNotSaveEvent = false;
+                    if (currentItem == "Duel")
+                        doNotSaveEvent = true;
                     continue;
                 }
 
@@ -381,18 +384,24 @@ namespace Klada_v3
                         match.SportType = sportType;
                         match.InPlay = false;
                         match.EventDateTime = Home.GetDatetimeFromString(dateTime);
+                        match.SportTypeID = Home.FindAndInsertSportTypeID(match.SportType);
 
                         db.OddsTable.Add(match);
-                        db.SaveChanges();
+                        if (!doNotSaveEvent || (match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
+                        { 
+                         db.SaveChanges();
+
+                            Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
+                            match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                        }
                         match = new OddsTable();
                         dateTime = string.Empty;
                         RowCounter = 0;
                     }
 
-                    //nextRecord = true;
                     continue;
                 }
-                #endregion Logic from PSK EDIT
+
                 if (currentItem == "1") // This is Odds table first Initialization
                 {
                     oddTableInitialization = true;
@@ -486,6 +495,9 @@ namespace Klada_v3
                 #endregion Set Odd Table
 
                 #region Save to Class
+                if (totalrows == 1)
+                    continue;
+
                 if (oddTableSetCompleated) // Save table values to database
                 {
                     if (totalrows == 2) // there are only two odds
@@ -736,9 +748,16 @@ namespace Klada_v3
                 match.SportType = sportType;
                 match.InPlay = false;
                 match.EventDateTime = Home.GetDatetimeFromString(dateTime);
+                match.SportTypeID = Home.FindAndInsertSportTypeID(match.SportType);
 
                 db.OddsTable.Add(match);
-                db.SaveChanges();
+                if (!doNotSaveEvent || (match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
+                { 
+                    db.SaveChanges();
+
+                Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
+                match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                }
                 match = new OddsTable();
                 RowCounter = 0;
             }

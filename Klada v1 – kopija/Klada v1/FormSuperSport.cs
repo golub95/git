@@ -250,16 +250,16 @@ namespace Klada_v3
                     // EvaluateScriptAsync(currentScrollPositionScript) is current scroll position.
                     // When oldScrollPosition result = EvaluateScriptAsync(currentScrollPositionScript) scrol position Result - this is last scroll
                     //while (Convert.ToInt32(oldScrollPosition.Result) != Convert.ToInt32(chromeBrowser.EvaluateScriptAsync(currentScrollPositionScript).Result.Result)) // compare position from old var and current scroll position /evaluate script
-                    while (waitScroll.Result.Success)
+                    while (oldScrollPosition.Result != chromeBrowser.EvaluateScriptAsync(currentScrollPositionScript).Result.Result)
                     {
-                        await Task.Delay(500);
+                        await Task.Delay(800);
                         oldScrollPosition.Result = chromeBrowser.EvaluateScriptAsync(currentScrollPositionScript).Result.Result; // Execute script Scroll Position and set value to old position var.
                         await Task.Delay(sleepTime);
                     }
                     // When scroll was finished get source
 
                     #region Get Source
-                    chromeBrowser.ViewSource();
+                    //chromeBrowser.ViewSource();
                     var html = string.Empty;
                     await chromeBrowser.GetSourceAsync().ContinueWith(taskHtml =>
                     {
@@ -559,8 +559,14 @@ namespace Klada_v3
                         match.KladaName = "Supersport";
                         match.InPlay = false;
                         match.SportType = eventType;
+                        match.SportTypeID = Home.FindAndInsertSportTypeID(match.SportType);
 
-                        db.SaveChanges();
+                        if ((match.Odd1 != null && match.Odd2 != null) && (match.Home != null && match.Away != null))
+                        { 
+                            db.SaveChanges();
+                            Home h = new Home(); //An  object reference is required for the non-static field, method, or property 
+                            match.MatchSystemID = h.FindOrInsertToMatchSystemIDsTable(match.EventDateTime.Value, match.Home, match.Away, match.SportTypeID.Value, match.KladaName);
+                        }
                         match = new OddsTable();
                     }
 

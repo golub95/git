@@ -34,29 +34,6 @@ namespace Klada_v3.Model
             Klada12 = klada12;
         }
 
-        public CalcOddsTable(int eventID, string home, string away, string eventTime, decimal? odd1, string klada1, decimal? oddX, string kladaX, decimal? odd2, string klada2, decimal? odd1X, string klada1X, decimal? oddX2, string kladaX2, decimal? odd12, string klada12, decimal? calcOdd, string sportType, int? sportTypeID)
-        {
-            EventID = eventID;
-            Home = home;
-            Away = away;
-            EventTime = eventTime;
-            Odd1 = odd1;
-            Klada1 = klada1;
-            OddX = oddX;
-            KladaX = kladaX;
-            Odd2 = odd2;
-            Klada2 = klada2;
-            Odd1X = odd1X;
-            Klada1X = klada1X;
-            OddX2 = oddX2;
-            KladaX2 = kladaX2;
-            Odd12 = odd12;
-            Klada12 = klada12;
-            CalcOdd = calcOdd;
-            SportType = sportType;
-            SportTypeID = sportTypeID;
-        }
-
         public int EventID { get; set; }
         public string Home { get; set; }
         public string Away { get; set; }
@@ -76,5 +53,7 @@ namespace Klada_v3.Model
         public Nullable<decimal> CalcOdd { get; set; }
         public string SportType { get; set; }
         public Nullable<int> SportTypeID { get; set; }
+        public Nullable<System.DateTime> EventDateTime { get; set; }
+        public System.Guid MatchSystemID { get; set; }
     }
 }

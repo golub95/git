@@ -16,6 +16,7 @@ using System.Net.Mail;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Net;
 
 namespace Klada_v3
 {
@@ -29,10 +30,10 @@ namespace Klada_v3
         HRKladeEntities db = new HRKladeEntities();
         private new List<OddsTable> Events = new List<OddsTable>();
         private readonly string SendingMail = "terry.ferit@gmail.com";
-        private readonly string Password = "FeRiT.2018";
+        private readonly string Password = "osusqhyeigynzuft";
         private readonly string ReceivingMail = "terry.ferit@gmail.com";
         private readonly string Subject = "Hit";
-
+        double tolerance = 0.5, toleranceSum = 1.3;
         private void btn_run_Click(object sender, EventArgs e)
         {
 
@@ -126,17 +127,29 @@ namespace Klada_v3
                 MailMessage mm = new MailMessage(SendingMail, ReceivingMail, Subject, message);
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-                //TODO:client.Send(mm);
+
+                client.Send(mm);
+
+                //using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                //{
+                //    smtp.UseDefaultCredentials = false;
+                //    smtp.Credentials = new NetworkCredential(SendingMail, Password);
+                //    smtp.EnableSsl = true;
+                //    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+
+                //    smtp.Send(mm);
+                //}
             }
 
         }
 
         private void FindSimilar()
         {
-            double tolerance = 0.5, toleranceSum = 1.3;
+            //double tolerance = 0.5, toleranceSum = 1.3;
             List<CalcOddsTable> Hits = new List<CalcOddsTable>();
 
-
+            MatchSystemIDs();
 
             bool hitFlag = false;
 
@@ -145,69 +158,6 @@ namespace Klada_v3
             int numberOfEvents = Events.Count();
 
             double test1, test2;
-
-            #region Insert Sports - EventID
-            OddsTable match = new OddsTable();
-
-            foreach (var item in Events)
-            {
-                int eventID = 0;
-                string eventType = item.SportType.ToLower();
-
-
-                if (eventType.ToLower().Contains("nogomet") == true && eventType.ToLower().Contains("mali") == false && (eventType.ToLower().Contains("žene") == false || eventType.ToLower().Contains("zene") ==false))
-                    eventID= 1;
-                if (eventType.ToLower().Contains("kosarka") == true || eventType.ToLower().Contains("košarka") == true)
-                    eventID= 2;
-                if (eventType.ToLower().Contains("tenis") == true && eventType.ToLower().Contains("stolni") == false)
-                    eventID= 3;
-                if (eventType.ToLower().Contains("hokej") == true && eventType.ToLower().Contains("travi") == false)
-                    eventID= 4;
-                if (eventType.ToLower().Contains("rukomet") == true)
-                    eventID= 5;
-                if (eventType.ToLower().Contains("baseball") == true || eventType.ToLower().Contains("bejzbol") == true)
-                    eventID= 6;
-                if (eventType.ToLower().Contains("boks") == true)
-                    eventID= 7;
-                if (eventType.ToLower().Contains("esports") == true || eventType.ToLower().Contains("esport") == true || eventType.ToLower().Contains("e sport") == true || eventType.ToLower().Contains("e-sports") == true)
-                    eventID= 8;
-                if (eventType.ToLower().Contains("odbojka") == true)
-                    eventID= 9;
-                if (eventType.ToLower().Contains("pikado") == true)
-                    eventID= 10;
-                if (eventType.ToLower().Contains("rugby") == true || eventType.ToLower().Contains("ragbi") == true)
-                    eventID= 11;
-                if (eventType.ToLower().Contains("stol") == true && eventType.ToLower().Contains("tenis") == true) //stolni tenis
-                    eventID= 12;
-                if (eventType.ToLower().Contains("ultimate") == true || eventType.ToLower().Contains("fight") == true)
-                    eventID= 13;
-                if (eventType.ToLower().Contains("vaterpolo") == true)
-                    eventID= 14;
-                if (eventType.ToLower().Contains("hokej") == true && eventType.ToLower().Contains("trav") == true) // hokej na travi
-                    eventID= 15;
-                if ((eventType.ToLower().Contains("mali") == true && eventType.ToLower().Contains("nogomet")) || eventType.ToLower().Contains("futsal") == true) //futsal
-                    eventID= 16;
-                if (eventType.ToLower().Contains("kriket") == true)
-                    eventID = 17;
-                if (eventType.ToLower().Contains("nogomet") == true && (eventType.ToLower().Contains("žene") == true || eventType.ToLower().Contains("zene") == true))
-                    eventID = 18;
-
-                // Query the database for the row to be updated.
-                var query =
-                    from ord in db.OddsTable
-                    where ord.KladaID == item.KladaID
-                    select ord;
-
-                query.FirstOrDefault().SportTypeID = eventID;
-
-                // Submit the changes to the database.
-                db.SaveChanges();
-
-            }
-            #endregion
-
-
-
 
             int EventID = 0;
             string Home = "";
@@ -232,10 +182,13 @@ namespace Klada_v3
             {
                 for (int SecondEvent = FirstEvent + 1; SecondEvent < numberOfEvents; SecondEvent++)
                 {
-                    string firstEventDay = Events[FirstEvent].EventTime.Substring(0, 3);
-                    string secEventDay = Events[SecondEvent].EventTime.Substring(0, 3);
+                    //string firstEventDay = Events[FirstEvent].EventTime.Substring(0, 3);
+                    //string secEventDay = Events[SecondEvent].EventTime.Substring(0, 3);
 
-                    if (firstEventDay.ToLower().Contains(secEventDay.ToLower()) == false || Events[FirstEvent].SportTypeID != Events[SecondEvent].SportTypeID || (Events[FirstEvent].KladaName == Events[SecondEvent].KladaName) || Events[FirstEvent].InPlay==true)
+                    string firstEventDay = Events[FirstEvent].EventDateTime.Value.Day.ToString();
+                    string secEventDay = Events[SecondEvent].EventDateTime.Value.Day.ToString();
+
+                    if (Events[FirstEvent].EventDateTime != Events[SecondEvent].EventDateTime || Events[FirstEvent].SportTypeID != Events[SecondEvent].SportTypeID || (Events[FirstEvent].KladaName == Events[SecondEvent].KladaName))
                     {
                         continue;
                     }
@@ -423,9 +376,10 @@ namespace Klada_v3
         /// </summary>
         private double CalculateSimilarity(string source, string target)
         {
+            if ((source == null) || (target == null)) return 0.0;
+
             source = source.ToLower();
             target = target.ToLower();
-            if ((source == null) || (target == null)) return 0.0;
             if ((source.Length == 0) || (target.Length == 0)) return 0.0;
             if (source == target) return 1.0;
 
@@ -504,17 +458,6 @@ namespace Klada_v3
                 }   
                 #endregion create date
 
-                #region Calculate dateTime
-
-                //if (currentDayOfWeekInt == dayOfWeekInt)
-                //    dayOfWeekInt = currentDayOfWeekInt;
-                //else if (currentDayOfWeekInt > dayOfWeekInt)
-                //    dayOfWeekInt = 7 -(currentDayOfWeekInt - dayOfWeekInt); // if dayOfWeekInt = 2 and dayOfWeekInt = 2 next monday currentDay + 6  => 7-(2-1)
-
-                //DateTime result = DateTime.Today.AddDays(dayOfWeekInt - currentDayOfWeekInt); // Replace string with date
-               
-                #endregion calculate dateTime
-
                 // Add time from string
                 int indexOfSecondWhitespace = dayofWeek.LastIndexOf(' '); // time is after second whitespace
 
@@ -548,31 +491,179 @@ namespace Klada_v3
                 return dateResult;
             }
             return DateTime.Now;
-         }
+        }
+        #region Find Similar
+        #region  DOCUMENTATION
+        /* 
+        Nova tablica MatchSystemIDs
+        prebaci polja iz tablice oklada onafterInsert:
+        EventName(home i away iz tablice oklada - svaki zasebni redak)
+        time
+        matchType
+        KladaID
+        EventSystemID (novo polje)
 
-        public static DateTime ParseString2DateTime(string dateTimeString)
+        napraviti metodu koja će provjeriti dali u novoj tablici MatchSystemIDs postoji EventName s EventSystemID guidom.
+        Ako postoji u tablicu oklada zapisati taj EventSystemID (home/away)jh.
+        Ako ne postoji insertati rekord u MatchSystemIDs tablicu s praznim guidom
+
+        Logika za prazne GUIDE:
+
+        Korak prije izračuna oklada provjeri tablicu MatchSystemIDs.
+
+        1. Filtriraj na sve one kojima je homeSystemID/awaySystemID  guid prazan
+        2. Protrči kroz takve rekorde te 
+        za svaki takav filtriraj sljedeće:
+	        - kreiraj temp listu i nastavi logiku za svaki rekord
+	        - ako lista nije prazna kreiraj im svima isti guid te ih spremi spremi u tabicu MatchSystemIDs
+	        - Klada ID različit od trenutnog
+	        - matchType jednak kao kod trenutnog (Nogomet/rukomet...
+	        - datetime je u periodu plus/minus 4 sata od trenutnog
+        Za svaki takav (treba provjeriti podudaranje naziva kluba)
+	        - analizirati string dali se slaže sa trenutnim
+	        - ako se slaže (pod određenim postotkom)ubaci ga u temp listu - kreiranu na početku prvog foreacha	
+        */
+        #endregion
+        public Guid FindOrInsertToMatchSystemIDsTable(DateTime EventDateTime,string Home, string Away,int SportTypeID,string KladaName)
         {
-            //string date = "12/28/2019";
+            OddsTable match = new OddsTable();
+            match = db.OddsTable.Where(m => m.Home == Home || m.Away == Away).First();
 
-            DateTime dateTime;
-            string[] validformats = new[] { "MM/dd/yyyy", "dd-MM-yyyy HH:mm:ss, fff", "yyyy/MM/dd", "MM/dd/yyyy HH:mm:ss",
-                                        "MM/dd/yyyy hh:mm tt", "yyyy-MM-dd HH:mm:ss, fff","dd-MM-yyyy HH:mm" };
-
-            CultureInfo provider = CultureInfo.InvariantCulture;
-
-            if (DateTime.TryParseExact(dateTimeString, validformats, provider,
-                                        DateTimeStyles.None, out dateTime))
+            if (match.MatchSystemID != null && match.MatchSystemID != Guid.Empty)
+                return match.MatchSystemID.Value;
+            else // insert record to MatchSystemIDs table
             {
-                Console.WriteLine("The specified date is valid: " + dateTime);
+                MatchSystemIDs newMatch = new MatchSystemIDs();
+                newMatch.EventDateTime = EventDateTime;
+                newMatch.EventName = Regex.Replace(Home, @"\s+", ""); ;
+                newMatch.EventSportTypeID = SportTypeID;
+                newMatch.KladaName = KladaName;
+                newMatch.EventSystemID = Guid.Empty;
+
+                db.MatchSystemIDs.Add(newMatch);
+                db.SaveChanges();
+
+                newMatch.EventName = Regex.Replace(Away, @"\s+", ""); ; ; // add all same values for Away (2 record for one event)
+                db.MatchSystemIDs.Add(newMatch);
+
+                db.SaveChanges(); 
             }
-            else
+            return Guid.Empty;
+        }
+        public void MatchSystemIDs()
+        {
+            List <MatchSystemIDs> emptyGuids = new List<MatchSystemIDs>();
+            emptyGuids = db.MatchSystemIDs.Where(m => m.EventSystemID == Guid.Empty).ToList();
+            List<MatchSystemIDs> eventMatches = new List<MatchSystemIDs>();
+
+            foreach (var currentEvent in emptyGuids)
             {
-                Console.WriteLine("Unable to parse the specified date");
+                if (eventMatches.Count > 0) // if list is not empty set same guid for all values and insert to DB
+                {
+                    var newGuid = Guid.NewGuid();
+                    foreach (var eventMatch in eventMatches)
+                    {
+                        eventMatch.EventSystemID = newGuid;
+                    }
+                    db.SaveChanges();
+                    eventMatches = new List<MatchSystemIDs>();
+                }
+
+                eventMatches.Add(currentEvent); // Insert currentEvent in hit list
+
+                List<MatchSystemIDs> hits = new List<MatchSystemIDs>();
+                hits = db.MatchSystemIDs.Where(m => m.KladaName != currentEvent.KladaName && m.EventSportTypeID == currentEvent.EventSportTypeID && m.EventDateTime == currentEvent.EventDateTime).ToList();
+
+                foreach (var hit in hits)
+                {
+                    if (CalculateSimilarity(hit.EventName, currentEvent.EventName) > tolerance)
+                    {
+                        eventMatches.Add(hit);
+                    }
+                }
             }
-            /*
-                Output: The specified date is valid: 28-12-2019 12.00.00 AM
-            */
-            return dateTime;
+        }
+        #endregion find Similar
+
+        public static int FindAndInsertSportTypeID (string eventType)
+        {
+            int result = 0;
+
+            #region Insert Sports - EventID
+
+            if (eventType.ToLower().Contains("nogomet") == true && eventType.ToLower().Contains("mali") == false && (eventType.ToLower().Contains("žene") == false || eventType.ToLower().Contains("zene") == false || eventType.ToLower().Contains("americki") == false || eventType.ToLower().Contains("američki") == false))
+                return result = 1;
+            if (eventType.ToLower().Contains("kosarka") == true || eventType.ToLower().Contains("košarka") == true)
+                return result = 2;
+            if (eventType.ToLower().Contains("tenis") == true && eventType.ToLower().Contains("stolni") == false)
+                return result = 3;
+            if (eventType.ToLower().Contains("hokej") == true && eventType.ToLower().Contains("travi") == false)
+                return result = 4;
+            if (eventType.ToLower().Contains("rukomet") == true)
+                return result = 5;
+            if (eventType.ToLower().Contains("baseball") == true || eventType.ToLower().Contains("bejzbol") == true)
+                return result = 6;
+            if (eventType.ToLower().Contains("boks") == true)
+                return result = 7;
+            if (eventType.ToLower().Contains("esports") == true || eventType.ToLower().Contains("esport") == true || eventType.ToLower().Contains("e sport") == true || eventType.ToLower().Contains("e-sports") == true || eventType.ToLower().Contains("e-sport") == true)
+                return result = 8;
+            if (eventType.ToLower().Contains("odbojka") == true)
+                return result = 9;
+            if (eventType.ToLower().Contains("pikado") == true)
+                return result = 10;
+            if (eventType.ToLower().Contains("rugby") == true || eventType.ToLower().Contains("ragbi") == true)
+                return result = 11;
+            if (eventType.ToLower().Contains("stol") == true && eventType.ToLower().Contains("tenis") == true) //stolni tenis
+                return result = 12;
+            if (eventType.ToLower().Contains("ultimate") == true || eventType.ToLower().Contains("fight") == true)
+                return result = 13;
+            if (eventType.ToLower().Contains("vaterpolo") == true)
+                return result = 14;
+            if (eventType.ToLower().Contains("hokej") == true && eventType.ToLower().Contains("trav") == true) // hokej na travi
+                return result = 15;
+            if ((eventType.ToLower().Contains("mali") == true && eventType.ToLower().Contains("nogomet")) || eventType.ToLower().Contains("futsal") == true) //futsal
+                return result = 16;
+            if (eventType.ToLower().Contains("kriket") == true)
+                return result = 17;
+            if (eventType.ToLower().Contains("nogomet") == true && (eventType.ToLower().Contains("žene") == true || eventType.ToLower().Contains("zene") == true))
+                return result = 18;
+            if (eventType.ToLower().Contains("mma") == true)
+                return result = 19;
+            if (eventType.ToLower().Contains("formula1") == true)
+                return result = 20;
+            if (eventType.ToLower().Contains("aussierules") == true)
+                return result = 21;
+            if (eventType.ToLower().Contains("motociklizam") == true)
+                return result = 22;
+            if (eventType.ToLower().Contains("lacrosse") == true)
+                return result = 23;
+            if (eventType.ToLower().Contains("floorball") == true)
+                return result = 24;
+            if (eventType.ToLower().Contains("badminton") == true)
+                return result = 25;
+            if (eventType.ToLower().Contains("atletika") == true)
+                return result = 26;
+            if (eventType.ToLower().Contains("borilačkisportovi") == true || eventType.ToLower().Contains("borilackisportovi") == true)
+                return result = 27;
+            if (eventType.ToLower().Contains("squash") == true)
+                return result = 28;
+            if (eventType.ToLower().Contains("šah") == true || eventType.ToLower().Contains("sah") == true)
+                return result = 29;
+
+            //// Query the database for the row to be updated.
+            //var query =
+            //    from ord in db.OddsTable
+            //    where ord.KladaID == item.KladaID
+            //    select ord;
+
+            //query.FirstOrDefault().SportTypeID = eventID;
+
+            //// Submit the changes to the database.
+            //db.SaveChanges();
+
+            #endregion
+
+            return result;
         }
     }
 

@@ -7,6 +7,7 @@
       <Diagram DiagramId="a9527a55bdf5417bb65ea9287a2db73b" Name="Diagram1">
         <EntityTypeShape EntityType="HRKladeModel.CalcOddsTable" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="HRKladeModel.OddsTable" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HRKladeModel.MatchSystemIDs" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

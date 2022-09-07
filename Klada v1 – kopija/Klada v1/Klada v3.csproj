@@ -159,6 +159,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HRKladeEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\MatchSystemIDs.cs">
+      <DependentUpon>HRKladeEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\OddsTable.cs">
       <DependentUpon>HRKladeEntities.tt</DependentUpon>
     </Compile>
