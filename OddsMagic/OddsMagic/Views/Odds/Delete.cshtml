@@ -1,0 +1,144 @@
+﻿@model OddsMagic.Models.CalcOddsTable
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CalcOddsTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Home)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Home)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Away)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Away)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Odd1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Odd1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Klada1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klada1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OddX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OddX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KladaX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KladaX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Odd2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Odd2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Klada2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klada2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Odd1X)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Odd1X)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Klada1X)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klada1X)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OddX2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OddX2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KladaX2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KladaX2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Odd12)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Odd12)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Klada12)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klada12)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
