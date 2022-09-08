@@ -2,17 +2,18 @@
 <Schema Namespace="HRKladeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="HRKladeEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CalcOddsTable" EntityType="HRKladeModel.CalcOddsTable" />
-    <EntitySet Name="OddsTable" EntityType="HRKladeModel.OddsTable" />
     <EntitySet Name="MatchSystemIDs" EntityType="HRKladeModel.MatchSystemIDs" />
+    <EntitySet Name="OddsTable" EntityType="HRKladeModel.OddsTable" />
   </EntityContainer>
   <EntityType Name="CalcOddsTable">
     <Key>
       <PropertyRef Name="EventID" />
     </Key>
-    <Property Name="EventID" Type="Int32" Nullable="false" />
+    <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Home" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Away" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="EventTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EventDateTime" Type="DateTime" Precision="3" />
     <Property Name="Odd1" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Klada1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="OddX" Type="Decimal" Precision="18" Scale="2" />
@@ -28,9 +29,19 @@
     <Property Name="CalcOdd" Type="Decimal" Precision="18" Scale="6" />
     <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="SportTypeID" Type="Int32" />
-    <Property Name="EventDateTime" Type="DateTime" Precision="3" />
     <Property Name="HomeSystemID" Type="Guid" Nullable="false" />
     <Property Name="AwaySystemID" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MatchSystemIDs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventSystemID" Type="Guid" Nullable="false" />
+    <Property Name="EventName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EventDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventSportTypeID" Type="Int32" Nullable="false" />
+    <Property Name="KladaName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="OddsTable">
     <Key>
@@ -40,6 +51,7 @@
     <Property Name="Home" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Away" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="EventTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EventDateTime" Type="DateTime" Precision="3" />
     <Property Name="EventLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Odd1" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="OddX" Type="Decimal" Precision="18" Scale="2" />
@@ -53,19 +65,7 @@
     <Property Name="KladaName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="SportTypeID" Type="Int32" />
-    <Property Name="EventDateTime" Type="DateTime" Precision="3" />
     <Property Name="HomeSystemID" Type="Guid" />
     <Property Name="AwaySystemID" Type="Guid" />
-  </EntityType>
-  <EntityType Name="MatchSystemIDs">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="EventSystemID" Type="Guid" Nullable="false" />
-    <Property Name="EventName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="EventDateTime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="EventSportTypeID" Type="Int32" Nullable="false" />
-    <Property Name="KladaName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

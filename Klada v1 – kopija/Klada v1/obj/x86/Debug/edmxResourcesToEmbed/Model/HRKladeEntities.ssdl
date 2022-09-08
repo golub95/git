@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="EventID" />
     </Key>
-    <Property Name="EventID" Type="int" Nullable="false" />
+    <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Home" Type="varchar" MaxLength="50" />
     <Property Name="Away" Type="varchar" MaxLength="50" />
     <Property Name="EventTime" Type="varchar" MaxLength="20" />

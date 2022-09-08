@@ -13,6 +13,7 @@
           <Property Name="Home" Type="varchar" MaxLength="50" />
           <Property Name="Away" Type="varchar" MaxLength="50" />
           <Property Name="EventTime" Type="varchar" MaxLength="20" />
+          <Property Name="EventDateTime" Type="datetime" />
           <Property Name="Odd1" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Klada1" Type="varchar" MaxLength="10" />
           <Property Name="OddX" Type="decimal" Precision="18" Scale="2" />
@@ -28,6 +29,8 @@
           <Property Name="CalcOdd" Type="decimal" Precision="18" Scale="6" />
           <Property Name="SportType" Type="varchar" MaxLength="100" />
           <Property Name="SportTypeID" Type="int" />
+          <Property Name="HomeSystemID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AwaySystemID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityContainer Name="HRKladeModelStoreContainer">
           <EntitySet Name="CalcOddsTable" EntityType="Self.CalcOddsTable" Schema="dbo" store:Type="Tables" />
@@ -59,6 +62,9 @@
           <Property Name="CalcOdd" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="SportType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SportTypeID" Type="Int32" />
+          <Property Name="EventDateTime" Type="DateTime" Precision="3" />
+          <Property Name="HomeSystemID" Type="Guid" Nullable="false" />
+          <Property Name="AwaySystemID" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityContainer Name="HRKladeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CalcOddsTable" EntityType="Self.CalcOddsTable" />
@@ -72,6 +78,9 @@
           <EntitySetMapping Name="CalcOddsTable">
             <EntityTypeMapping TypeName="HRKladeModel.CalcOddsTable">
               <MappingFragment StoreEntitySet="CalcOddsTable">
+                <ScalarProperty Name="AwaySystemID" ColumnName="AwaySystemID" />
+                <ScalarProperty Name="HomeSystemID" ColumnName="HomeSystemID" />
+                <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
                 <ScalarProperty Name="SportTypeID" ColumnName="SportTypeID" />
                 <ScalarProperty Name="SportType" ColumnName="SportType" />
                 <ScalarProperty Name="CalcOdd" ColumnName="CalcOdd" />

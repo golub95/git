@@ -168,6 +168,8 @@ namespace Klada_v3
                 Hit.SportTypeID = currentEvent.SportTypeID;
                 Hit.EventTime = currentEvent.EventTime;
                 Hit.EventDateTime = currentEvent.EventDateTime;
+                Hit.HomeSystemID = currentEvent.HomeSystemID.Value;
+                Hit.AwaySystemID = currentEvent.AwaySystemID.Value;
 
                 OddsTable LargestOdd = new OddsTable();
 
@@ -210,12 +212,12 @@ namespace Klada_v3
                 LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd12).FirstOrDefault();
                 if (LargestOdd.Odd12 != null)
                 {
-                    Hit.Odd12 = LargestOdd.OddX2.Value;
+                    Hit.Odd12 = LargestOdd.Odd12.Value;
                     Hit.Klada12 = LargestOdd.KladaName;
                 }
                 Hit.CalcOdd = (decimal)CalculateOdds(Hit);
 
-                Hit.EventID = currentEvent.KladaID;
+                //Hit.EventID = currentEvent.KladaID;
                 db.CalcOddsTable.Add(Hit);
                 db.SaveChanges();
             }

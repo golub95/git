@@ -6,7 +6,6 @@
         <MappingFragment StoreEntitySet="CalcOddsTable">
           <ScalarProperty Name="AwaySystemID" ColumnName="AwaySystemID" />
           <ScalarProperty Name="HomeSystemID" ColumnName="HomeSystemID" />
-          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
           <ScalarProperty Name="SportTypeID" ColumnName="SportTypeID" />
           <ScalarProperty Name="SportType" ColumnName="SportType" />
           <ScalarProperty Name="CalcOdd" ColumnName="CalcOdd" />
@@ -22,10 +21,23 @@
           <ScalarProperty Name="OddX" ColumnName="OddX" />
           <ScalarProperty Name="Klada1" ColumnName="Klada1" />
           <ScalarProperty Name="Odd1" ColumnName="Odd1" />
+          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
           <ScalarProperty Name="EventTime" ColumnName="EventTime" />
           <ScalarProperty Name="Away" ColumnName="Away" />
           <ScalarProperty Name="Home" ColumnName="Home" />
           <ScalarProperty Name="EventID" ColumnName="EventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MatchSystemIDs">
+      <EntityTypeMapping TypeName="HRKladeModel.MatchSystemIDs">
+        <MappingFragment StoreEntitySet="MatchSystemIDs">
+          <ScalarProperty Name="KladaName" ColumnName="KladaName" />
+          <ScalarProperty Name="EventSportTypeID" ColumnName="EventSportTypeID" />
+          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="EventSystemID" ColumnName="EventSystemID" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -34,7 +46,6 @@
         <MappingFragment StoreEntitySet="OddsTable">
           <ScalarProperty Name="AwaySystemID" ColumnName="AwaySystemID" />
           <ScalarProperty Name="HomeSystemID" ColumnName="HomeSystemID" />
-          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
           <ScalarProperty Name="SportTypeID" ColumnName="SportTypeID" />
           <ScalarProperty Name="SportType" ColumnName="SportType" />
           <ScalarProperty Name="KladaName" ColumnName="KladaName" />
@@ -48,22 +59,11 @@
           <ScalarProperty Name="OddX" ColumnName="OddX" />
           <ScalarProperty Name="Odd1" ColumnName="Odd1" />
           <ScalarProperty Name="EventLink" ColumnName="EventLink" />
+          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
           <ScalarProperty Name="EventTime" ColumnName="EventTime" />
           <ScalarProperty Name="Away" ColumnName="Away" />
           <ScalarProperty Name="Home" ColumnName="Home" />
           <ScalarProperty Name="KladaID" ColumnName="KladaID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MatchSystemIDs">
-      <EntityTypeMapping TypeName="HRKladeModel.MatchSystemIDs">
-        <MappingFragment StoreEntitySet="MatchSystemIDs">
-          <ScalarProperty Name="KladaName" ColumnName="KladaName" />
-          <ScalarProperty Name="EventSportTypeID" ColumnName="EventSportTypeID" />
-          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
-          <ScalarProperty Name="EventName" ColumnName="EventName" />
-          <ScalarProperty Name="EventSystemID" ColumnName="EventSystemID" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -33,5 +33,8 @@ namespace OddsMagic.Models
         public Nullable<decimal> CalcOdd { get; set; }
         public string SportType { get; set; }
         public Nullable<int> SportTypeID { get; set; }
+        public Nullable<System.DateTime> EventDateTime { get; set; }
+        public System.Guid HomeSystemID { get; set; }
+        public System.Guid AwaySystemID { get; set; }
     }
 }

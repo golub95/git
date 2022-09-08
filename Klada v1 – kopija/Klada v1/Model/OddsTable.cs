@@ -18,6 +18,7 @@ namespace Klada_v3.Model
         public string Home { get; set; }
         public string Away { get; set; }
         public string EventTime { get; set; }
+        public Nullable<System.DateTime> EventDateTime { get; set; }
         public string EventLink { get; set; }
         public Nullable<decimal> Odd1 { get; set; }
         public Nullable<decimal> OddX { get; set; }
@@ -31,7 +32,6 @@ namespace Klada_v3.Model
         public string KladaName { get; set; }
         public string SportType { get; set; }
         public Nullable<int> SportTypeID { get; set; }
-        public Nullable<System.DateTime> EventDateTime { get; set; }
         public Nullable<System.Guid> HomeSystemID { get; set; }
         public Nullable<System.Guid> AwaySystemID { get; set; }
     }
