@@ -30,6 +30,8 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cb_Favbet = new System.Windows.Forms.CheckBox();
+            this.cb_Mozzart = new System.Windows.Forms.CheckBox();
             this.cb_HL = new System.Windows.Forms.CheckBox();
             this.cb_Germania = new System.Windows.Forms.CheckBox();
             this.cb_IsprazniTablicu = new System.Windows.Forms.CheckBox();
@@ -61,6 +63,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cb_Favbet);
+            this.groupBox1.Controls.Add(this.cb_Mozzart);
             this.groupBox1.Controls.Add(this.cb_HL);
             this.groupBox1.Controls.Add(this.cb_Germania);
             this.groupBox1.Controls.Add(this.cb_IsprazniTablicu);
@@ -74,6 +78,28 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kladionice";
+            // 
+            // cb_Favbet
+            // 
+            this.cb_Favbet.AutoSize = true;
+            this.cb_Favbet.Location = new System.Drawing.Point(116, 42);
+            this.cb_Favbet.Name = "cb_Favbet";
+            this.cb_Favbet.Size = new System.Drawing.Size(59, 17);
+            this.cb_Favbet.TabIndex = 7;
+            this.cb_Favbet.Text = "Favbet";
+            this.cb_Favbet.UseVisualStyleBackColor = true;
+            this.cb_Favbet.CheckedChanged += new System.EventHandler(this.cb_Favbet_CheckedChanged);
+            // 
+            // cb_Mozzart
+            // 
+            this.cb_Mozzart.AutoSize = true;
+            this.cb_Mozzart.Location = new System.Drawing.Point(116, 19);
+            this.cb_Mozzart.Name = "cb_Mozzart";
+            this.cb_Mozzart.Size = new System.Drawing.Size(63, 17);
+            this.cb_Mozzart.TabIndex = 6;
+            this.cb_Mozzart.Text = "Mozzart";
+            this.cb_Mozzart.UseVisualStyleBackColor = true;
+            this.cb_Mozzart.CheckedChanged += new System.EventHandler(this.cb_Mozzart_CheckedChanged);
             // 
             // cb_HL
             // 
@@ -94,6 +120,7 @@
             this.cb_Germania.TabIndex = 4;
             this.cb_Germania.Text = "Germania";
             this.cb_Germania.UseVisualStyleBackColor = true;
+            this.cb_Germania.CheckedChanged += new System.EventHandler(this.cb_Germania_CheckedChanged);
             // 
             // cb_IsprazniTablicu
             // 
@@ -124,6 +151,7 @@
             this.cb_Stanleybet.TabIndex = 1;
             this.cb_Stanleybet.Text = "Stanleybet";
             this.cb_Stanleybet.UseVisualStyleBackColor = true;
+            this.cb_Stanleybet.CheckedChanged += new System.EventHandler(this.cb_Stanleybet_CheckedChanged);
             // 
             // cb_SuperSport
             // 
@@ -155,6 +183,7 @@
             this.cb_Calc.TabIndex = 2;
             this.cb_Calc.Text = "Kalkulacije";
             this.cb_Calc.UseVisualStyleBackColor = true;
+            this.cb_Calc.CheckedChanged += new System.EventHandler(this.cb_Calc_CheckedChanged);
             // 
             // Home
             // 
@@ -187,5 +216,7 @@
         private System.Windows.Forms.CheckBox cb_IsprazniTablicu;
         private System.Windows.Forms.CheckBox cb_Germania;
         private System.Windows.Forms.CheckBox cb_HL;
+        private System.Windows.Forms.CheckBox cb_Mozzart;
+        private System.Windows.Forms.CheckBox cb_Favbet;
     }
 }

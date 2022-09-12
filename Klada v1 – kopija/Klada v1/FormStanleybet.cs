@@ -58,8 +58,37 @@ namespace Klada_v3
         private void InsertLinksToList()
         {
             LinkList = new List<string>();
-            LinkList.Add("https://www.admiral.hr/app/sport?sport=NOGOMET"); //
-            //LinkList.Add("https://germaniasport.hr/hr#/date/all?sid=69");
+            LinkList.Add("https://www.admiral.hr/app/sport?sport=NOGOMET");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/tennis/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/basketball/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/ice-hockey2/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/volleyball/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/handball/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/water-polo/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/athletics/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/american-football/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/aussie-rules/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/baseball/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/biathlon/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/boxing/");
+            LinkList.Add("https://www.favbet.hr/hr/e-sports/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/e-basketball/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/playstation-games/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/floorball/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/formula-1/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/golf/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/cricket/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/mma/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/beach-football/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/darts/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/squash/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/politics/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/rugby-union/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/wrestling/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/rugby-league/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/snooker/");
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/table-tennis/");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/specials/");
         }
 
         public void InitializeChromium()

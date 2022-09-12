@@ -33,7 +33,7 @@ namespace Klada_v3
         private readonly string Password = "osusqhyeigynzuft";
         private readonly string ReceivingMail = "terry.ferit@gmail.com";
         private readonly string Subject = "Hit";
-        double tolerance = 0.5, toleranceSum = 1.3;
+        double tolerance = 0.66;
         private void btn_run_Click(object sender, EventArgs e)
         {
 
@@ -58,16 +58,24 @@ namespace Klada_v3
                 FormPSK formPSK = new FormPSK();
                 formPSK.ShowDialog(this);
                 formPSK.Dispose();
-
-                //FormPSKCopy formPSKCopy = new FormPSKCopy();
-                //formPSKCopy.ShowDialog(this);
-                //formPSKCopy.Dispose();
             }
             if (cb_Germania.Checked)
             {
                 FormGermania formGermania = new FormGermania();
                 formGermania.ShowDialog(this);
                 formGermania.Dispose();
+            }
+            if (cb_Mozzart.Checked)
+            {
+                FormMozzart formMozzart = new FormMozzart();
+                formMozzart.ShowDialog(this);
+                formMozzart.Dispose();
+            }
+            if (cb_Favbet.Checked)
+            {
+                FormFavbet formFavbet = new FormFavbet();
+                formFavbet.ShowDialog(this);
+                formFavbet.Dispose();
             }
             if (cb_HL.Checked)
             {
@@ -158,8 +166,14 @@ namespace Klada_v3
             foreach (var currentEvent in AllEvents) // find identical Event
             {
                 if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID == Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID == Guid.Empty)
-                    continue;
+                {
+                    //currentEvent.HomeSystemID = FindOrInsertToMatchSystemIDsTable(currentEvent.EventDateTime.Value, currentEvent.Home, currentEvent.SportTypeID.Value, currentEvent.KladaName);
+                    //currentEvent.AwaySystemID = FindOrInsertToMatchSystemIDsTable(currentEvent.EventDateTime.Value, currentEvent.Away, currentEvent.SportTypeID.Value, currentEvent.KladaName);
+                    //db.SaveChanges();
 
+                    //if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID == Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID == Guid.Empty)
+                        continue;
+                }
                 CalcOddsTable Hit = new CalcOddsTable();
 
                 Hit.Home = currentEvent.Home;
@@ -417,7 +431,7 @@ namespace Klada_v3
             }
             return DateTime.Now;
         }
-        
+
         #region Find Similar
         #region  DOCUMENTATION
         /* 
@@ -455,7 +469,7 @@ namespace Klada_v3
             MatchSystemIDs matchFound = new MatchSystemIDs();
             if (EventName != string.Empty && (matchFound = db.MatchSystemIDs.Where(m => m.EventName == EventName).FirstOrDefault()) != null && matchFound.EventSystemID != null && matchFound.EventSystemID != Guid.Empty)
                 return matchFound.EventSystemID;
-            else // insert record to MatchSystemIDs table
+            else if(EventName != null && EventName != string.Empty)// insert record to MatchSystemIDs table
             {
                 MatchSystemIDs newMatch = new MatchSystemIDs();
                 newMatch.EventDateTime = EventDateTime;
@@ -482,6 +496,9 @@ namespace Klada_v3
                     var newGuid = Guid.NewGuid();
                     foreach (var eventMatch in eventMatches)
                     {
+                        MatchSystemIDs existingGuid = new MatchSystemIDs();
+                        if ((existingGuid = db.MatchSystemIDs.Where(m => m.EventName == eventMatch.EventName && m.EventSportTypeID == eventMatch.EventSportTypeID && m.EventSystemID != Guid.Empty).FirstOrDefault()) != null)
+                            newGuid = existingGuid.EventSystemID;
                         eventMatch.EventSystemID = newGuid;
                     }
                     db.SaveChanges();
@@ -497,7 +514,7 @@ namespace Klada_v3
                 {
                     if (CalculateSimilarity(hit.EventName, currentEvent.EventName) > tolerance)
                     {
-                        eventMatches.Add(hit);
+                            eventMatches.Add(hit);
                     }
                 }
             }
@@ -583,6 +600,32 @@ namespace Klada_v3
             #endregion
 
             return result;
+        }
+
+
+        private void cb_Stanleybet_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_Germania_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_Mozzart_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_Favbet_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_Calc_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -105,6 +105,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormMozzart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMozzart.Designer.cs">
+      <DependentUpon>FormMozzart.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPSK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,11 +123,17 @@
     <Compile Include="FormGermania.Designer.cs">
       <DependentUpon>FormGermania.cs</DependentUpon>
     </Compile>
-    <Compile Include="HL.cs">
+    <Compile Include="FormFavbet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HL.Designer.cs">
-      <DependentUpon>HL.cs</DependentUpon>
+    <Compile Include="FormFavbet.Designer.cs">
+      <DependentUpon>FormFavbet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHL.Designer.cs">
+      <DependentUpon>FormHL.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStanleybet.cs">
       <SubType>Form</SubType>
@@ -167,14 +179,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormMozzart.resx">
+      <DependentUpon>FormMozzart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPSK.resx">
       <DependentUpon>FormPSK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGermania.resx">
       <DependentUpon>FormGermania.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HL.resx">
-      <DependentUpon>HL.cs</DependentUpon>
+    <EmbeddedResource Include="FormFavbet.resx">
+      <DependentUpon>FormFavbet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHL.resx">
+      <DependentUpon>FormHL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStanleybet.resx">
       <DependentUpon>FormStanleybet.cs</DependentUpon>
