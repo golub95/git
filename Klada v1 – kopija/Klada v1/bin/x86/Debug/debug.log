@@ -23981,3 +23981,48 @@ LoggingService: Messaging: This browser doesn't support the API's required to us
 [0926/162040.115:INFO:CONSOLE(1)] "[16:20:40 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
 [0926/162040.124:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476741 [16,5] will be ignored
 [0926/162040.158:WARNING:spdy_session.cc(3541)] Received HEADERS for invalid stream 9
+[0926/164603.671:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 17179869185 [4,1] will be ignored
+[0926/164608.874:INFO:CONSOLE(264)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2ae7eb4af579c3fa83b18053014bb69f.js (264)
+[0926/164610.406:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2ae7eb4af579c3fa83b18053014bb69f.js (259)
+[0926/164610.507:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2ae7eb4af579c3fa83b18053014bb69f.js (259)
+[0926/164613.604:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0926/164613.604:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0926/164613.604:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0926/164643.661:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0926/165222.917:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0926/165224.229:INFO:CONSOLE(85)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/ovmhLiigaw4D9ujHYlHcKKhP/recaptcha__hr.js (85)
+[0926/165224.791:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/165224.791:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/165224.791:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/165224.791:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/165224.967:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0926/165224.967:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0926/165224.968:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0926/165224.968:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0926/165225.556:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705670 [9,6]
+[0926/165225.581:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/165242.041:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3892/all_spa.js (1)
+[0926/165435.785:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 25769803786 [6,10] will be ignored
+[0926/165437.487:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0926/165438.273:INFO:CONSOLE(85)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/ovmhLiigaw4D9ujHYlHcKKhP/recaptcha__hr.js (85)
+[0926/165438.299:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640261 [11,5]
+[0926/165438.405:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640261 [11,5]
+[0926/165438.405:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640261 [11,5]
+[0926/165438.406:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640261 [11,5]
+[0926/165438.406:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640261 [11,5]
+[0926/165438.435:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607559 [12,7]
+[0926/165438.554:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607559 [12,7]
+[0926/165438.554:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607559 [12,7]
+[0926/165438.554:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607559 [12,7]
+[0926/165438.554:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607559 [12,7]
+[0926/165438.684:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574858 [13,10]
+[0926/165438.905:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574858 [13,10]
+[0926/165438.905:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574858 [13,10]
+[0926/165438.905:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574858 [13,10]
+[0926/165438.905:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574858 [13,10]
+[0926/165442.008:INFO:CONSOLE(1)] "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'taxRulesIn')", source: https://cdn.mozzart.com/mozzart-mt/v3885/all_spa.js (1)
+[0926/165442.365:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.mozzart.com/mozzart-mt/v3885/all_spa.js (1)
+[0926/165640.916:INFO:CONSOLE(1)] "test", source:  (1)
+[0926/165641.669:INFO:CONSOLE(1)] "connection open: ready state 1, url wss://www.favbet.hr/socket", source: https://www.favbet.hr/alfFrontStatic/js/main.34475a0a.chunk.js (1)
+[0926/165641.761:INFO:CONSOLE(1)] "[object Object]", source: https://www.favbet.hr/hr/sports/sport/soccer/?timeFilter=%7B%22all%22%3A%22all%22%7D (1)
+[0926/165641.965:INFO:CONSOLE(1)] "connection open: ready state 1, url wss://www.favbet.hr/bullet", source: https://www.favbet.hr/alfFrontStatic/js/main.34475a0a.chunk.js (1)
