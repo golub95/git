@@ -23839,3 +23839,145 @@ LoggingService: Messaging: This browser doesn't support the API's required to us
 [0926/150937.714:INFO:CONSOLE(1)] "[15:09:37 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
 [0926/150937.716:INFO:CONSOLE(1)] "[15:09:37 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
 [0926/150937.716:INFO:CONSOLE(1)] "[15:09:37 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161031.306:INFO:CONSOLE(264)] "Cookies doesn't exist. Stopping SSO.", source: https://www.psk.hr/static/dist/prod/js/app.min.2ae7eb4af579c3fa83b18053014bb69f.js (264)
+[0926/161032.225:INFO:CONSOLE(259)] "Starting chat initialization..", source: https://www.psk.hr/static/dist/prod/js/app.min.2ae7eb4af579c3fa83b18053014bb69f.js (259)
+[0926/161032.312:INFO:CONSOLE(259)] "Adding chat translations: %O for site: %s and language: %s [object Object] HR HR", source: https://www.psk.hr/static/dist/prod/js/app.min.2ae7eb4af579c3fa83b18053014bb69f.js (259)
+[0926/161035.710:INFO:CONSOLE(2)] "resolving evaluator", source:  (2)
+[0926/161035.711:INFO:CONSOLE(4)] "resolving evaluator -> DY.PT found", source:  (4)
+[0926/161035.711:INFO:CONSOLE(9)] "resolving evaluator -> DY.PT found -> false", source:  (9)
+[0926/161150.623:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled, ANGLE is 
+[0926/161514.441:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 21474836485 [5,5] will be ignored
+[0926/161515.299:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 21474836481 [5,1] will be ignored
+[0926/161517.755:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0926/161519.123:INFO:CONSOLE(85)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/ovmhLiigaw4D9ujHYlHcKKhP/recaptcha__hr.js (85)
+[0926/161519.267:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/161519.340:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/161519.340:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/161519.341:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/161519.341:WARNING:browser_info.cc(301)] Returning a speculative frame for 34359738373 [8,5]
+[0926/161525.343:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0926/161525.477:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0926/161525.478:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0926/161525.478:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0926/161525.478:WARNING:browser_info.cc(301)] Returning a speculative frame for 38654705672 [9,8]
+[0926/161531.855:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.germaniasport.hr/germania/v3892/all_spa.js (1)
+[0926/161714.769:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 25769803786 [6,10] will be ignored
+[0926/161716.092:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0926/161716.714:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640262 [11,6]
+[0926/161716.921:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640262 [11,6]
+[0926/161716.921:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640262 [11,6]
+[0926/161716.921:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640262 [11,6]
+[0926/161716.921:WARNING:browser_info.cc(301)] Returning a speculative frame for 47244640262 [11,6]
+[0926/161717.611:INFO:CONSOLE(85)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/ovmhLiigaw4D9ujHYlHcKKhP/recaptcha__hr.js (85)
+[0926/161717.633:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607560 [12,8]
+[0926/161717.716:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574857 [13,9]
+[0926/161717.774:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607560 [12,8]
+[0926/161717.774:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607560 [12,8]
+[0926/161717.775:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607560 [12,8]
+[0926/161717.775:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607560 [12,8]
+[0926/161717.844:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574857 [13,9]
+[0926/161717.844:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574857 [13,9]
+[0926/161717.844:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574857 [13,9]
+[0926/161717.844:WARNING:browser_info.cc(301)] Returning a speculative frame for 55834574857 [13,9]
+[0926/161720.525:INFO:CONSOLE(1)] "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'taxRulesIn')", source: https://cdn.mozzart.com/mozzart-mt/v3885/all_spa.js (1)
+[0926/161720.890:INFO:CONSOLE(1)] "Uncaught (in promise) ReferenceError: Notification is not defined", source: https://cdn.mozzart.com/mozzart-mt/v3885/all_spa.js (1)
+[0926/161854.960:INFO:CONSOLE(1)] "test", source:  (1)
+[0926/161855.906:INFO:CONSOLE(1)] "connection open: ready state 1, url wss://www.favbet.hr/socket", source: https://www.favbet.hr/alfFrontStatic/js/main.34475a0a.chunk.js (1)
+[0926/161856.005:INFO:CONSOLE(1)] "[object Object]", source: https://www.favbet.hr/hr/sports/sport/soccer/?timeFilter=%7B%22all%22%3A%22all%22%7D (1)
+[0926/161856.183:INFO:CONSOLE(1)] "connection open: ready state 1, url wss://www.favbet.hr/bullet", source: https://www.favbet.hr/alfFrontStatic/js/main.34475a0a.chunk.js (1)
+[0926/161857.596:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509462 [15,22]
+[0926/161857.649:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509462 [15,22]
+[0926/161857.649:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509462 [15,22]
+[0926/161857.649:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509462 [15,22]
+[0926/161857.649:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509462 [15,22]
+[0926/161857.651:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509464 [15,24]
+[0926/161857.652:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509464 [15,24]
+[0926/161857.652:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509464 [15,24]
+[0926/161857.652:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509464 [15,24]
+[0926/161857.654:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509466 [15,26]
+[0926/161857.654:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509466 [15,26]
+[0926/161857.654:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509466 [15,26]
+[0926/161857.654:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509466 [15,26]
+[0926/161857.656:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509468 [15,28]
+[0926/161857.656:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509468 [15,28]
+[0926/161857.656:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509468 [15,28]
+[0926/161857.657:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509468 [15,28]
+[0926/161857.658:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509470 [15,30]
+[0926/161857.658:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509470 [15,30]
+[0926/161857.659:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509470 [15,30]
+[0926/161857.659:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509470 [15,30]
+[0926/161857.660:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509472 [15,32]
+[0926/161857.660:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509472 [15,32]
+[0926/161857.661:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509472 [15,32]
+[0926/161857.661:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509472 [15,32]
+[0926/161857.662:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509474 [15,34]
+[0926/161857.662:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509474 [15,34]
+[0926/161857.663:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509474 [15,34]
+[0926/161857.663:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509474 [15,34]
+[0926/161857.664:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509476 [15,36]
+[0926/161857.664:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509476 [15,36]
+[0926/161857.665:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509476 [15,36]
+[0926/161857.665:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509476 [15,36]
+[0926/161857.667:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509478 [15,38]
+[0926/161857.667:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509478 [15,38]
+[0926/161857.667:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509478 [15,38]
+[0926/161857.667:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509478 [15,38]
+[0926/161857.669:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509480 [15,40]
+[0926/161857.670:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509480 [15,40]
+[0926/161857.670:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509480 [15,40]
+[0926/161857.670:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509480 [15,40]
+[0926/161857.715:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509482 [15,42]
+[0926/161857.715:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509482 [15,42]
+[0926/161857.715:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509482 [15,42]
+[0926/161857.715:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509482 [15,42]
+[0926/161857.718:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509484 [15,44]
+[0926/161857.719:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509484 [15,44]
+[0926/161857.719:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509484 [15,44]
+[0926/161857.719:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509484 [15,44]
+[0926/161857.725:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509486 [15,46]
+[0926/161857.726:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509486 [15,46]
+[0926/161857.726:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509486 [15,46]
+[0926/161857.726:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509486 [15,46]
+[0926/161857.727:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509488 [15,48]
+[0926/161857.728:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509488 [15,48]
+[0926/161857.728:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509488 [15,48]
+[0926/161857.728:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509488 [15,48]
+[0926/161857.729:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509490 [15,50]
+[0926/161857.730:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509490 [15,50]
+[0926/161857.730:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509490 [15,50]
+[0926/161857.730:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509490 [15,50]
+[0926/161857.731:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509492 [15,52]
+[0926/161857.732:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509492 [15,52]
+[0926/161857.732:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509492 [15,52]
+[0926/161857.732:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509492 [15,52]
+[0926/161857.733:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509494 [15,54]
+[0926/161857.733:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509494 [15,54]
+[0926/161857.734:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509494 [15,54]
+[0926/161857.734:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509494 [15,54]
+[0926/161857.735:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509496 [15,56]
+[0926/161857.735:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509496 [15,56]
+[0926/161857.735:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509496 [15,56]
+[0926/161857.735:WARNING:browser_info.cc(301)] Returning a speculative frame for 64424509496 [15,56]
+[0926/161900.387:INFO:CONSOLE(14)] "message: connected", source: https://www.lutrija.hr/build/crobet/scripts/betalive.js?42 (14)
+[0926/161900.926:INFO:CONSOLE(1)] "[16:19:00 GMT+0200 (Central European Summer Time)] SignalR: Auto detected cross domain url.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161900.926:INFO:CONSOLE(1)] "[16:19:00 GMT+0200 (Central European Summer Time)] SignalR: Client subscribed to hub 'offerchange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161900.926:INFO:CONSOLE(1)] "[16:19:00 GMT+0200 (Central European Summer Time)] SignalR: Negotiating with 'https://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/negotiate?clientProtocol=1.4&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161900.928:INFO:CONSOLE(1)] "[object Object]", source: https://www.lutrija.hr/bettingMobileBundles/main-2b20eaf0c21cbf0f5213.js?2b20eaf0c21cbf0f5213 (1)
+[0926/161901.090:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476740 [16,4] will be ignored
+[0926/161901.090:WARNING:frame_impl.cc(423)] OnDidFinishLoad sent to detached frame 68719476740 [16,4] will be ignored
+[0926/161901.090:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476740 [16,4] will be ignored
+[0926/161901.114:INFO:CONSOLE(1)] "[16:19:01 GMT+0200 (Central European Summer Time)] SignalR: Connecting to websocket endpoint 'wss://prod-betlive.lutrija.hr/SportsbettingPrematchChangeServicePROD/signalr/connect?transport=webSockets&clientProtocol=1.4&connectionToken=yruHUasJ5WWyiWIZy3kIj8Qjx9eqlOPKwZBnAfwsKX5HG8pC%2BUKaejecK1GKeVv2b9wpBebr4sS5Q5cCzz5m4qX2Euvc8uQNOLsGeB8GY%2FRajL5fBfEBq%2BIwh%2F9wCRpD&connectionData=%5B%7B%22name%22%3A%22offerchange%22%7D%5D&tid=8'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161901.308:INFO:CONSOLE(1)] "[16:19:01 GMT+0200 (Central European Summer Time)] SignalR: Websocket opened.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161901.308:INFO:CONSOLE(1)] "[16:19:01 GMT+0200 (Central European Summer Time)] SignalR: webSockets transport selected. Initiating start request.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161901.459:INFO:CONSOLE(1)] "[16:19:01 GMT+0200 (Central European Summer Time)] SignalR: The start request succeeded. Transitioning to the connected state.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161901.459:INFO:CONSOLE(1)] "[16:19:01 GMT+0200 (Central European Summer Time)] SignalR: Now monitoring keep alive with a warning timeout of 13333.333333333332 and a connection lost timeout of 20000.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161917.567:INFO:CONSOLE(1)] "[16:19:17 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/161951.205:INFO:CONSOLE(1)] "[16:19:51 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/162023.966:INFO:CONSOLE(1)] "[16:20:23 GMT+0200 (Central European Summer Time)] SignalR: Triggering client hub event 'pushUpdateOffer' on hub 'offerChange'.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/162040.098:INFO:CONSOLE(1)] "[16:20:40 GMT+0200 (Central European Summer Time)] SignalR: Window unloading, stopping the connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/162040.098:INFO:CONSOLE(1)] "[16:20:40 GMT+0200 (Central European Summer Time)] SignalR: Stopping connection.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/162040.098:INFO:CONSOLE(1)] "[16:20:40 GMT+0200 (Central European Summer Time)] SignalR: Closing the Websocket.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/162040.114:INFO:CONSOLE(1)] "[16:20:40 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/162040.115:INFO:CONSOLE(1)] "[16:20:40 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
+[0926/162040.124:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476741 [16,5] will be ignored
+[0926/162040.158:WARNING:spdy_session.cc(3541)] Received HEADERS for invalid stream 9
