@@ -167,7 +167,7 @@ namespace Klada_v3
             AllEvents = db.OddsTable.ToList();
             foreach (var currentEvent in AllEvents) // find identical Event
             {
-                if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID == Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID == Guid.Empty)
+                if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID != Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID != Guid.Empty)
                 {
                     //currentEvent.HomeSystemID = FindOrInsertToMatchSystemIDsTable(currentEvent.EventDateTime.Value, currentEvent.Home, currentEvent.SportTypeID.Value, currentEvent.KladaName);
                     //currentEvent.AwaySystemID = FindOrInsertToMatchSystemIDsTable(currentEvent.EventDateTime.Value, currentEvent.Away, currentEvent.SportTypeID.Value, currentEvent.KladaName);
@@ -233,8 +233,14 @@ namespace Klada_v3
                 }
                 Hit.CalcOdd = (decimal)CalculateOdds(Hit);
 
-                db.CalcOddsTable.Add(Hit);
-                db.SaveChanges();
+                if (db.CalcOddsTable.Where(c => c.SportTypeID == Hit.SportTypeID &&
+                c.HomeSystemID == Hit.HomeSystemID &&
+                c.AwaySystemID == Hit.AwaySystemID &&
+                (DbFunctions.TruncateTime(c.EventDateTime) == DbFunctions.TruncateTime(Hit.EventDateTime))) == null) //if event not exist save them
+                {
+                    db.CalcOddsTable.Add(Hit);
+                    db.SaveChanges();
+                }
             }
         }
 
@@ -468,7 +474,7 @@ namespace Klada_v3
         public Guid FindOrInsertToMatchSystemIDsTable(DateTime EventDateTime,string EventName,int SportTypeID,string KladaName)
         {
             MatchSystemIDs matchFound = new MatchSystemIDs();
-            matchFound = db.MatchSystemIDs.Where(m => m.EventName == EventName).FirstOrDefault();
+            matchFound = db.MatchSystemIDs.Where(m => m.EventName == EventName && m.EventSportTypeID == SportTypeID).FirstOrDefault();
 
             if (matchFound != null)
                 return matchFound.EventSystemID;
@@ -500,7 +506,7 @@ namespace Klada_v3
                     foreach (var eventMatch in eventMatches)
                     {
                         MatchSystemIDs existingGuid = new MatchSystemIDs();
-                        if ((existingGuid = db.MatchSystemIDs.Where(m => m.EventName.Contains(eventMatch.EventName) && m.EventSportTypeID == eventMatch.EventSportTypeID && m.EventSystemID != Guid.Empty).FirstOrDefault()) != null)
+                        if ((existingGuid = db.MatchSystemIDs.Where(m => (m.EventName.Contains(eventMatch.EventName) || eventMatch.EventName.Contains(m.EventName))&& m.EventSportTypeID == eventMatch.EventSportTypeID && m.EventSystemID != Guid.Empty).FirstOrDefault()) != null)
                             newGuid = existingGuid.EventSystemID;
                         eventMatch.EventSystemID = newGuid;
                     }
