@@ -167,15 +167,9 @@ namespace Klada_v3
             AllEvents = db.OddsTable.ToList();
             foreach (var currentEvent in AllEvents) // find identical Event
             {
-                if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID != Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID != Guid.Empty)
-                {
-                    //currentEvent.HomeSystemID = FindOrInsertToMatchSystemIDsTable(currentEvent.EventDateTime.Value, currentEvent.Home, currentEvent.SportTypeID.Value, currentEvent.KladaName);
-                    //currentEvent.AwaySystemID = FindOrInsertToMatchSystemIDsTable(currentEvent.EventDateTime.Value, currentEvent.Away, currentEvent.SportTypeID.Value, currentEvent.KladaName);
-                    //db.SaveChanges();
-
-                    //if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID == Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID == Guid.Empty)
-                        continue;
-                }
+                if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID == Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID == Guid.Empty)
+                    continue;
+             
                 CalcOddsTable Hit = new CalcOddsTable();
 
                 Hit.Home = currentEvent.Home;
@@ -236,11 +230,12 @@ namespace Klada_v3
                 if (db.CalcOddsTable.Where(c => c.SportTypeID == Hit.SportTypeID &&
                 c.HomeSystemID == Hit.HomeSystemID &&
                 c.AwaySystemID == Hit.AwaySystemID &&
-                (DbFunctions.TruncateTime(c.EventDateTime) == DbFunctions.TruncateTime(Hit.EventDateTime))) == null) //if event not exist save them
-                {
-                    db.CalcOddsTable.Add(Hit);
-                    db.SaveChanges();
-                }
+                (DbFunctions.TruncateTime(c.EventDateTime) == DbFunctions.TruncateTime(Hit.EventDateTime))).Count() >= 1) //if event exist don't save them
+                    continue;
+
+                db.CalcOddsTable.Add(Hit);
+                db.SaveChanges();
+                
             }
         }
 
