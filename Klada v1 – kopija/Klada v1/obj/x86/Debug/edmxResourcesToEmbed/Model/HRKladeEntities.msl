@@ -32,6 +32,8 @@
     <EntitySetMapping Name="MatchSystemIDs">
       <EntityTypeMapping TypeName="HRKladeModel.MatchSystemIDs">
         <MappingFragment StoreEntitySet="MatchSystemIDs">
+          <ScalarProperty Name="Matched" ColumnName="Matched" />
+          <ScalarProperty Name="Similarity" ColumnName="Similarity" />
           <ScalarProperty Name="KladaName" ColumnName="KladaName" />
           <ScalarProperty Name="EventSportTypeID" ColumnName="EventSportTypeID" />
           <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />

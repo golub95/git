@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Klada_v3.Model
+namespace OddsMagic.Models
 {
     using System;
     using System.Collections.Generic;

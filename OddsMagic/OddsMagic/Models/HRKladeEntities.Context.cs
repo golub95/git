@@ -26,5 +26,7 @@ namespace OddsMagic.Models
         }
     
         public virtual DbSet<CalcOddsTable> CalcOddsTable { get; set; }
+        public virtual DbSet<MatchSystemIDs> MatchSystemIDs { get; set; }
+        public virtual DbSet<OddsTable> OddsTable { get; set; }
     }
 }

@@ -37,6 +37,8 @@
     <Property Name="EventDateTime" Type="datetime" Nullable="false" />
     <Property Name="EventSportTypeID" Type="int" Nullable="false" />
     <Property Name="KladaName" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Similarity" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Matched" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="OddsTable">
     <Key>

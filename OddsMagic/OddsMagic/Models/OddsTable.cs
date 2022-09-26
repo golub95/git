@@ -7,34 +7,32 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Klada_v3.Model
+namespace OddsMagic.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CalcOddsTable
+    public partial class OddsTable
     {
-        public int EventID { get; set; }
+        public int KladaID { get; set; }
         public string Home { get; set; }
         public string Away { get; set; }
         public string EventTime { get; set; }
         public Nullable<System.DateTime> EventDateTime { get; set; }
+        public string EventLink { get; set; }
         public Nullable<decimal> Odd1 { get; set; }
-        public string Klada1 { get; set; }
         public Nullable<decimal> OddX { get; set; }
-        public string KladaX { get; set; }
         public Nullable<decimal> Odd2 { get; set; }
-        public string Klada2 { get; set; }
         public Nullable<decimal> Odd1X { get; set; }
-        public string Klada1X { get; set; }
         public Nullable<decimal> OddX2 { get; set; }
-        public string KladaX2 { get; set; }
         public Nullable<decimal> Odd12 { get; set; }
-        public string Klada12 { get; set; }
-        public Nullable<decimal> CalcOdd { get; set; }
+        public Nullable<decimal> OddF2 { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
+        public Nullable<bool> InPlay { get; set; }
+        public string KladaName { get; set; }
         public string SportType { get; set; }
         public Nullable<int> SportTypeID { get; set; }
-        public System.Guid HomeSystemID { get; set; }
-        public System.Guid AwaySystemID { get; set; }
+        public Nullable<System.Guid> HomeSystemID { get; set; }
+        public Nullable<System.Guid> AwaySystemID { get; set; }
     }
 }

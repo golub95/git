@@ -42,6 +42,8 @@
           <Property Name="EventDateTime" Type="datetime" Nullable="false" />
           <Property Name="EventSportTypeID" Type="int" Nullable="false" />
           <Property Name="KladaName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Similarity" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Matched" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="OddsTable">
           <Key>
@@ -119,6 +121,8 @@
           <Property Name="EventDateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EventSportTypeID" Type="Int32" Nullable="false" />
           <Property Name="KladaName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Similarity" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Matched" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="OddsTable">
           <Key>
@@ -182,6 +186,8 @@
           <EntitySetMapping Name="MatchSystemIDs">
             <EntityTypeMapping TypeName="HRKladeModel.MatchSystemIDs">
               <MappingFragment StoreEntitySet="MatchSystemIDs">
+                <ScalarProperty Name="Matched" ColumnName="Matched" />
+                <ScalarProperty Name="Similarity" ColumnName="Similarity" />
                 <ScalarProperty Name="KladaName" ColumnName="KladaName" />
                 <ScalarProperty Name="EventSportTypeID" ColumnName="EventSportTypeID" />
                 <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />

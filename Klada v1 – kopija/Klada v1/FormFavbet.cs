@@ -59,7 +59,8 @@ namespace Klada_v3
         private void InsertLinksToList()
         {
             LinkList = new List<string>();
-            LinkList.Add("https://www.favbet.hr/hr/sports/sport/soccer/"); //
+            //LINK: https://www.favbet.hr/hr/sports/sport/soccer/?timeFilter=%7B"all"%3A"all"%7D
+            LinkList.Add("https://www.favbet.hr/hr/sports/sport/soccer/?timeFilter=%7B\"all\"%3A\"all\"%7D");
         }
 
         public void InitializeChromium()
@@ -214,15 +215,17 @@ namespace Klada_v3
 
             var clickAndScrollScript = @"
                             (function () {
-                                scrollTo(0, document.body.scrollHeight)
+                                    scrollTo(0, document.body.scrollHeight);
+                                    document.querySelector('#root > div > div > div > div.Box_box__2h4Jp.Page_pageWrapper__2WiEK.Box_justify_center__1-I-N > div > div:nth-child(2) > div:nth-child(5) > div:nth-child(3) > div > div.Box_box__2h4Jp.ButtonLoader_showMoreWrapper__34SHp.Box_justify_center__1-I-N > button').click();
                                     var result = true;
 
                                     return result;
                             })();";
 
-            var currentScrollPositionScript = @"
+            var isScrollFinishedScript = @"
                                 (function() {
-                                    var result = document.body.scrollHeight;
+                                    var result = document.querySelector('#root > div > div > div > div.Box_box__2h4Jp.Page_pageWrapper__2WiEK.Box_justify_center__1-I-N > div > div:nth-child(2) > div:nth-child(5) > div:nth-child(3) > div > div.Box_box__2h4Jp.ButtonLoader_showMoreWrapper__34SHp.Box_justify_center__1-I-N > button').textContent == 'Prikaži više';
+                      
                                     return result;
                                 })(); ";
 
@@ -232,26 +235,26 @@ namespace Klada_v3
 
             Task Scroll = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).ContinueWith(waitScroll =>
             {
-                int sleepTime = 2000; // in mills 
-                Task GetAttribute = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync(currentScrollPositionScript)).ContinueWith(async waitAttribute =>
+                int sleepTime = 1500; // in mills 
+                Task GetAttribute = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync(isScrollFinishedScript)).ContinueWith(async waitAttribute =>
                 {
                     //DOCUMENTATION:
                     // clickAndScrollScript -> function click to button load and scroll down
                     // isScrollFinishedScript -> check if exist remaining odds - if no exist then download document
-                    await Task.Delay(2000);
+                    //await Task.Delay(1500);
                     isScrollFinished.Result = waitAttribute.Result.Result;
-                    while (!waitScroll.IsCompleted) // compare position from old var and current scroll position /evaluate script
+                    while (Convert.ToBoolean(chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).Result.Result) == true) // compare position from old var and current scroll position /evaluate script
                     {
-                        //clickLoadMore.Result = chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).Result.Result; // Execute script Scroll Position and set value to old position var.
+                        clickLoadMore.Result = chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).Result.Result; // Execute script Scroll Position and set value to old position var.
 
                         await Task.Delay(sleepTime);
 
-                        isScrollFinished.Result = chromeBrowser.EvaluateScriptAsync(currentScrollPositionScript).Result.Result;
+                        isScrollFinished.Result = chromeBrowser.EvaluateScriptAsync(isScrollFinishedScript).Result.Result;
                     }
                     // When scroll was finished get source
 
                     #region Get Source
-                    //chromeBrowser.ViewSource();
+                    chromeBrowser.ViewSource();
                     var html = string.Empty;
                     await chromeBrowser.GetSourceAsync().ContinueWith(taskHtml =>
                     {
@@ -262,7 +265,7 @@ namespace Klada_v3
                         //string path = "C:\\Temp/download.html";
                         //File.WriteAllText(path, html);
 
-                        GetGermaniaDocumentAsync(htmlDoc);
+                        GetFavbetDocumentAsync(htmlDoc);
                     });
 
                     #endregion Get Source
@@ -291,7 +294,7 @@ namespace Klada_v3
 
             this.InvokeOnUiThreadIfRequired(() => b.Focus());
         }
-        public Task<HtmlAgilityPack.HtmlDocument> GetGermaniaDocumentAsync(HtmlAgilityPack.HtmlDocument htmlDoc)
+        public Task<HtmlAgilityPack.HtmlDocument> GetFavbetDocumentAsync(HtmlAgilityPack.HtmlDocument htmlDoc)
         {
             //HtmlNode node = nodes[0].QuerySelector("td:eq(1)");
             //IList<HtmlNode> nodes = htmlDoc.QuerySelectorAll("td.col-odds > a");
@@ -305,13 +308,42 @@ namespace Klada_v3
             //                      select new { Cell_Text = table.InnerText };
 
             //var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes("//div[contains(@class, 'sportInfo')] | //div[@class = 'time'] | //div[contains(@class, 'subgameheader')]  | //a[contains(@class, 'pairs')]/div/span | //span[contains(@class, 'betting-regular-match')]").Cast<HtmlNode>();
-            string xpathSportType = "//div[contains(@class, 'EventsLineHeader')/div/div/div/span]";
-            string xpathTime = "//div[contains(@class, 'eventTimeContainer')";//span[@class = 'time']";
-            string xpathOddTypesPart = "//div[contains(@class, 'HeadGroup_marketParamHead')";//"//div[@class = 'tip']";
-            string xpathPairsPart = "//div[contains(@class, 'EventParticipants')";//"//div[@class = 'odd']";
-            string xpathOddsPart = "//div[contains(@class, 'eventSubRowContainer')";//"//td[@class = 'match']//span[last()]"; //Get last span
+            //string xpathSportType = "//div[contains(@class, 'EventsLineTitle_title')]/span";
+            //string xpathTime = "//div[contains(@class, 'EventDate_eventDate')]";//span[@class = 'time']";
+            //string xpathDate = "//div[contains(@class, 'EventTime_time')]";
+            //string xpathOddTypesPart = "//div[contains(@class, 'HeadGroup_marketParamHead')]/span";//"//div[@class = 'tip']";
+            //string xpathPairsPart = "//div[contains(@class, 'EventParticipants')]/div";//"//div[@class = 'odd']";
+            //string xpathOddsPart = "//div[contains(@class, 'eventSubRowContainer')]/div/div";//"//td[@class = 'match']//span[last()]"; //Get last span
 
-            var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathSportType + "|" + xpathTime + "|" + xpathOddTypesPart + "|" + xpathPairsPart + "|"  + xpathOddsPart).Cast<HtmlNode>();
+            string xpathSportType = "//div[contains(@class, 'EventsLineTitle_title')]";//"//div[contains(@class, 'EventBody_container')]";
+            string xpathOddTypesPart1 = "//div[1]/span[contains(@class, 'HeadGroup_typeName')]";
+            string xpathOddTypesPart2 = "//div[2]/span[contains(@class, 'HeadGroup_typeName')]";
+            string xpathDate = "//div[contains(@class, 'EventDate_table')]";
+            string xpathTime = "//div[contains(@class, 'EventTime_table')]";
+            string xpathPairsPart = "//div[contains(@class, 'EventParticipants_participantMain')]";
+            string xpathOddsPart1 = "//div[1]/div/div/div/div/div/span[contains(@class, '_coef')] | //div[2]/div/div/div/div/div/span[contains(@class, '_coef')]";
+            string xpathOddsPart2 = "//div[2]/div/div/div/div/div/span[contains(@class, '_coef')]";
+
+            //var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathOddsPart1);
+            var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathSportType + "|" + xpathOddTypesPart1 + "|" + xpathOddTypesPart2 + "|" + xpathDate + "|" + xpathTime + "|" + xpathPairsPart + "|" + xpathOddsPart1).Cast<HtmlNode>();
+
+            // Using LINQ to parse HTML table smartly 
+            //var HTMLTableTRList = from table in htmlDoc.DocumentNode.SelectNodes("//div[contains(@class, 'Box_box')]").Cast<HtmlNode>()
+            //                      from row in table.SelectNodes(xpathOddTypesPart1 + "|" + xpathOddTypesPart2).Cast<HtmlNode>()
+            //                      from cell in table.SelectNodes(xpathSportType + "|" + xpathDate + "|" + xpathTime + "|" + xpathPairsPart + "|" + xpathOddsPart1 + "|" + xpathOddsPart2).Cast<HtmlNode>()
+            //                      select new { Cell_Text = cell.InnerText };
+
+            #region New Way
+            //IList<OddsTable> results = new List<OddsTable>();
+            //foreach (var node in htmlDoc.DocumentNode.SelectNodes("//div[contains(@class, 'Box_box')]"))
+            //{
+            //    var record = new OddsTable();
+            //    record.Home = node.SelectSingleNode("//div[contains(@class, 'EventParticipants_participantMain')]").InnerText;
+            //    record.SportType = node.SelectSingleNode("//div[contains(@class, 'EventsLineTitle_title')]").InnerText;
+            //    record.EventTime = node.SelectSingleNode("//div[contains(@class, 'EventDate_table')]").InnerText;
+            //    results.Add(record);
+            //}
+            #endregion new Way
 
             #region Save list to txt Test ONLY 
             // For Testing
@@ -329,7 +361,7 @@ namespace Klada_v3
             {
                 //clear string
                 string currentItem = node.InnerText.Replace("&nbsp;", " ").Replace("\n", "").Replace("\r", "").Trim();
-
+                /*
                 if (node.HasAttributes && node.Attributes.First().Value.Contains("sport-header")) // if New Sport Type
                 {
                     #region filter Sport types
@@ -387,7 +419,7 @@ namespace Klada_v3
 
                     continue;
                 }
-
+                */
                 RowCounter++; // foreach new node increase row counter
                 previusSportType = sportType; // set current sport type to previus sport type (last event in table sportType bugfix)
 

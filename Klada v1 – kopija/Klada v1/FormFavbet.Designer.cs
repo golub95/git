@@ -35,7 +35,7 @@
             this.Name = "FormFavbet";
             this.Text = "FormFavbet";
             this.ResumeLayout(false);
-
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
     }
 }

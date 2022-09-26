@@ -156,6 +156,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MatchSystemIDsController.cs" />
     <Compile Include="Controllers\OddsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,6 +178,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HRKladeEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MatchSystemIDs.cs">
+      <DependentUpon>HRKladeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OddsTable.cs">
+      <DependentUpon>HRKladeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -243,6 +250,11 @@
     <Content Include="Views\Odds\Details.cshtml" />
     <Content Include="Views\Odds\Edit.cshtml" />
     <Content Include="Views\Odds\Index.cshtml" />
+    <Content Include="Views\MatchSystemIDs\Create.cshtml" />
+    <Content Include="Views\MatchSystemIDs\Delete.cshtml" />
+    <Content Include="Views\MatchSystemIDs\Details.cshtml" />
+    <Content Include="Views\MatchSystemIDs\Edit.cshtml" />
+    <Content Include="Views\MatchSystemIDs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

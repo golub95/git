@@ -1,0 +1,74 @@
+﻿@model OddsMagic.Models.MatchSystemIDs
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MatchSystemIDs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventSystemID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventSystemID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventSportTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventSportTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KladaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KladaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Similarity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Similarity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matched)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matched)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

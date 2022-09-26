@@ -17,6 +17,8 @@ using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using System.Net;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity;
 
 namespace Klada_v3
 {
@@ -33,7 +35,7 @@ namespace Klada_v3
         private readonly string Password = "osusqhyeigynzuft";
         private readonly string ReceivingMail = "terry.ferit@gmail.com";
         private readonly string Subject = "Hit";
-        double tolerance = 0.66;
+        double tolerance = 0.51;
         private void btn_run_Click(object sender, EventArgs e)
         {
 
@@ -231,7 +233,6 @@ namespace Klada_v3
                 }
                 Hit.CalcOdd = (decimal)CalculateOdds(Hit);
 
-                //Hit.EventID = currentEvent.KladaID;
                 db.CalcOddsTable.Add(Hit);
                 db.SaveChanges();
             }
@@ -467,7 +468,9 @@ namespace Klada_v3
         public Guid FindOrInsertToMatchSystemIDsTable(DateTime EventDateTime,string EventName,int SportTypeID,string KladaName)
         {
             MatchSystemIDs matchFound = new MatchSystemIDs();
-            if (EventName != string.Empty && (matchFound = db.MatchSystemIDs.Where(m => m.EventName == EventName).FirstOrDefault()) != null && matchFound.EventSystemID != null && matchFound.EventSystemID != Guid.Empty)
+            matchFound = db.MatchSystemIDs.Where(m => m.EventName == EventName).FirstOrDefault();
+
+            if (matchFound != null)
                 return matchFound.EventSystemID;
             else if(EventName != null && EventName != string.Empty)// insert record to MatchSystemIDs table
             {
@@ -497,24 +500,35 @@ namespace Klada_v3
                     foreach (var eventMatch in eventMatches)
                     {
                         MatchSystemIDs existingGuid = new MatchSystemIDs();
-                        if ((existingGuid = db.MatchSystemIDs.Where(m => m.EventName == eventMatch.EventName && m.EventSportTypeID == eventMatch.EventSportTypeID && m.EventSystemID != Guid.Empty).FirstOrDefault()) != null)
+                        if ((existingGuid = db.MatchSystemIDs.Where(m => m.EventName.Contains(eventMatch.EventName) && m.EventSportTypeID == eventMatch.EventSportTypeID && m.EventSystemID != Guid.Empty).FirstOrDefault()) != null)
                             newGuid = existingGuid.EventSystemID;
                         eventMatch.EventSystemID = newGuid;
                     }
                     db.SaveChanges();
-                    eventMatches = new List<MatchSystemIDs>();
+                    eventMatches = new List<MatchSystemIDs>(); // empty temp list
                 }
 
                 eventMatches.Add(currentEvent); // Insert currentEvent in hit list
 
                 List<MatchSystemIDs> hits = new List<MatchSystemIDs>();
-                hits = db.MatchSystemIDs.Where(m => m.KladaName != currentEvent.KladaName && m.EventSportTypeID == currentEvent.EventSportTypeID && m.EventDateTime == currentEvent.EventDateTime).ToList();
+                hits = db.MatchSystemIDs.Where(
+                m => m.KladaName != currentEvent.KladaName && 
+                m.EventSportTypeID == currentEvent.EventSportTypeID && 
+                m.EventSystemID != Guid.Empty && 
+                m.EventName.Contains(currentEvent.EventName) || currentEvent.EventName.Contains(m.EventName) &&
+                !m.Matched
+                 /*&&
+                (DbFunctions.TruncateTime(m.EventDateTime) == DbFunctions.TruncateTime(currentEvent.EventDateTime)) &&
+                (m.EventDateTime.Hour >= currentEvent.EventDateTime.Hour-3 && m.EventDateTime.Hour <= currentEvent.EventDateTime.Hour+3)*/
+                ).ToList();
 
                 foreach (var hit in hits)
                 {
-                    if (CalculateSimilarity(hit.EventName, currentEvent.EventName) > tolerance)
+                    double similarity = CalculateSimilarity(hit.EventName, currentEvent.EventName);
+                    if (similarity > tolerance)
                     {
-                            eventMatches.Add(hit);
+                        hit.Similarity = (decimal)similarity;
+                        eventMatches.Add(hit);
                     }
                 }
             }
@@ -585,17 +599,6 @@ namespace Klada_v3
                 return result = 28;
             if (eventType.ToLower().Contains("šah") == true || eventType.ToLower().Contains("sah") == true)
                 return result = 29;
-
-            //// Query the database for the row to be updated.
-            //var query =
-            //    from ord in db.OddsTable
-            //    where ord.KladaID == item.KladaID
-            //    select ord;
-
-            //query.FirstOrDefault().SportTypeID = eventID;
-
-            //// Submit the changes to the database.
-            //db.SaveChanges();
 
             #endregion
 
