@@ -27,6 +27,7 @@ namespace Klada_v3
         public Home()
         {
             InitializeComponent();
+            //btn_run_Click(null, EventArgs.Empty);
         }
 
         HRKladeEntities db = new HRKladeEntities();
@@ -36,7 +37,8 @@ namespace Klada_v3
         private readonly string ReceivingMail = "terry.ferit@gmail.com";
         private readonly string Subject = "Hit";
         double tolerance = 0.51;
-        private void btn_run_Click(object sender, EventArgs e)
+
+        public void btn_run_Click(object sender, EventArgs e)
         {
 
             if (cb_IsprazniTablicu.Checked)

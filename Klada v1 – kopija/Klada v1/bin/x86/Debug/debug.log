@@ -24447,3 +24447,23 @@ LoggingService: Messaging: This browser doesn't support the API's required to us
 [0927/000928.402:INFO:CONSOLE(1)] "[00:09:28 GMT+0200 (Central European Summer Time)] SignalR: Fired ajax abort async = false.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
 [0927/000928.403:INFO:CONSOLE(1)] "[00:09:28 GMT+0200 (Central European Summer Time)] SignalR: Stopping the monitoring of the keep alive.", source: https://www.lutrija.hr/build/crobet/scripts/jquery.signalR-2.1.1.min.js (1)
 [0927/000928.416:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 68719476741 [16,5] will be ignored
+[0927/232919.271:ERROR:shared_image_manager.cc(227)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[0927/232919.305:ERROR:shared_image_manager.cc(227)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[0927/232919.307:ERROR:shared_image_manager.cc(227)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[0927/232919.307:ERROR:shared_image_manager.cc(227)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[0927/232919.309:ERROR:shared_image_manager.cc(227)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[0927/232919.309:ERROR:shared_image_manager.cc(227)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[0927/233321.287:WARNING:frame_impl.cc(423)] SendProcessMessage sent to detached frame 17179869185 [4,1] will be ignored
+[0927/233323.183:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0927/233323.572:INFO:CONSOLE(85)] "reCAPTCHA couldn't find user-provided function: vueRecaptchaApiLoaded", source: https://www.gstatic.com/recaptcha/releases/ovmhLiigaw4D9ujHYlHcKKhP/recaptcha__hr.js (85)
+[0927/233323.850:WARNING:browser_info.cc(301)] Returning a speculative frame for 42949672965 [10,5]
+[0927/233323.851:WARNING:browser_info.cc(301)] Returning a speculative frame for 42949672965 [10,5]
+[0927/233323.854:WARNING:browser_info.cc(301)] Returning a speculative frame for 42949672965 [10,5]
+[0927/233323.854:WARNING:browser_info.cc(301)] Returning a speculative frame for 42949672965 [10,5]
+[0927/233323.951:WARNING:browser_info.cc(301)] Returning a speculative frame for 42949672965 [10,5]
+[0927/233324.549:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607558 [12,6]
+[0927/233324.551:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607558 [12,6]
+[0927/233324.551:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607558 [12,6]
+[0927/233324.552:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607558 [12,6]
+[0927/233324.606:WARNING:browser_info.cc(301)] Returning a speculative frame for 51539607558 [12,6]
+[0927/233328.269:ERROR:command_buffer_proxy_impl.cc(125)] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
