@@ -173,7 +173,7 @@ namespace Klada_v3
 
                         //JavascriptResponse afterClick = await chromeBrowser.EvaluateScriptAsync("document.getElementsByClassName(\"buttonLoad\")[3].click()");
 
-                        chromeBrowser.ViewSource();
+                        //chromeBrowser.ViewSource();
 
                         await ScrollAsync();
 

@@ -58,10 +58,28 @@
         </th>
         <th></th>
     </tr>
-
-    @foreach (var item in Model)
+    @{int rowCounter = 0; var lastGuid = Guid.Empty; string rowClass = "alert-warning"; }
+    @foreach (var item in Model.OrderBy(o => o.EventSystemID))
     {
-        <tr>
+        if (lastGuid != item.EventSystemID)
+        {
+            rowCounter = 0;
+            rowClass = "alert-warning";
+
+            <tr>
+                <td>
+                    <p></p>
+                </td>
+            </tr>
+        }
+
+        rowCounter += 1;
+        if (item.Matched)
+        {
+            rowClass = "alert-success";
+        }
+
+        <tr class=@rowClass>
             <td>
                 @Html.DisplayFor(modelItem => item.EventSystemID)
             </td>
@@ -89,6 +107,7 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.id })
             </td>
         </tr>
+        lastGuid = item.EventSystemID;
     }
 
 </table>

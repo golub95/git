@@ -27,65 +27,71 @@ namespace Klada_v3
         public Home()
         {
             InitializeComponent();
-            //btn_run_Click(null, EventArgs.Empty);
         }
 
         HRKladeEntities db = new HRKladeEntities();
-        private new List<OddsTable> Events = new List<OddsTable>();
+        //private new List<OddsTable> Events = new List<OddsTable>();
         private readonly string SendingMail = "terry.ferit@gmail.com";
         private readonly string Password = "osusqhyeigynzuft";
         private readonly string ReceivingMail = "terry.ferit@gmail.com";
         private readonly string Subject = "Hit";
-        double tolerance = 0.51;
 
         public void btn_run_Click(object sender, EventArgs e)
         {
 
             if (cb_IsprazniTablicu.Checked)
             {
-                ResetIdentity(sender, e);
+                //ResetIdentity(sender, e);
+                ResetIdentity();
             }
             if (cb_SuperSport.Checked)
             {
                 FormSuperSport formSuperSport = new FormSuperSport();
                 formSuperSport.ShowDialog(this);
                 formSuperSport.Dispose();
+                //Cef.Shutdown();
             }
             if (cb_Stanleybet.Checked)
             {
                 FormStanleybet FormStanleybet = new FormStanleybet();
                 FormStanleybet.ShowDialog(this);
                 FormStanleybet.Dispose();
+                //Cef.Shutdown();
             }
             if (cb_PSK.Checked)
             {
                 FormPSK formPSK = new FormPSK();
                 formPSK.ShowDialog(this);
                 formPSK.Dispose();
+                //Cef.Shutdown();
             }
             if (cb_Germania.Checked)
             {
                 FormGermania formGermania = new FormGermania();
                 formGermania.ShowDialog(this);
                 formGermania.Dispose();
+                //Cef.Shutdown();
             }
             if (cb_Mozzart.Checked)
             {
                 FormMozzart formMozzart = new FormMozzart();
                 formMozzart.ShowDialog(this);
                 formMozzart.Dispose();
+                //Cef.Shutdown();
             }
             if (cb_Favbet.Checked)
             {
                 FormFavbet formFavbet = new FormFavbet();
                 formFavbet.ShowDialog(this);
                 formFavbet.Dispose();
+                //Cef.Shutdown();
             }
             if (cb_HL.Checked)
             {
                 FormHL formHL = new FormHL();
                 formHL.ShowDialog(this);
                 formHL.Dispose();
+                //Cef.Shutdown();
             }
             if (cb_Calc.Checked)
             {
@@ -98,7 +104,42 @@ namespace Klada_v3
 
         }
 
-        private double CalculateOdds(CalcOddsTable hit)
+        public static void RunAll()
+        {
+            ResetIdentity();
+
+            FormSuperSport formSuperSport = new FormSuperSport();
+            formSuperSport.ShowDialog();
+            formSuperSport.Dispose();
+
+            FormPSK formPSK = new FormPSK();
+            formPSK.ShowDialog();
+            formPSK.Dispose();
+
+            FormGermania formGermania = new FormGermania();
+            formGermania.ShowDialog();
+            formGermania.Dispose();
+
+            FormMozzart formMozzart = new FormMozzart();
+            formMozzart.ShowDialog();
+            formMozzart.Dispose();
+
+            FormFavbet formFavbet = new FormFavbet();
+            formFavbet.ShowDialog();
+            formFavbet.Dispose();
+
+            FormHL formHL = new FormHL();
+            formHL.ShowDialog();
+            formHL.Dispose();
+
+            Cef.Shutdown();
+            Cef.ClearSchemeHandlerFactories();
+
+            MatchSystemIDs();
+            FindIdenticalMatchFromOddsTable();
+        }
+
+        private static double CalculateOdds(CalcOddsTable hit)
         {
 
             double izracun1 = 0;
@@ -118,11 +159,13 @@ namespace Klada_v3
             return (izracun1 + izracun2 + izracun3);
         }
 
-        private void SendMail(CalcOddsTable hit, double koef)
+        private static void SendMail(CalcOddsTable hit, double koef)
         {
-
+            string SendingMail = "terry.ferit@gmail.com";
+            string Password = "osusqhyeigynzuft";
+            string ReceivingMail = "terry.ferit@gmail.com";
+            string Subject = "Hit";
             string message = "";
-
 
             message = hit.Home + " vs " + hit.Away + "\n\n" + hit.Klada1 + ": " + hit.Odd1 + "\n" + hit.KladaX + ": " + hit.OddX + "\n" + hit.Klada2 + ": " + hit.Odd2;
 
@@ -158,8 +201,9 @@ namespace Klada_v3
 
         }
 
-        private void FindIdenticalMatchFromOddsTable()
+        private static void FindIdenticalMatchFromOddsTable()
         {
+            HRKladeEntities db = new HRKladeEntities();
             //Foreach Event from OddsTable
             //Filter OddsTable Events by Current MatchSystemID And Get Largest Odds
             //Insert this Event to CalcOddTable
@@ -241,7 +285,7 @@ namespace Klada_v3
             }
         }
 
-        protected void ResetIdentity(object sender, EventArgs e)
+        protected static void ResetIdentity(/*object sender, EventArgs e*/)
         {
             string efConnectionString = ConfigurationManager.ConnectionStrings["HRKladeEntities"].ConnectionString;
 
@@ -274,7 +318,7 @@ namespace Klada_v3
         /// Returns the number of steps required to transform the source string
         /// into the target string.
         /// </summary>
-        private int ComputeLevenshteinDistance(string source, string target)
+        private static int ComputeLevenshteinDistance(string source, string target)
         {
             if ((source == null) || (target == null)) return 0;
             if ((source.Length == 0) || (target.Length == 0)) return 0;
@@ -317,7 +361,7 @@ namespace Klada_v3
         /// <param name="target">Targeted String to Compare</param>
         /// <returns>Return Similarity between two strings from 0 to 1.0</returns>
         /// </summary>
-        private double CalculateSimilarity(string source, string target)
+        private static double CalculateSimilarity(string source, string target)
         {
             if ((source == null) || (target == null)) return 0.0;
 
@@ -489,22 +533,23 @@ namespace Klada_v3
             }
             return Guid.Empty;
         }
-        public void MatchSystemIDs()
+        public static void MatchSystemIDs()
         {
-            List <MatchSystemIDs> emptyGuids = new List<MatchSystemIDs>();
-            emptyGuids = db.MatchSystemIDs.Where(m => m.EventSystemID == Guid.Empty).ToList();
+            HRKladeEntities db = new HRKladeEntities();
+            List <MatchSystemIDs> emptyGuids = db.MatchSystemIDs.Where(m => m.EventSystemID == Guid.Empty).ToList();
             List<MatchSystemIDs> eventMatches = new List<MatchSystemIDs>();
+            double tolerance = 0.51;
 
             foreach (var currentEvent in emptyGuids)
             {
                 if (eventMatches.Count > 0) // if list is not empty set same guid for all values and insert to DB
                 {
                     var newGuid = Guid.NewGuid();
+
                     foreach (var eventMatch in eventMatches)
                     {
-                        MatchSystemIDs existingGuid = new MatchSystemIDs();
-                        if ((existingGuid = db.MatchSystemIDs.Where(m => (m.EventName.Contains(eventMatch.EventName) || eventMatch.EventName.Contains(m.EventName))&& m.EventSportTypeID == eventMatch.EventSportTypeID && m.EventSystemID != Guid.Empty).FirstOrDefault()) != null)
-                            newGuid = existingGuid.EventSystemID;
+                        MatchSystemIDs existingGuid = db.MatchSystemIDs.Where(m => m.EventName.Contains(eventMatch.EventName) && m.EventSportTypeID == eventMatch.EventSportTypeID && m.EventSystemID != Guid.Empty).FirstOrDefault();
+                        newGuid = (existingGuid != null) ? existingGuid.EventSystemID : newGuid;
                         eventMatch.EventSystemID = newGuid;
                     }
                     db.SaveChanges();
@@ -517,8 +562,7 @@ namespace Klada_v3
                 hits = db.MatchSystemIDs.Where(
                 m => m.KladaName != currentEvent.KladaName && 
                 m.EventSportTypeID == currentEvent.EventSportTypeID && 
-                m.EventSystemID != Guid.Empty && 
-                m.EventName.Contains(currentEvent.EventName) || currentEvent.EventName.Contains(m.EventName) &&
+                m.EventName.Contains(currentEvent.EventName) &&
                 !m.Matched
                  /*&&
                 (DbFunctions.TruncateTime(m.EventDateTime) == DbFunctions.TruncateTime(currentEvent.EventDateTime)) &&
@@ -580,9 +624,9 @@ namespace Klada_v3
                 return result = 17;
             if (eventType.ToLower().Contains("nogomet") == true && (eventType.ToLower().Contains("žene") == true || eventType.ToLower().Contains("zene") == true))
                 return result = 18;
-            if (eventType.ToLower().Contains("mma") == true)
+            if (eventType.ToLower().Contains("mma") == true || (eventType.ToLower().Contains("borilačkisportovi") == true || eventType.ToLower().Contains("borilackisportovi") == true))
                 return result = 19;
-            if (eventType.ToLower().Contains("formula1") == true)
+            if (eventType.ToLower().Contains("formula1") == true || eventType.ToLower().Contains("formula") == true)
                 return result = 20;
             if (eventType.ToLower().Contains("aussierules") == true)
                 return result = 21;
@@ -596,8 +640,8 @@ namespace Klada_v3
                 return result = 25;
             if (eventType.ToLower().Contains("atletika") == true)
                 return result = 26;
-            if (eventType.ToLower().Contains("borilačkisportovi") == true || eventType.ToLower().Contains("borilackisportovi") == true)
-                return result = 27;
+            if (false)
+                return result = 27;  //EMPTY SLOT
             if (eventType.ToLower().Contains("squash") == true)
                 return result = 28;
             if (eventType.ToLower().Contains("šah") == true || eventType.ToLower().Contains("sah") == true)

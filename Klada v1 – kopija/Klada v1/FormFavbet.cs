@@ -254,7 +254,7 @@ namespace Klada_v3
                     // When scroll was finished get source
 
                     #region Get Source
-                    chromeBrowser.ViewSource();
+                    //chromeBrowser.ViewSource();
                     var html = string.Empty;
                     await chromeBrowser.GetSourceAsync().ContinueWith(taskHtml =>
                     {
