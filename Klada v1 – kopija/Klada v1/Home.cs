@@ -19,6 +19,7 @@ using System.Globalization;
 using System.Net;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
+using System.Runtime.Remoting.Contexts;
 
 namespace Klada_v3
 {
@@ -30,11 +31,6 @@ namespace Klada_v3
         }
 
         HRKladeEntities db = new HRKladeEntities();
-        //private new List<OddsTable> Events = new List<OddsTable>();
-        private readonly string SendingMail = "terry.ferit@gmail.com";
-        private readonly string Password = "osusqhyeigynzuft";
-        private readonly string ReceivingMail = "terry.ferit@gmail.com";
-        private readonly string Subject = "Hit";
 
         public void btn_run_Click(object sender, EventArgs e)
         {
@@ -185,7 +181,7 @@ namespace Klada_v3
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
-                client.Send(mm); 
+                //TODO:client.Send(mm); 
 
                 //using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 //{
@@ -200,24 +196,73 @@ namespace Klada_v3
             }
 
         }
-
+        public IEnumerable<OddsTable> GetProducts(int categoryID)
+        {
+            return (from p in db.Set<OddsTable>()
+                    where p.KladaID == categoryID
+                    select new { kladaID = p.KladaID }).ToList()
+                   .Select(x => new OddsTable { KladaID = x.kladaID });
+        }
         private static void FindIdenticalMatchFromOddsTable()
         {
             HRKladeEntities db = new HRKladeEntities();
             //Foreach Event from OddsTable
             //Filter OddsTable Events by Current MatchSystemID And Get Largest Odds
             //Insert this Event to CalcOddTable
-            List<OddsTable> AllEvents = new List<OddsTable>();
+ 
             List<CalcOddsTable> Hits = new List<CalcOddsTable>();
 
-            AllEvents = db.OddsTable.ToList();
-            foreach (var currentEvent in AllEvents) // find identical Event
-            {
-                if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID == Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID == Guid.Empty)
-                    continue;
-             
-                CalcOddsTable Hit = new CalcOddsTable();
+            var AllEvents = (from s in db.OddsTable
+                             join t in (
+                                 (from OddsTable in db.OddsTable
+                                  group OddsTable by new
+                                  {
+                                      OddsTable.AwaySystemID,
+                                      OddsTable.HomeSystemID
+                                  } into g
+                                  where g.Count() > 1
+                                  select new
+                                  {
+                                      g.Key.AwaySystemID,
+                                      g.Key.HomeSystemID,
+                                      qty = g.Count()
+                                  }))
+                                   on new { s.HomeSystemID, s.AwaySystemID }
+                               equals new { t.HomeSystemID, t.AwaySystemID }
+                             select new
+                             {
+                                 KladaID = s.KladaID,
+                                 Home = s.Home,
+                                 Away = s.Away,
+                                 EventTime = s.EventTime,
+                                 EventDateTime = s.EventDateTime,
+                                 EventLink = s.EventLink,
+                                 Odd1 = s.Odd1,
+                                 OddX = s.OddX,
+                                 Odd2 = s.Odd2,
+                                 Odd1X = s.Odd1X,
+                                 OddX2 = s.OddX2,
+                                 Odd12 = s.Odd12,
+                                 OddF2 = s.OddF2,
+                                 Created = s.Created,
+                                 InPlay = s.InPlay,
+                                 KladaName = s.KladaName,
+                                 SportType = s.SportType,
+                                 SportTypeID = s.SportTypeID,
+                                 HomeSystemID = s.HomeSystemID,
+                                 AwaySystemID = s.AwaySystemID,
+                                 Column1 = t.AwaySystemID,
+                                 Column2 = t.HomeSystemID,
+                                 t.qty
+                             }).ToList();
 
+            foreach (var currentEvent in AllEvents.Where(e=> e.HomeSystemID != null || e.HomeSystemID != Guid.Empty
+            || e.AwaySystemID != null || e.AwaySystemID != Guid.Empty)) // find identical Event
+            {
+                //if (currentEvent.HomeSystemID == null || currentEvent.HomeSystemID == Guid.Empty || currentEvent.AwaySystemID == null || currentEvent.AwaySystemID == Guid.Empty)
+                //    continue;
+
+                CalcOddsTable Hit = new CalcOddsTable();
                 Hit.Home = currentEvent.Home;
                 Hit.Away = currentEvent.Away;
                 Hit.SportType = currentEvent.SportType;
@@ -227,29 +272,27 @@ namespace Klada_v3
                 Hit.HomeSystemID = currentEvent.HomeSystemID.Value;
                 Hit.AwaySystemID = currentEvent.AwaySystemID.Value;
 
-                OddsTable LargestOdd = new OddsTable();
-
-                LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd1).FirstOrDefault();
+                var LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd1).FirstOrDefault();
                 if (LargestOdd.Odd1 != null)
-                { 
+                {
                     Hit.Odd1 = LargestOdd.Odd1.Value;
                     Hit.Klada1 = LargestOdd.KladaName;
                 }
-                LargestOdd = new OddsTable();
+                LargestOdd = null;
                 LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.OddX).FirstOrDefault();
                 if (LargestOdd.OddX != null)
                 {
                     Hit.OddX = LargestOdd.OddX.Value;
                     Hit.KladaX = LargestOdd.KladaName;
                 }
-                LargestOdd = new OddsTable();
+                LargestOdd = null;
                 LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd2).FirstOrDefault();
                 if (LargestOdd.Odd2 != null)
                 {
                     Hit.Odd2 = LargestOdd.Odd2.Value;
                     Hit.Klada2 = LargestOdd.KladaName;
                 }
-                LargestOdd = new OddsTable();
+                LargestOdd = null;
                 LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd1X).FirstOrDefault();
                 if (LargestOdd.Odd1X != null)
                 {
@@ -257,14 +300,14 @@ namespace Klada_v3
                     Hit.Klada1X = LargestOdd.KladaName;
                 }
 
-                LargestOdd = new OddsTable();
+                LargestOdd = null;
                 LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.OddX2).FirstOrDefault();
                 if (LargestOdd.OddX2 != null)
                 {
                     Hit.OddX2 = LargestOdd.OddX2.Value;
                     Hit.KladaX2 = LargestOdd.KladaName;
                 }
-                LargestOdd = new OddsTable();
+                LargestOdd = null;
                 LargestOdd = AllEvents.Where(id => id.HomeSystemID == currentEvent.HomeSystemID && id.AwaySystemID == currentEvent.AwaySystemID && id.SportTypeID == currentEvent.SportTypeID).OrderByDescending(odd => odd.Odd12).FirstOrDefault();
                 if (LargestOdd.Odd12 != null)
                 {
@@ -281,7 +324,7 @@ namespace Klada_v3
 
                 db.CalcOddsTable.Add(Hit);
                 db.SaveChanges();
-                
+
             }
         }
 
@@ -515,11 +558,10 @@ namespace Klada_v3
         public Guid FindOrInsertToMatchSystemIDsTable(DateTime EventDateTime,string EventName,int SportTypeID,string KladaName)
         {
             MatchSystemIDs matchFound = new MatchSystemIDs();
-            matchFound = db.MatchSystemIDs.Where(m => m.EventName == EventName && m.EventSportTypeID == SportTypeID).FirstOrDefault();
 
-            if (matchFound != null)
-                return matchFound.EventSystemID;
-            else if(EventName != null && EventName != string.Empty)// insert record to MatchSystemIDs table
+            if ((matchFound = db.MatchSystemIDs.Where(m => m.EventName == EventName && m.EventSportTypeID == SportTypeID).FirstOrDefault()) != null)
+                return matchFound.EventSystemID; // This event name is in our system insert ID in OddsTable
+            else // insert record to MatchSystemIDs table
             {
                 MatchSystemIDs newMatch = new MatchSystemIDs();
                 newMatch.EventDateTime = EventDateTime;
@@ -530,17 +572,16 @@ namespace Klada_v3
 
                 db.MatchSystemIDs.Add(newMatch);
                 db.SaveChanges();
+                return Guid.Empty;
             }
-            return Guid.Empty;
         }
         public static void MatchSystemIDs()
         {
             HRKladeEntities db = new HRKladeEntities();
-            List <MatchSystemIDs> emptyGuids = db.MatchSystemIDs.Where(m => m.EventSystemID == Guid.Empty).ToList();
             List<MatchSystemIDs> eventMatches = new List<MatchSystemIDs>();
             double tolerance = 0.51;
 
-            foreach (var currentEvent in emptyGuids)
+            foreach (var currentEvent in db.MatchSystemIDs.Where(m => m.EventSystemID == Guid.Empty).ToList())
             {
                 if (eventMatches.Count > 0) // if list is not empty set same guid for all values and insert to DB
                 {
@@ -548,25 +589,20 @@ namespace Klada_v3
 
                     foreach (var eventMatch in eventMatches)
                     {
-                        MatchSystemIDs existingGuid = db.MatchSystemIDs.Where(m => m.EventName.Contains(eventMatch.EventName) && m.EventSportTypeID == eventMatch.EventSportTypeID && m.EventSystemID != Guid.Empty).FirstOrDefault();
-                        newGuid = (existingGuid != null) ? existingGuid.EventSystemID : newGuid;
                         eventMatch.EventSystemID = newGuid;
                     }
                     db.SaveChanges();
+
                     eventMatches = new List<MatchSystemIDs>(); // empty temp list
                 }
 
                 eventMatches.Add(currentEvent); // Insert currentEvent in hit list
 
                 List<MatchSystemIDs> hits = new List<MatchSystemIDs>();
-                hits = db.MatchSystemIDs.Where(
-                m => m.KladaName != currentEvent.KladaName && 
+                hits = db.MatchSystemIDs.Where(m => 
                 m.EventSportTypeID == currentEvent.EventSportTypeID && 
-                m.EventName.Contains(currentEvent.EventName) &&
+                (m.EventName.Contains(currentEvent.EventName)) &&
                 !m.Matched
-                 /*&&
-                (DbFunctions.TruncateTime(m.EventDateTime) == DbFunctions.TruncateTime(currentEvent.EventDateTime)) &&
-                (m.EventDateTime.Hour >= currentEvent.EventDateTime.Hour-3 && m.EventDateTime.Hour <= currentEvent.EventDateTime.Hour+3)*/
                 ).ToList();
 
                 foreach (var hit in hits)

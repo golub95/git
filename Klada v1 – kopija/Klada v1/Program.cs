@@ -16,8 +16,8 @@ namespace Klada_v3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Home());
-            Home.RunAll();
+            Application.Run(new Home());
+            //Home.RunAll();
         }
     }
 }
