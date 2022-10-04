@@ -52,13 +52,13 @@ namespace OddsMagic.Controllers
         }
 
         // GET: MatchSystemIDs/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(Guid? eventSystemID)
         {
-            if (id == null)
+            if (eventSystemID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MatchSystemIDs matchSystemIDs = db.MatchSystemIDs.Find(id);
+            List<MatchSystemIDs> matchSystemIDs = db.MatchSystemIDs.Where(m => m.EventSystemID == eventSystemID).ToList();
             if (matchSystemIDs == null)
             {
                 return HttpNotFound();
@@ -111,11 +111,13 @@ namespace OddsMagic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,EventSystemID,EventName,EventDateTime,EventSportTypeID,KladaName,Similarity,Matched")] MatchSystemIDs matchSystemIDs)
         {
+            Guid oldGuid = matchSystemIDs.EventSystemID;
             if (ModelState.IsValid)
             {
+                matchSystemIDs.Matched = true;
                 db.Entry(matchSystemIDs).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { eventSystemID = oldGuid });
             }
             return View(matchSystemIDs);
         }
