@@ -18,22 +18,23 @@
     </p>
 }
 
-<table class="table">
-    <tr>
+<table class="table-condensed">
+    @*<tr>
+         <th>
+             Sorting by:
+         </th>
+         <th>
+             @Html.ActionLink("Event Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+         </th>
         <th>
-            Sorting by:
-        </th>
-        <th>
-            @Html.ActionLink("Event Name", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        @*<th>
-                First Name
-            </th>*@
+                 First Name
+             </th>
         <th>
             @Html.ActionLink("Event Date", "Index", new { sortOrder = ViewBag.DateSortParm })
         </th>
         <th></th>
-    </tr>
+        </tr>
+    *@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.EventSystemID)
@@ -58,7 +59,7 @@
         </th>
         <th></th>
     </tr>
-    @{int rowCounter = 0; var lastGuid = Guid.Empty; string rowClass = "alert-warning"; }
+    @{int rowCounter = 0; var lastGuid = Guid.Empty; string rowClass = "alert-warning";}
     @foreach (var item in Model.OrderBy(o => o.EventSystemID))
     {
         if (lastGuid != item.EventSystemID)
@@ -69,8 +70,10 @@
             <tr>
                 <td>
                     <p></p>
+                    <p></p>
                 </td>
             </tr>
+
         }
 
         rowCounter += 1;
@@ -102,8 +105,8 @@
                 @Html.DisplayFor(modelItem => item.Matched)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @*@Html.ActionLink("Edit", "Edit", new { eventSystemID = item.EventSystemID }) |*@
+                @Html.ActionLink("Details", "Details", new { eventSystemID = item.EventSystemID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.id })
             </td>
         </tr>

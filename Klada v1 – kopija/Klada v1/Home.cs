@@ -326,6 +326,7 @@ namespace Klada_v3
                 db.SaveChanges();
 
             }
+            Application.Exit();
         }
 
         protected static void ResetIdentity(/*object sender, EventArgs e*/)
@@ -586,6 +587,11 @@ namespace Klada_v3
                 if (eventMatches.Count > 0) // if list is not empty set same guid for all values and insert to DB
                 {
                     var newGuid = Guid.NewGuid();
+                    MatchSystemIDs existingEvent = new MatchSystemIDs();
+                    // IF event exist  then get EventSystemID
+                    newGuid = (db.MatchSystemIDs.Where(existing => existing.EventSystemID != currentEvent.EventSystemID &&
+                    existing.EventName == currentEvent.EventName &&
+                    existing.EventSportTypeID == currentEvent.EventSportTypeID).FirstOrDefault() != null) ? existingEvent.EventSystemID : newGuid;
 
                     foreach (var eventMatch in eventMatches)
                     {

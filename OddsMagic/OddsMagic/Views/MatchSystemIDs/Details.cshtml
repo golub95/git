@@ -1,7 +1,8 @@
-﻿@model OddsMagic.Models.MatchSystemIDs
-
+﻿@model IEnumerable<OddsMagic.Models.MatchSystemIDs>
+@using System.Data.Entity;
 @{
     ViewBag.Title = "Details";
+
 }
 
 <h2>Details</h2>
@@ -9,66 +10,100 @@
 <div>
     <h4>MatchSystemIDs</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EventSystemID)
-        </dt>
+    @{ string previusRowClass = string.Empty;}
+    @foreach (var item in Model)
+    {
 
-        <dd>
-            @Html.DisplayFor(model => model.EventSystemID)
-        </dd>
+        var q = Model.GroupBy(x => x.EventDateTime)
+            .Select(g => new { Value = g.Key, Count = g.Count() })
+            .OrderByDescending(x => x.Count);
+        var dateTimeLists = new List<Tuple<string, DateTime>>();
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EventName)
-        </dt>
+        int identicalDateCounter = 0;
+        foreach (var x in q)
+        {
+            if (x.Count > 1)
+            {
+                List<string> classList = new List<string>();
+                classList.Add("alert-danger");
+                classList.Add("alert-info");
+                classList.Add("alert-link");
+                classList.Add("alert-success");
+                classList.Add("alert-warning");
 
-        <dd>
-            @Html.DisplayFor(model => model.EventName)
-        </dd>
+                dateTimeLists.Add(new Tuple<string, DateTime>(classList[identicalDateCounter], x.Value));
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EventDateTime)
-        </dt>
+                identicalDateCounter++;
+            }
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.EventDateTime)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EventSportTypeID)
-        </dt>
+        string rowClass = (dateTimeLists.Find(i => i.Item2 == item.EventDateTime) != null) ? dateTimeLists.Find(i => i.Item2 == item.EventDateTime).Item1 : string.Empty;
 
-        <dd>
-            @Html.DisplayFor(model => model.EventSportTypeID)
-        </dd>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EventSystemID)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KladaName)
-        </dt>
+            <dd class="glyphicon-alert">
+                @Html.DisplayFor(model => item.EventSystemID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.KladaName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EventName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Similarity)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => item.EventName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Similarity)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EventDateTime)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Matched)
-        </dt>
+            <dd class=@rowClass>
+                @Html.DisplayFor(model => item.EventDateTime)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Matched)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EventSportTypeID)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => item.EventSportTypeID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KladaName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.KladaName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Similarity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.Similarity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Matched)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.Matched)
+            </dd>
+
+            <dd>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id })
+            </dd>
+
+        </dl>
+    }
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
