@@ -327,8 +327,9 @@ namespace Klada_v3
             string xpathPairsPart = "//div[@class =  'event-name']"; // col-title
             string xpathOddsPart = "//span[@class = 'odds-value']"; ;//"//div[contains(@class, 'partvar odds')]";
             string xpathTime = "//span[@class = 'event-datetime']";
+            string skipMatch = "//span[@class = 'market-sub-name']";
 
-            var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathSportType + "|" + xpathOddTypesPart  + "|" + xpathPairsPart + "|" + xpathOddsPart + "|" + xpathTime).Cast<HtmlNode>();
+            var HTMLTableTRList = htmlDoc.DocumentNode.SelectNodes(xpathSportType + "|" + skipMatch + "|" + xpathOddTypesPart  + "|" + xpathPairsPart + "|" + xpathOddsPart + "|" + xpathTime).Cast<HtmlNode>();
 
 
             #region Save list to txt Test ONLY 
@@ -358,11 +359,18 @@ namespace Klada_v3
                     sportType = Regex.Replace(currentItem, @"\s+", "");
                     oddTableInitialization = true;
                     oddTableSetCompleated = false;
-                    doNotSaveEvent = false;
-                    if (currentItem == "Duel")
-                        doNotSaveEvent = true;
                     continue;
                 }
+                if (node.HasAttributes && node.Attributes.First().Value == "market-sub-name")
+                {
+                    if (currentItem.ToLower().Contains("duel") || currentItem.ToLower().Contains("plasman"))
+                        doNotSaveEvent = true;
+                    else
+                        doNotSaveEvent = false;
+                }
+
+                if (doNotSaveEvent)
+                    continue;
 
                 if (node.HasAttributes && node.Attributes.First().Value.Contains("event-datetime")) // This is new record save old record to DB
                 {

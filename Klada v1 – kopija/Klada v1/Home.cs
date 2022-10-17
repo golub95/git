@@ -91,6 +91,7 @@ namespace Klada_v3
             Cef.ClearSchemeHandlerFactories();
             Close();
             CloseApp();
+            Application.Exit();
         }
         private static void CloseApp()
         {
@@ -540,7 +541,8 @@ namespace Klada_v3
                                OddsTable.HomeSystemID != Guid.Empty &&
                                OddsTable.AwaySystemID != Guid.Empty &&
                                OddsTable.HomeSystemID != null &&
-                               OddsTable.AwaySystemID != null
+                               OddsTable.AwaySystemID != null &&
+                               OddsTable.SportTypeID != 0
                              group OddsTable by new
                              {
                                  OddsTable.HomeSystemID,
