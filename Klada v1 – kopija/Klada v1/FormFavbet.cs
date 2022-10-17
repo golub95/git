@@ -22,7 +22,7 @@ namespace Klada_v3
         static string pageUrl;
         static List<string> LinkList;
         JavascriptResponse clickLoadMore = new JavascriptResponse();
-        JavascriptResponse isScrollFinished = new JavascriptResponse();
+        JavascriptResponse isLoadMoreVisible = new JavascriptResponse();
         #region Odd Parameters
 
         bool hasOdd1 = false;
@@ -61,6 +61,31 @@ namespace Klada_v3
             LinkList = new List<string>();
             //LINK: https://www.favbet.hr/hr/sports/sport/soccer/?timeFilter=%7B"all"%3A"all"%7D
             LinkList.Add("https://www.favbet.hr/hr/sports/sport/soccer/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/tennis/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/basketball/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/ice-hockey2/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/volleyball/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/handball/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/american-football/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/baseball/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/biathlon/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/cycling/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/boxing/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/e-sports/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/e-basketball/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/playstation-games/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/e-fighting/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/formula-1/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/golf/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/cricket/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/netball/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/mma/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/darts/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/rugby-union/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/rugby-league/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/squash/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/snooker/?timeFilter=%7B\"all\"%3A\"all\"%7D");
+            //LinkList.Add("https://www.favbet.hr/hr/sports/sport/table-tennis/?timeFilter=%7B\"all\"%3A\"all\"%7D");
         }
 
         public void InitializeChromium()
@@ -210,13 +235,14 @@ namespace Klada_v3
         private async Task ScrollAsync()
         {
             //JavascriptResponse afterClick = await chromeBrowser.EvaluateScriptAsync("document.getElementsByClassName('buttonLoad').scrollIntoView()");
-
+            //document.querySelector('#root > div > div > div > div.Box_box__2h4Jp.Page_pageWrapper__2WiEK.Box_justify_center__1-I-N > div > div:nth-child(2) > div:nth-child(5) > div:nth-child(3) > div > div.Box_box__2h4Jp.ButtonLoader_showMoreWrapper__34SHp.Box_justify_center__1-I-N > button').textContent == 'Prikaži više';
             #region variables
 
             var clickAndScrollScript = @"
                             (function () {
-                                    scrollTo(0, document.body.scrollHeight);
+                                    
                                     document.querySelector('#root > div > div > div > div.Box_box__2h4Jp.Page_pageWrapper__2WiEK.Box_justify_center__1-I-N > div > div:nth-child(2) > div:nth-child(5) > div:nth-child(3) > div > div.Box_box__2h4Jp.ButtonLoader_showMoreWrapper__34SHp.Box_justify_center__1-I-N > button').click();
+                                    scrollTo(0, document.body.scrollHeight)
                                     var result = true;
 
                                     return result;
@@ -224,9 +250,9 @@ namespace Klada_v3
 
             var isScrollFinishedScript = @"
                                 (function() {
-                                    var result = document.querySelector('#root > div > div > div > div.Box_box__2h4Jp.Page_pageWrapper__2WiEK.Box_justify_center__1-I-N > div > div:nth-child(2) > div:nth-child(5) > div:nth-child(3) > div > div.Box_box__2h4Jp.ButtonLoader_showMoreWrapper__34SHp.Box_justify_center__1-I-N > button').textContent == 'Prikaži više';
-                      
-                                    return result;
+                                   
+                                var result = document.querySelector('#root > div > div > div > div.Box_box__2h4Jp.Page_pageWrapper__2WiEK.Box_justify_center__1-I-N > div > div:nth-child(2) > div:nth-child(5) > div:nth-child(3) > div > div.Box_box__2h4Jp.ButtonLoader_showMoreWrapper__34SHp.Box_justify_center__1-I-N > button').textContent == 'Prikaži više';
+                                return result;
                                 })(); ";
 
             #endregion variables
@@ -235,21 +261,20 @@ namespace Klada_v3
 
             Task Scroll = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).ContinueWith(waitScroll =>
             {
-                int sleepTime = 1500; // in mills 
+                int sleepTime = 4500; // in mills 
                 Task GetAttribute = Task.Run(async () => await chromeBrowser.EvaluateScriptAsync(isScrollFinishedScript)).ContinueWith(async waitAttribute =>
                 {
+                    await Task.Delay(2500);
                     //DOCUMENTATION:
                     // clickAndScrollScript -> function click to button load and scroll down
                     // isScrollFinishedScript -> check if exist remaining odds - if no exist then download document
                     //await Task.Delay(1500);
-                    isScrollFinished.Result = waitAttribute.Result.Result;
-                    while (Convert.ToBoolean(chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).Result.Result) == true) // compare position from old var and current scroll position /evaluate script
+                    isLoadMoreVisible.Result = chromeBrowser.EvaluateScriptAsync(isScrollFinishedScript).Result.Result;
+                    while (Convert.ToBoolean(isLoadMoreVisible.Result)) // compare position from old var and current scroll position /evaluate script
                     {
-                        clickLoadMore.Result = chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).Result.Result; // Execute script Scroll Position and set value to old position var.
-
+                        waitScroll.Result.Result = chromeBrowser.EvaluateScriptAsync(clickAndScrollScript).Result.Result; // Execute script Scroll Position and set value to old position var.
                         await Task.Delay(sleepTime);
-
-                        isScrollFinished.Result = chromeBrowser.EvaluateScriptAsync(isScrollFinishedScript).Result.Result;
+                        isLoadMoreVisible.Result = chromeBrowser.EvaluateScriptAsync(isScrollFinishedScript).Result.Result;
                     }
                     // When scroll was finished get source
 
@@ -270,12 +295,7 @@ namespace Klada_v3
 
                     #endregion Get Source
                     chromeBrowser.BrowserCore.CloseBrowser(true);//e.Browser.CloseBrowser(true);
-                    Cef.ClearSchemeHandlerFactories();
                     this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
-                    //Shutdown before your application exists or it will hang.
-                    Cef.Shutdown();
-
-                    return (JavascriptResponse)clickLoadMore;
                 });
 
             }));
@@ -347,10 +367,10 @@ namespace Klada_v3
 
             #region Save list to txt Test ONLY 
             // For Testing
-            var HTMLTableTRListHumanReadable = from table in HTMLTableTRList select new { Cell_Text = table.InnerText };
-            string combinedString = string.Join(",", HTMLTableTRListHumanReadable);
-            string path = "C:\\Temp/download.txt";
-            File.WriteAllText(path, combinedString);
+            //var HTMLTableTRListHumanReadable = from table in HTMLTableTRList select new { Cell_Text = table.InnerText };
+            //string combinedString = string.Join(",", HTMLTableTRListHumanReadable);
+            //string path = "C:\\Temp/download.txt";
+            //File.WriteAllText(path, combinedString);
 
             #endregion Save list to txt Test ONLY
 
@@ -599,7 +619,7 @@ namespace Klada_v3
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             #region This is closing Forms and Browser
-            // Koristi na predposljednjoj formi
+            Cef.ClearSchemeHandlerFactories();
             Dispose();
             this.Close();
             //Cef.Shutdown();

@@ -266,19 +266,13 @@ namespace Klada_v3
                     });
 
                     #endregion Get Source
-                    //chromeBrowser.BrowserCore.CloseBrowser(true);//e.Browser.CloseBrowser(true);
-                    //Cef.ClearSchemeHandlerFactories();
-                    //this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
-                    ////Shutdown before your application exists or it will hang.
-                    //Cef.Shutdown();
-
-                    return (JavascriptResponse)clickLoadMore;
+                    chromeBrowser.BrowserCore.CloseBrowser(true);//e.Browser.CloseBrowser(true);
+                    this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
                 });
-                chromeBrowser.BrowserCore.CloseBrowser(true);//e.Browser.CloseBrowser(true);
-                Cef.ClearSchemeHandlerFactories();
-                this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
-                //Shutdown before your application exists or it will hang.
-                Cef.Shutdown();
+                //Cef.ClearSchemeHandlerFactories();
+                //this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
+                ////Shutdown before your application exists or it will hang.
+                //Cef.Shutdown();
             }));
         }
         private void ChromeBrowser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
@@ -325,10 +319,10 @@ namespace Klada_v3
 
             #region Save list to txt Test ONLY 
             // For Testing
-            var HTMLTableTRListHumanReadable = from table in HTMLTableTRList select new { Cell_Text = table.InnerText };
-            string combinedString = string.Join(",", HTMLTableTRListHumanReadable);
-            string path = "C:\\Temp/download.txt";
-            File.WriteAllText(path, combinedString);
+            //var HTMLTableTRListHumanReadable = from table in HTMLTableTRList select new { Cell_Text = table.InnerText };
+            //string combinedString = string.Join(",", HTMLTableTRListHumanReadable);
+            //string path = "C:\\Temp/download.txt";
+            //File.WriteAllText(path, combinedString);
 
             #endregion Save list to txt Test ONLY
 
@@ -750,7 +744,7 @@ namespace Klada_v3
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             #region This is closing Forms and Browser
-            // Koristi na predposljednjoj formi
+            Cef.ClearSchemeHandlerFactories();
             Dispose();
             this.Close();
             //Cef.Shutdown();

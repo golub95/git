@@ -82,8 +82,6 @@
             // cb_Favbet
             // 
             this.cb_Favbet.AutoSize = true;
-            this.cb_Favbet.Checked = true;
-            this.cb_Favbet.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_Favbet.Location = new System.Drawing.Point(116, 42);
             this.cb_Favbet.Name = "cb_Favbet";
             this.cb_Favbet.Size = new System.Drawing.Size(59, 17);
@@ -95,8 +93,6 @@
             // cb_Mozzart
             // 
             this.cb_Mozzart.AutoSize = true;
-            this.cb_Mozzart.Checked = true;
-            this.cb_Mozzart.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_Mozzart.Location = new System.Drawing.Point(116, 19);
             this.cb_Mozzart.Name = "cb_Mozzart";
             this.cb_Mozzart.Size = new System.Drawing.Size(63, 17);
@@ -108,8 +104,6 @@
             // cb_HL
             // 
             this.cb_HL.AutoSize = true;
-            this.cb_HL.Checked = true;
-            this.cb_HL.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_HL.Location = new System.Drawing.Point(9, 114);
             this.cb_HL.Name = "cb_HL";
             this.cb_HL.Size = new System.Drawing.Size(40, 17);
@@ -120,8 +114,6 @@
             // cb_Germania
             // 
             this.cb_Germania.AutoSize = true;
-            this.cb_Germania.Checked = true;
-            this.cb_Germania.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_Germania.Location = new System.Drawing.Point(9, 88);
             this.cb_Germania.Name = "cb_Germania";
             this.cb_Germania.Size = new System.Drawing.Size(71, 17);
@@ -133,8 +125,6 @@
             // cb_IsprazniTablicu
             // 
             this.cb_IsprazniTablicu.AutoSize = true;
-            this.cb_IsprazniTablicu.Checked = true;
-            this.cb_IsprazniTablicu.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_IsprazniTablicu.Location = new System.Drawing.Point(116, 114);
             this.cb_IsprazniTablicu.Name = "cb_IsprazniTablicu";
             this.cb_IsprazniTablicu.Size = new System.Drawing.Size(100, 17);
@@ -145,8 +135,6 @@
             // cb_PSK
             // 
             this.cb_PSK.AutoSize = true;
-            this.cb_PSK.Checked = true;
-            this.cb_PSK.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_PSK.Location = new System.Drawing.Point(9, 65);
             this.cb_PSK.Name = "cb_PSK";
             this.cb_PSK.Size = new System.Drawing.Size(47, 17);
@@ -168,8 +156,6 @@
             // cb_SuperSport
             // 
             this.cb_SuperSport.AutoSize = true;
-            this.cb_SuperSport.Checked = true;
-            this.cb_SuperSport.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_SuperSport.Location = new System.Drawing.Point(9, 19);
             this.cb_SuperSport.Name = "cb_SuperSport";
             this.cb_SuperSport.Size = new System.Drawing.Size(79, 17);
@@ -191,8 +177,6 @@
             // cb_Calc
             // 
             this.cb_Calc.AutoSize = true;
-            this.cb_Calc.Checked = true;
-            this.cb_Calc.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_Calc.Location = new System.Drawing.Point(3, 146);
             this.cb_Calc.Name = "cb_Calc";
             this.cb_Calc.Size = new System.Drawing.Size(77, 17);

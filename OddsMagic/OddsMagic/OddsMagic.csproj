@@ -255,6 +255,7 @@
     <Content Include="Views\MatchSystemIDs\Details.cshtml" />
     <Content Include="Views\MatchSystemIDs\Edit.cshtml" />
     <Content Include="Views\MatchSystemIDs\Index.cshtml" />
+    <Content Include="Views\Odds\OrderByID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

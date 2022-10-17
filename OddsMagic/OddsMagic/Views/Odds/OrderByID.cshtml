@@ -1,0 +1,107 @@
+﻿@model  IEnumerable<OddsMagic.Models.OddsTable> 
+
+@{
+    ViewBag.Title = "OrderByID";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("Update by DateTime", "UpdateByDt")
+
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table-condensed">
+    <tr>
+        <th>
+            @Html.Display("HomeSystemID")
+        </th>
+        <th>
+            @Html.Display("AwaySystemID")
+        </th>
+        <th>
+            @Html.Display("Home")
+        </th>
+        <th>
+            @Html.Display("Away")
+        </th>
+        <th>
+            @Html.Display("EventDateTime")
+        </th>
+        <th>
+            @Html.Display("SportTypeID")
+        </th>
+        <th>
+            @Html.Display("KladaName")
+        </th>
+        <th></th>
+    </tr>
+    @{int rowCounter = 0; var lastGuid = Guid.Empty; string rowClass = "alert-warning";}
+    @foreach (var item in Model)
+    {
+        if (lastGuid != item.HomeSystemID.Value)
+        {
+            rowCounter = 0;
+            rowClass = "alert-warning";
+
+            <tr>
+                <td>
+                    <p></p>
+                    <p></p>
+                </td>
+            </tr>
+
+        }
+
+        rowCounter += 1;
+        if (true)
+        {
+            rowClass = "alert-success";
+        }
+
+            <tr class=@rowClass>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeSystemID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AwaySystemID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Home)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Away)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SportType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KladaName)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Similarity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Matched)
+                </td>*@
+                <td>
+                    @Html.ActionLink("Details", "Details", new { eventSystemID = item.KladaID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.KladaID })
+                </td>
+            </tr>
+        lastGuid = item.HomeSystemID.Value;
+    }
+
+</table>

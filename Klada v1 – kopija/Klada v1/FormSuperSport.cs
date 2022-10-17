@@ -209,13 +209,12 @@ namespace Klada_v3
                                 HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument();
                                 htmlDoc.LoadHtml(html);
 
-                                GetSSDocument(htmlDoc);
+                                GetSSDocument(htmlDoc); // do not await
                                 endDate = DateTime.UtcNow;
                             }
                         }
                     }
-                    e.Browser.CloseBrowser(true);
-                    Cef.ClearSchemeHandlerFactories();
+                    chromeBrowser.BrowserCore.CloseBrowser(true);//e.Browser.CloseBrowser(true);
                     this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
                 };
             }
@@ -274,13 +273,6 @@ namespace Klada_v3
                     });
 
                     #endregion Get Source
-                    chromeBrowser.BrowserCore.CloseBrowser(true);//e.Browser.CloseBrowser(true);
-                    Cef.ClearSchemeHandlerFactories();
-                    this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
-                    //Shutdown before your application exists or it will hang.
-                    Cef.Shutdown();
-
-                    return (JavascriptResponse)this.oldScrollPosition;
                 });
 
             }));
@@ -586,7 +578,7 @@ namespace Klada_v3
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             #region This is closing Forms and Browser
-            // Koristi na predposljednjoj formi
+            Cef.ClearSchemeHandlerFactories();
             Dispose();
             this.Close();
             //Cef.Shutdown();
