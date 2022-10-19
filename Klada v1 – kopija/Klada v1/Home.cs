@@ -190,7 +190,7 @@ namespace Klada_v3
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
-                //TODO:client.Send(mm); 
+                client.Send(mm); 
 
                 //using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 //{
@@ -205,14 +205,6 @@ namespace Klada_v3
             }
 
         }
-        public IEnumerable<OddsTable> GetProducts(int categoryID)
-        {
-            return (from p in db.Set<OddsTable>()
-                    where p.KladaID == categoryID
-                    select new { kladaID = p.KladaID }).ToList()
-                   .Select(x => new OddsTable { KladaID = x.kladaID });
-        }
-
         protected static void ResetIdentity(/*object sender, EventArgs e*/)
         {
             string efConnectionString = ConfigurationManager.ConnectionStrings["HRKladeEntities"].ConnectionString;
@@ -495,7 +487,7 @@ namespace Klada_v3
                     m.EventSportTypeID == currentEvent.EventSportTypeID &&
                     m.EventName == currentEvent.EventName).ToList()).Count > 0)
                 {
-                    continue;
+                    continue; // if the match is already in the database, do not create a new guide for it.
                 }
                 else
                 {
@@ -517,6 +509,7 @@ namespace Klada_v3
                 {
                     if (hits.Count <= 1)
                         continue;
+
                     double similarity = CalculateSimilarity(hit.EventName, currentEvent.EventName);
                     if (similarity > tolerance)
                     {
@@ -628,6 +621,7 @@ namespace Klada_v3
          }
         #endregion find Similar
 
+        #region Buttons
         public static int FindAndInsertSportTypeID (string eventType)
         {
             int result = 0;
@@ -727,6 +721,7 @@ namespace Klada_v3
         {
 
         }
+        #endregion buttons
     }
 
     #region Common to all forms
