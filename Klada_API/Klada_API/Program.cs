@@ -9,7 +9,7 @@ namespace Klada_API
         static void Main(string[] args)
         {
             Admiral_Nogomet.API_Admiral();
-            Favbet.API_Favbet();
+            //Favbet.API_Favbet();
         }
 
         public static void DownloadData(string resultText, string path)
